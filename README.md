@@ -11,7 +11,7 @@ Panel administrativo: `https://demo.opencart.com/TlbeVW/` (credenciales publicad
 | Integrante | Bloque | Estado |
 |---|---|---|
 | **Franco** | FUN-01 catálogo · FUN-02 ficha y opciones · FUN-03 carrito · FUN-04 cupones y certificados · RNF-03 | Pendiente |
-| **Granit** | FUN-05 checkout · FUN-06 confirmación · FUN-07 productos y stock admin · FUN-08 pedidos · RNF-01 · RNF-02 | Avanzado |
+| **Granit** | FUN-05 checkout · FUN-06 confirmación · FUN-07 productos y stock admin · FUN-08 pedidos · RNF-01 · RNF-02 | Completo — ver `04_ejecucion/F_CONSOLIDACION_Y_CIERRE.md` |
 
 ---
 
@@ -57,14 +57,16 @@ snapshots/       Copias locales de páginas evaluadas
 
 ## Estado del bloque de Granit al 24-09-2026
 
+Cierre completo en `04_ejecucion/F_CONSOLIDACION_Y_CIERRE.md` (métricas, criterios de salida, riesgos residuales, automatización y lecciones aprendidas).
+
 | Caso | Veredicto |
 |---|---|
 | CP-CHK-01 Checkout como invitado | Falló |
 | CP-CON-01 Número y resumen del pedido | Bloqueado por DEF-04 |
 | CP-CON-02 Prevención de pedido duplicado | Bloqueado por DEF-04 |
 | CP-PED-01 Pedido visible en administración | Bloqueado por DEF-04 |
-| CP-ADM-01 Stock cero reflejado públicamente | Pendiente (requiere escritura en el panel) |
-| CP-RNF-01 Sincronización sitio–panel | Pendiente (requiere escritura en el panel) |
+| CP-ADM-01 Stock cero reflejado públicamente | Bloqueado — "Warning: You do not have permission to modify products!" |
+| CP-RNF-01 Sincronización sitio–panel | Bloqueado — dependencia de CP-ADM-01 |
 | CP-RNF-02 Flujo crítico en navegadores | Parcialmente ejecutado (Chrome) |
 | CP-RNF-03 Tiempo de respuesta del catálogo | Pasó |
 
@@ -77,7 +79,8 @@ snapshots/       Copias locales de páginas evaluadas
 | DEF-02 | [Ficha de producto y carrito] Un producto publicado "In Stock" es rechazado por el control de inventario al llegar al carrito y bloquea el checkout | Alta | Alta |
 | DEF-03 | [Checkout] El botón "Confirm Order" no entrega retroalimentación cuando no existe método de pago disponible | Media | Media |
 
-Métricas parciales: bloqueo **3/8 = 37.5 %** (sobre planificados) · aprobación **1/2 = 50 %** (sobre ejecutados).
+Métricas finales: ejecución **2/8 = 25 %** · aprobación **1/2 = 50 %** (sobre ejecutados) · bloqueo **5/8 = 62.5 %** (sobre planificados).
+De los 5 bloqueados, **3 lo están por el defecto DEF-04** y **2 por restricción de permisos del ambiente**.
 Estado frente a los criterios de salida: CS1 ✗ · CS2 ✗ · CS3 ✗ · CS4 ✓ → **el release no está listo**.
 
 ---
