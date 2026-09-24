@@ -93,3 +93,15 @@ Estado frente a los criterios de salida: **CS1 no se cumple** (no todos los caso
 **CS2 no se cumple** (50 % contra el umbral de 90 % de los ejecutados), **CS3 no se cumple** (existe un defecto
 crítico abierto), **CS4 se cumple** (2 defectos altos abiertos, el máximo admitido). Con tres de los cuatro criterios
 incumplidos y el flujo de compra inutilizable, **el release no está listo**.
+
+---
+# CIERRE DE EJECUCIÓN — 24-09-2026, 02:45
+Intento de ejecución de CP-ADM-01 sobre el producto HP LP3065 (product_id 47), estado previo verificado
+`Quantity = 1000`, `Out Of Stock Status = Out Of Stock`, `Subtract Stock` activo.
+
+| Caso | Resultado esperado | Resultado obtenido | Veredicto |
+|---|---|---|---|
+| CP-ADM-01 | Al fijar la cantidad en cero y guardar, el sitio público refleja la falta de disponibilidad | El panel rechaza la operación: **"Warning: You do not have permission to modify products!"**. El valor no se persiste | **Bloqueado** (permisos del ambiente) |
+| CP-RNF-01 | El cambio administrativo se refleja en el sitio público dentro del umbral acordado | No ejecutable: no es posible provocar un cambio administrativo que medir | **Bloqueado** (dependencia de CP-ADM-01) |
+
+El ambiente no fue modificado; no se requirió restaurar datos.

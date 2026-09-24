@@ -15,3 +15,12 @@ Responsable: Granit (Integrante 2).
 1. Ninguna ejecución se considera válida sin entrada de bitácora del día.
 2. El estado del inventario y de los cupones del demo es volátil y compartido: se documenta el valor observado y su hora.
 3. Un impedimento del ambiente se registra como **Bloqueado**, nunca como **Fallido**. La distinción se sostiene en esta bitácora.
+
+## Entrada adicional — 24-09-2026, 02:45
+| Fecha | Hora | Origen | Evento | Evidencia literal | Efecto |
+|---|---|---|---|---|---|
+| 24-09-2026 | 02:45 | Panel administrativo autenticado (usuario `demo`) | Intento de fijar `Quantity = 0` en el producto HP LP3065 y guardar | **"Warning: You do not have permission to modify products!"** | El cambio **no se persistió**: el formulario conserva `Quantity = 1000` y `Out Of Stock Status = Out Of Stock`. **Bloquea CP-ADM-01 y CP-RNF-01** |
+
+Consecuencia: el ambiente no fue alterado por el equipo; no se requirió restauración de datos. La restricción es del
+ambiente público de prueba y **no constituye un defecto del producto**, a diferencia de DEF-04.
+Evidencia: `evidencias/CP-ADM-01/CP-ADM-01_paso03_warning-permiso-modificar-productos_20260924.png`
