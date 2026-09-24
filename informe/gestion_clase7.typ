@@ -1,6 +1,6 @@
 #heading(level: 1, numbering: none)[Aplicación de la Clase 7 y evidencia verificable]
 
-*Tipo de informe.* Finalización del hito de pruebas del bloque del Integrante 2, con pendientes abiertos. Finalizar el hito no significa aprobar el release. La revisión v1.1 conserva el cierre documentado y agrega una verificación complementaria de interfaz del 24-09-2026. No suma capturas como si fueran casos completos adicionales.
+*Tipo de informe.* Finalización del hito de pruebas del bloque del Integrante 2, con pendientes abiertos. Finalizar el hito no significa aprobar el release. La revisión v1.2 conserva el cierre documentado y la verificación complementaria de interfaz del 24-09-2026. No suma capturas como si fueran casos completos adicionales.
 
 *Base metodológica.* Clase 7 — Gestión de pruebas (CS5383): diapositivas 4–9, 10–15, 19–22 y 29–32. La guía local `psicologia_del_docente_v2.txt`, especialmente su Parte II, orienta el orden, la evidencia y la defensa de decisiones. Sus interpretaciones del perfil docente no son requisitos ni afirmaciones del material de clase.
 
@@ -54,7 +54,7 @@ Al consultar la cuenta solo estaba visible el proyecto de ejemplo *Getting Start
 
 *Duplicados (diapositiva 25).* DEF-03 y DEF-04 comparten contexto de checkout, pero describen manifestaciones distintas. La revisión local no permite afirmar una causa común; el responsable de triage debe decidir si DEF-03 es independiente, duplicado o comportamiento esperado. Ningún registro se cierra automáticamente por una captura nueva.
 
-*Gestión de la configuración (diapositiva 9).* El manifiesto de capturas conserva nombre, fecha y huella. No contiene URL de sesión administrativa ni credenciales. El fuente v1.1 y las evidencias se versionan juntos; el PDF anterior pertenece a la versión previamente generada y no representa esta revisión del fuente.
+*Gestión de la configuración (diapositiva 9).* El manifiesto de capturas conserva nombre, fecha y huella. No contiene URL de sesión administrativa ni credenciales. El fuente v1.2 y las evidencias se versionan juntos; el PDF anterior pertenece a la versión previamente generada y no representa esta revisión del fuente.
 
 #heading(level: 2, numbering: none)[Uso de IA y revisión humana]
 

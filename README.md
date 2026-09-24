@@ -1,4 +1,4 @@
-> **Revisión editable v1.1 (24-09-2026):** fuente en `informe/informe.typ`, complemento de Clase 7 en `informe/gestion_clase7.typ` y seis capturas reales en `informe/evidencias/gestion-20260924/`. [Cambios y evidencia](00_gestion/REVISION_CLASE7_20260924.md). El PDF existente corresponde a la versión anterior; esta revisión no emite un PDF nuevo. La carga en Qase está pendiente de autorización explícita para crear el proyecto y sus registros.
+> **Revisión editable v1.2 (24-09-2026):** fuente en `informe/informe.typ`, complemento de Clase 7 en `informe/gestion_clase7.typ` y seis capturas reales en `informe/evidencias/gestion-20260924/`. [Cambios y evidencia](00_gestion/REVISION_CLASE7_20260924.md). El PDF existente corresponde a la versión anterior; esta revisión no emite un PDF nuevo. El informe documenta 8 casos del Integrante 2; hay que integrar el otro bloque y verificar el mínimo de 15 casos del grupo. La carga en Qase está pendiente de autorización explícita para crear el proyecto y sus registros.
 
 # Proyecto 1 — Caso 3: OpenCart
 ### CS5383 · Verificación y Pruebas de Software · Planificación, Análisis y Diseño de Pruebas
