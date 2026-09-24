@@ -1357,19 +1357,22 @@ Cloudflare).
 Los veredictos *Bloqueado* se sustentan en impedimentos del ambiente registrados en bitácora con texto
 literal del sistema, no en supuestos. Ninguno se contabiliza como aprobado ni como fallido.
 
-*Denominadores.* La *tasa de bloqueo* se calcula sobre los casos *planificados* (4 Bloqueado de 8
-planificados = 50 %). La *tasa de aprobación* se calcula sobre los casos *ejecutados*; en este primer
-corte no es calculable, porque ningún caso alcanzó veredicto Aprobado ni Fallido (0 ejecutados). El
-*% de alta prioridad ejecutada* se reporta por separado.
+*Denominadores.* La *tasa de bloqueo* se calcula sobre los casos *planificados*; la *tasa de aprobación*,
+sobre los casos *ejecutados*; y el *% de alta prioridad ejecutada*, sobre los casos de prioridad Alta
+planificados. Los tres denominadores se fijan en §8.1.1 y no se mezclan entre sí. Las cifras del primer
+corte de la jornada —antes del acceso al panel administrativo— quedan registradas en §8.4 a título de
+trazabilidad del análisis; *las cifras válidas del bloque son las del cierre*, consolidadas en §8.6:
+tasa de ejecución 25.0 %, tasa de aprobación 50.0 % y tasa de bloqueo 62.5 %.
 
 *Trazabilidad.* Este registro es el eslabón *ejecución* de la cadena
 *Requisito ↔ caso ↔ ejecución ↔ defecto*. La condición de prueba (CT) queda como paso intermedio del
 análisis en §4; los defectos derivados de esta ejecución están en §7.
 
 *Estado frente a los criterios de salida.* El cierre no se expresa con una etiqueta, sino como estado
-frente a los criterios declarados en §8.1: con 0 casos de alta prioridad ejecutados *no se cumple CS1* y
-*CS2 no es calculable* (denominador cero), de modo que, con la evidencia disponible en ese momento, *el
-release no está listo*.
+frente a los criterios declarados en §8.1. Al cierre del 24-09-2026 *no se cumplen CS1, CS2 ni CS3* —2 de
+7 casos de prioridad Alta ejecutados, 50.0 % de aprobación frente al umbral de 90 % y un defecto crítico
+abierto (DEF-04)—, de modo que *el release no está listo*. CS4 se cumple, en el límite de dos defectos
+altos abiertos.
 
 *Prueba de confirmación y regresión.* Cuando un defecto pase al estado *Listo para reprueba*, se repetirá
 el caso que falló mediante *prueba de confirmación*, y se evaluarán *pruebas de regresión* sobre los casos
@@ -1422,6 +1425,12 @@ corresponden al inventario registrado en el panel, y la validación real recién
 #evidencia-pendiente("E-05")[Panel Catalog \> Products mostrando la columna de cantidad de inventario de los productos listados (sustento de DEF-02).]
 
 == Métricas parciales al 24-09-2026
+
+#block(width:100%, inset:8pt, radius:3pt, fill: rgb("#fff8e1"), stroke: 0.5pt + rgb("#c8a12a"))[
+  *Cifras parciales.* Corresponden al corte previo al cierre de la jornada (§6.8), cuando CP-ADM-01 y
+  CP-RNF-01 aún figuraban como Pendiente. Las cifras definitivas del bloque están en §8.6: tasa de
+  ejecución 25.0 %, tasa de aprobación 50.0 % y tasa de bloqueo 62.5 %.
+]
 
 - Casos *planificados*: 8
 - Casos *ejecutados*: 2 (CP-CHK-01, CP-RNF-03) + 1 parcial (CP-RNF-02)
@@ -1923,46 +1932,25 @@ lo sustituye:
 
 #leyenda-veredictos
 
-#page(flipped: true)[
-  == Evaluación intermedia registrada el 24-09-2026 (antes de la verificación administrativa)
+== Evolución del análisis: de limitación de ambiente a defecto crítico
 
-  Se conserva la evaluación tal como quedó registrada en el primer corte del día, con sus marcas de
-  pendiente visibles, porque documenta la evolución del análisis; la evaluación de cierre es la de §8.7.
+En el primer corte del 24-09-2026, la ausencia de métodos de pago en el checkout se registró como una *limitación del
+ambiente*: el demo parecía no tener configurada ninguna pasarela. Bajo esa lectura, CS3 figuraba como cumplido, porque
+no existía ningún defecto de severidad Crítica.
 
-  #figure(
-    mini[
-      #table(
-        columns: (3.4cm, 2.0cm, 1fr, 6.4cm),
-        table.header([Criterio], [Umbral], [Estado al cierre del 24-09-2026], [Evidencia]),
-        [*CS1* · Casos de alta prioridad ejecutados], [100 % (7 de 7)], [*No se cumple: 2 de 7 casos de prioridad Alta ejecutados (28.6 %).* Ejecutados: CP-CHK-01 (Falló) y CP-RNF-03 (Pasó). Bloqueados: CP-CON-01, CP-CON-02 y CP-PED-01 por el defecto DEF-04; CP-ADM-01 y CP-RNF-01 por restricción de permisos del ambiente], [Registro de ejecución y cierre del 24-09-2026 (§6); bitácora de ambiente (Anexo A)],
-        [*CS2* · Tasa de aprobación sobre ejecutados], [≥ 90 %], [*No se cumple: 50.0 %* (1 aprobado de 2 ejecutados). Aprobado: CP-RNF-03. Fallido: CP-CHK-01], [Consolidación de resultados, §8.2 y §8.3],
-        [*CS3* · Defectos críticos abiertos], [0], [*No se cumple: 1 defecto de severidad Crítica abierto* — DEF-04, estado Nuevo. El sitio público no ofrece ningún método de pago pese a que el panel tiene Cash On Delivery habilitado en todas las zonas, lo que inutiliza el flujo de compra completo], [Reporte de hallazgos, DEF-04 (§7)],
-        [*CS4* · Defectos de severidad alta abiertos], [≤ 2], [*Se cumple, en el límite: 2 defectos Alta abiertos* (DEF-01 y DEF-02, estado Nuevo). Un tercer defecto Alto incumpliría el criterio], [Reporte de hallazgos, DEF-01 y DEF-02 (§7)],
-      )
-    ],
-    caption: [Evaluación de los criterios de salida al cierre de la ejecución del 24-09-2026. Tres de los cuatro criterios no se cumplen.],
-  )
-]
+La verificación posterior en el panel administrativo refutó esa hipótesis. Extensions > Payments muestra *Cash On
+Delivery* habilitado con Geo Zone = All Zones, Extensions > Shipping muestra *Flat Rate* habilitado con la misma
+cobertura, y Sales > Orders contiene pedidos recientes, el más nuevo del 23-09-2026. Es decir: los métodos existen,
+están habilitados y sin restricción geográfica, y el flujo operó antes. Lo que el cliente ve contradice lo que el panel
+administra, y eso es un defecto del producto, no una carencia del ambiente.
 
-*Métricas de apoyo del primer corte* (se presentan #emph[después] de los criterios, no antes):
+Esa reclasificación convirtió la observación OBS-01 en el defecto *DEF-04*, de severidad Crítica, y cambió la
+evaluación de CS3 de cumplido a incumplido. También reasignó la causa de tres bloqueos —CP-CON-01, CP-CON-02 y
+CP-PED-01—, que dejaron de atribuirse al ambiente para atribuirse al defecto.
 
-#figure(
-  table(
-    columns: (6.4cm, 4.0cm, 1fr),
-    table.header([Métrica], [Valor], [Denominador aplicado]),
-    [% ejecutado], [0 / 8 = *0 %*], [Planificados],
-    [Tasa de bloqueo], [4 / 8 = *50 %*], [Planificados],
-    [Tasa de aprobación], [*no calculable* (0 ejecutados)], [Ejecutados],
-    [% de alta prioridad ejecutada], [0 / 7 = *0 %*], [Casos Alta planificados],
-    [Pendientes (bloqueados + no ejecutados)], [4 + 4 = *8*], [—],
-  ),
-  caption: [Métricas de apoyo del primer corte del 24-09-2026.],
-)
-
-*Contexto obligatorio de estas cifras:* el 50 % bloqueado no está repartido al azar. Se concentra en la
-cadena transaccional pago → confirmación → visibilidad operativa, que es justamente el área de mayor
-riesgo económico del bloque; en ese corte su cobertura efectiva es cero. La causa está registrada con
-texto literal del sistema en la bitácora (demo público sin métodos de pago ni de envío configurados).
+Se deja constancia de este cambio porque afecta la conclusión del informe: la evaluación válida es la del cierre
+(§8.8), no la del primer corte. Revisar una clasificación cuando aparece evidencia nueva forma parte del análisis; lo
+que no sería admisible es sostener la primera lectura habiendo visto el panel.
 
 == Tabla global de resultados
 
@@ -2032,7 +2020,7 @@ impone una escala única. Ninguno ha pasado por triage ni por *prueba de confirm
   table(
     columns: (1.8cm, 5.2cm, 3.6cm, 3.2cm, 1fr),
     table.header([Criterio], [Umbral], [Resultado], [Estado], [Evidencia]),
-    [CS1], [100 % de alta prioridad ejecutados], [2 de 7 ejecutados], [*No se cumple*], [Tabla global, §8.4],
+    [CS1], [100 % de alta prioridad ejecutados], [2 de 7 ejecutados], [*No se cumple*], [Tabla global, §8.5],
     [CS2], [Aprobación ≥ 90 % de los ejecutados], [50.0 %], [*No se cumple*], [Métricas, §8.5],
     [CS3], [Cero defectos críticos abiertos], [1 abierto (DEF-04)], [*No se cumple*], [Reporte de hallazgos, §7],
     [CS4], [Máximo 2 defectos altos abiertos], [2 abiertos (DEF-01, DEF-02)], [*Se cumple*], [Reporte de hallazgos, §7],
