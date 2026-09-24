@@ -90,10 +90,10 @@ sobre el total de casos de ambos integrantes.
 
 | Criterio | Umbral | Estado actual | Evidencia |
 |---|---|---|---|
-| **CS1** · Casos de alta prioridad ejecutados | 100 % (7 de 7) | **No se cumple al 24-09-2026: 0 de 7 casos Alta ejecutados (0 %)** — 4 Bloqueado (CP-CHK-01, CP-CON-01, CP-CON-02, CP-PED-01) y 3 Pendiente (CP-ADM-01, CP-RNF-01, CP-RNF-03). Cifra definitiva: [PENDIENTE: al cierre de la ejecución] | `04_ejecucion/EJECUCION_GRANIT_20260924.md` (tabla «Resultados por caso»); `00_gestion/BITACORA_AMBIENTE.md` (24-09-2026: sin métodos de pago ni de envío) |
-| **CS2** · Tasa de aprobación sobre ejecutados | ≥ 90 % | **No calculable al 24-09-2026: 0 casos ejecutados (denominador cero)**; ningún caso alcanzó veredicto Aprobado ni Fallido. No calculable ≠ cumplido. [PENDIENTE: al cierre de la ejecución] | `04_ejecucion/EJECUCION_GRANIT_20260924.md` |
-| **CS3** · Defectos críticos abiertos | 0 | **Se cumple al 24-09-2026: 0 defectos de severidad Crítica registrados.** Los 3 defectos abiertos son Alta, Alta y Media, todos en estado **Nuevo**. [PENDIENTE: al cierre de la ejecución — quedan 7 casos sin ejecutar] | `05_defectos/HALLAZGOS.md` (DEF-01, DEF-02, DEF-03) |
-| **CS4** · Defectos de severidad alta abiertos | ≤ 2 | **Se cumple en el límite al 24-09-2026: 2 defectos Alta abiertos** (DEF-01 y DEF-02, estado Nuevo). Un tercer defecto Alto lo incumpliría. [PENDIENTE: al cierre de la ejecución] | `05_defectos/HALLAZGOS.md` (DEF-01, DEF-02) |
+| **CS1** · Casos de alta prioridad ejecutados | 100 % (7 de 7) | **No se cumple: 2 de 7 casos de prioridad Alta ejecutados (28.6 %).** Ejecutados: CP-CHK-01 (Falló) y CP-RNF-03 (Pasó). Bloqueados: CP-CON-01, CP-CON-02 y CP-PED-01 por el defecto DEF-04; CP-ADM-01 y CP-RNF-01 por restricción de permisos del ambiente | Registro de ejecución y cierre del 24-09-2026 |
+| **CS2** · Tasa de aprobación sobre ejecutados | ≥ 90 % | **No se cumple: 50.0 %** (1 aprobado de 2 ejecutados). Aprobado: CP-RNF-03. Fallido: CP-CHK-01 | `04_ejecucion/F_CONSOLIDACION_Y_CIERRE.md` |
+| **CS3** · Defectos críticos abiertos | 0 | **No se cumple: 1 defecto de severidad Crítica abierto** — DEF-04, estado Nuevo. El sitio público no ofrece ningún método de pago pese a que el panel tiene Cash On Delivery habilitado en todas las zonas | `05_defectos/HALLAZGOS.md`, DEF-04 |
+| **CS4** · Defectos de severidad alta abiertos | ≤ 2 | **Se cumple, en el límite: 2 defectos Alta abiertos** (DEF-01 y DEF-02, estado Nuevo). Un tercer defecto Alto incumpliría el criterio | `05_defectos/HALLAZGOS.md` |
 
 **Métricas de apoyo con dato duro al 24-09-2026** (se presentan *después* de los criterios, no antes):
 
@@ -110,10 +110,15 @@ transaccional pago → confirmación → visibilidad operativa, que es justament
 bloque; hoy su cobertura efectiva es cero. La causa está registrada con texto literal del sistema en la bitácora
 (demo público sin métodos de pago ni de envío configurados).
 
-**Estado frente a los criterios de salida al 24-09-2026:** *no se cumplen los criterios de salida CS1 y CS2 —este
-último ni siquiera es calculable, con 0 casos ejecutados—, y CS4 se sostiene en el límite exacto de 2 defectos altos
-abiertos; por tanto, con la evidencia disponible hoy, el release no está listo.* CS3 se cumple hoy, pero su valor es
-provisional mientras queden 7 casos de alta prioridad sin ejecutar.
+**Estado frente a los criterios de salida al cierre del 24-09-2026:** *no se cumplen CS1, CS2 ni CS3.* Solo 2 de 7
+casos de prioridad Alta pudieron ejecutarse (28.6 %), la tasa de aprobación sobre ejecutados es de 50.0 % frente al
+umbral de 90 %, y existe un defecto de severidad **Crítica** abierto (DEF-04) que inutiliza por completo el flujo de
+compra. CS4 se cumple, pero en el límite exacto de dos defectos altos abiertos. **El release no está listo.**
+
+Nota de trazabilidad del propio análisis: una versión anterior de esta tabla registraba CS3 como cumplido, porque la
+ausencia de métodos de pago se había clasificado inicialmente como limitación del ambiente. La verificación posterior
+en el panel administrativo demostró que los métodos están habilitados, lo que convirtió esa observación en el defecto
+crítico DEF-04 y cambió la evaluación de CS3.
 
 ---
 
