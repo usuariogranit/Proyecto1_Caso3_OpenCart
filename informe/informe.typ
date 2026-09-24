@@ -21,8 +21,8 @@
     grid(
       columns: (1fr, auto),
       align: (left, right),
-      [Proyecto 1 — Planificación, Análisis y Diseño de Pruebas],
-      [CS5383 · Caso 3 OpenCart],
+      [Proyecto 1 · Pruebas del Caso 3 — OpenCart],
+      [CS5383 · Bloque del Integrante 2],
     )
     v(-0.35em)
     line(length: 100%, stroke: 0.4pt + luma(180))
@@ -34,7 +34,9 @@
     grid(
       columns: (1fr, auto, 1fr),
       align: (left, center, right),
-      [Grupo #GRUPO], [#counter(page).display("1")], [#FECHA],
+      [Grupo #GRUPO],
+      [Página #counter(page).display("1") de #counter(page).final().first()],
+      [#FECHA],
     )
   },
 )
@@ -55,7 +57,7 @@
   fill: (x, y) => if y == 0 { luma(226) },
   inset: 4.5pt,
 )
-#show table.cell.where(y: 0): set text(weight: "bold")
+#show table.cell.where(y: 0): set text(weight: "bold", hyphenate: false)
 #show table: set par(justify: false, leading: 0.55em)
 #set figure(gap: 0.7em)
 #show figure.caption: set text(size: 8.5pt)
@@ -104,6 +106,101 @@
   gutter: 6pt,
   [#text(weight: "bold")[#etiqueta]], [#contenido],
 )
+
+// ---------------------------------------------------------------------
+//  PALETA Y BADGES DE VEREDICTO
+//  El color NUNCA es el único indicador: el texto del veredicto viaja
+//  siempre dentro del badge, de modo que el significado se conserva en
+//  impresión monocroma o para lectores con visión de color reducida.
+// ---------------------------------------------------------------------
+
+#let C-PASO   = (fondo: rgb("#dff0dd"), borde: rgb("#1f6b32"), texto: rgb("#145225"))
+#let C-FALLO  = (fondo: rgb("#fadfdf"), borde: rgb("#9e2020"), texto: rgb("#7d1717"))
+#let C-BLOQ   = (fondo: rgb("#fdecc8"), borde: rgb("#9a6400"), texto: rgb("#6f4800"))
+#let C-PARC   = (fondo: rgb("#e6e6e6"), borde: rgb("#5a5e62"), texto: rgb("#3c4043"))
+
+// Clasifica una etiqueta de veredicto en una de las cuatro familias.
+#let clase-veredicto(etiqueta) = {
+  let e = lower(etiqueta)
+  if e.starts-with("pasó") or e.starts-with("paso") or e.starts-with("aprob") { C-PASO }
+  else if e.starts-with("falló") or e.starts-with("fallo") { C-FALLO }
+  else if e.starts-with("bloqueado") { C-BLOQ }
+  else { C-PARC }
+}
+
+// Badge de veredicto: color de familia + texto siempre visible.
+#let veredicto(etiqueta, detalle: none) = {
+  let c = clase-veredicto(etiqueta)
+  box(
+    fill: c.fondo,
+    stroke: 0.6pt + c.borde,
+    radius: 2.5pt,
+    outset: (y: 2.2pt),
+    inset: (x: 3.5pt),
+  )[#text(fill: c.texto, weight: "bold", size: 0.95em, hyphenate: false)[#etiqueta]]
+  if detalle != none [ #text(size: 0.9em)[#detalle]]
+}
+
+// Leyenda de la codificación de veredictos.
+#let leyenda-veredictos = block(width: 100%)[
+  #set text(size: 8.5pt)
+  #grid(
+    columns: (auto, auto, auto, auto),
+    column-gutter: 10pt,
+    veredicto("Pasó"), veredicto("Falló"), veredicto("Bloqueado"), veredicto("Parcial"),
+  )
+]
+
+// ---------------------------------------------------------------------
+//  GRÁFICOS NATIVOS (rect / grid / stack) — sin paquetes externos
+// ---------------------------------------------------------------------
+
+// Gráfico de barras verticales. `datos` es una lista de diccionarios
+// (etiqueta, valor, color).
+#let grafico-barras(datos, alto: 3.1cm, ancho-barra: 1.35cm, unidad: "") = {
+  let maxv = calc.max(..datos.map(d => d.valor))
+  let n = datos.len()
+  block(width: 100%, breakable: false)[
+    #grid(
+      columns: (1fr,) * n,
+      align: center + bottom,
+      row-gutter: 3pt,
+      ..datos.map(d => text(size: 9.5pt, weight: "bold", fill: d.color.texto)[#d.valor#unidad]),
+      ..datos.map(d => box(
+        width: ancho-barra,
+        height: alto * d.valor / maxv,
+        fill: d.color.fondo,
+        stroke: 0.7pt + d.color.borde,
+        radius: (top: 2.5pt),
+      )),
+    )
+    #v(-0.35em)
+    #line(length: 100%, stroke: 0.8pt + luma(110))
+    #v(-0.2em)
+    #grid(
+      columns: (1fr,) * n,
+      align: center + top,
+      ..datos.map(d => text(size: 8.2pt, hyphenate: false)[#d.etiqueta]),
+    )
+  ]
+}
+
+// ---------------------------------------------------------------------
+//  DIAGRAMAS NATIVOS: cajas y flechas
+// ---------------------------------------------------------------------
+
+// Caja de diagrama.
+#let caja(cuerpo, fondo: rgb("#eef4fa"), borde: rgb("#1c4f74"), tam: 7.8pt) = block(
+  width: 100%,
+  inset: (x: 4pt, y: 5pt),
+  radius: 3pt,
+  fill: fondo,
+  stroke: 0.7pt + borde,
+)[#align(center)[#text(size: tam, hyphenate: false)[#cuerpo]]]
+
+// Flecha horizontal y vertical para encadenar cajas.
+#let flecha-h = align(horizon + center)[#text(size: 11pt, fill: rgb("#1c4f74"))[#sym.arrow.r]]
+#let flecha-v = align(center)[#text(size: 11pt, fill: rgb("#1c4f74"))[#sym.arrow.b]]
 
 // =====================================================================
 //  PORTADA
@@ -177,9 +274,83 @@ Este informe se rige por la *Gestión de la Configuración del Testware* declara
 ya publicada; toda modificación posterior a la línea base se registra con caso afectado, motivo,
 responsable y fecha, e incrementa la versión.
 
+#pagebreak()
+
+// =====================================================================
+//  RESUMEN EJECUTIVO
+// =====================================================================
+#heading(level: 1, numbering: none)[Resumen ejecutivo]
+
+*Contexto.* El Caso 3 es un e-commerce con panel administrativo sobre *OpenCart Demo 4.0.2.3*
+(`demo.opencart.com`, panel en `/TlbeVW/`). Este informe cubre el bloque del *Integrante 2*: checkout
+(FUN-05), confirmación del pedido (FUN-06), productos y stock desde el panel (FUN-07), gestión
+administrativa de pedidos (FUN-08) y los requisitos no funcionales RNF-01 a RNF-03. Corte de la
+información: 24-09-2026.
+
+*Alcance del bloque.* De 24 requisitos verificables se derivaron *33 condiciones de prueba* y se
+diseñaron *8 casos*, los 8 planificados para ejecución. La cobertura de condiciones por caso diseñado es
+de *23 de 33 (70 %)*; los huecos son conscientes y se concentran en lo que exige escritura en el panel.
+
+*Hallazgo crítico.* *DEF-04* — el sitio público no ofrece *ningún* método de pago pese a que el panel
+administrativo tiene *Cash On Delivery habilitado para todas las zonas geográficas* (Geo Zone = All
+Zones). El checkout se detiene con #lit[No Payment options are available. Please contact us for
+assistance!] y no se renderiza la sección #lit[Shipping Method]. *Impacto de negocio:* ningún cliente
+puede completar una compra; el flujo de ingresos del sitio está inutilizable por completo mientras el
+defecto persista. Severidad *Crítica*, prioridad *Alta*, estado *Nuevo*. DEF-04 bloquea por sí solo tres
+casos de alta prioridad (CP-CON-01, CP-CON-02, CP-PED-01) y hace fallar a CP-CHK-01. Se documentan además
+DEF-01 y DEF-02 (severidad Alta) y DEF-03 (Media).
+
+*Métricas del cierre* (denominadores declarados en §8.1, sin mezclar):
+
+#block(inset: (left: 0.6em))[
+  #grid(
+    columns: (auto, auto, 1fr),
+    column-gutter: 8pt,
+    row-gutter: 3pt,
+    [*Tasa de ejecución*], [*25 %*], [2 de 8 casos planificados ejecutados por completo],
+    [*Tasa de aprobación*], [*50 %*], [1 aprobado sobre 2 ejecutados],
+    [*Tasa de bloqueo*], [*62.5 %*], [5 de 8 casos planificados: 3 por defecto del producto (DEF-04) y 2 por restricción de permisos del ambiente],
+  )
+]
+
+*Estado frente a los criterios de salida.* *CS1 no se cumple* (2 de 7 casos de alta prioridad
+ejecutados, frente al 100 % exigido). *CS2 no se cumple* (50 % de aprobación frente al umbral de 90 %).
+*CS3 no se cumple* (1 defecto crítico abierto, DEF-04, frente a un umbral de cero). *CS4 se cumple en el
+límite* (2 defectos Alta abiertos sobre un máximo de 2: un tercero lo incumpliría). Tres de los cuatro
+criterios de salida no se cumplen, por lo que *el release no está listo*.
+
+*Lectura correcta de las cifras.* Presentar «1 de 2 casos ejecutados aprobados» como resultado positivo
+sería una métrica engañosa. El dato que gobierna la decisión es que el *62.5 % del alcance planificado
+quedó bloqueado* —concentrado en la cadena transaccional pago → confirmación → visibilidad operativa, el
+área de mayor riesgo económico— y que existe un *defecto crítico abierto* en ese mismo flujo.
+
+*Recomendación.*
+
++ *Corregir DEF-04 con máxima prioridad* y reejecutar CP-CHK-01 mediante *prueba de confirmación*; al
+  desbloquearse, ejecutar CP-CON-01, CP-CON-02 y CP-PED-01, y aplicar *pruebas de regresión* sobre los
+  casos que comparten precondiciones.
++ *Habilitar un ambiente con permisos de escritura* (instancia propia del demo oficial, Escenario B del
+  §2.2) para levantar el bloqueo de CP-ADM-01 y CP-RNF-01, hoy imputable al ambiente y no al producto.
++ *Cerrar los umbrales pendientes* —fecha de entrega como ancla del cronograma y umbral numérico de
+  RNF-01— antes del siguiente ciclo, para que esos casos tengan criterio de aceptación verificable.
++ *Completar CP-RNF-02 en Edge y Firefox* y capturar las evidencias E-01 a E-05, hoy identificadas pero
+  no reproducibles en el ambiente actual.
++ *No abrir automatización todavía* sobre el flujo de compra: hoy no es estable y las pruebas fallarían
+  por el defecto conocido en lugar de detectar defectos nuevos (§9).
+
+#pagebreak()
+
 #heading(level: 1, numbering: none)[Índice]
 
 #outline(title: none, depth: 3, indent: 1.2em)
+
+#heading(level: 1, numbering: none)[Índice de figuras]
+
+#outline(title: none, target: figure.where(kind: image))
+
+#heading(level: 1, numbering: none)[Índice de tablas]
+
+#outline(title: none, target: figure.where(kind: table))
 
 #pagebreak()
 
@@ -486,7 +657,7 @@ Las dos tablas de registro se presentan en orientación horizontal por su ancho 
   #figure(
     mini[
       #table(
-        columns: (1.15cm, 2.7cm, 2.2cm, 2.9cm, 0.95cm, 0.95cm, 1.05cm, 2.5cm, 2.5cm, 1fr),
+        columns: (1.15cm, 2.7cm, 2.2cm, 2.9cm, 1.3cm, 1.3cm, 1.3cm, 2.4cm, 2.4cm, 1fr),
         table.header(
           [ID], [Riesgo], [Causa], [Efecto sobre las pruebas], [Prob], [Imp], [Nivel],
           [Mitigación], [Contingencia], [Estado],
@@ -514,7 +685,7 @@ Las dos tablas de registro se presentan en orientación horizontal por su ancho 
   #figure(
     mini[
       #table(
-        columns: (1.15cm, 3.2cm, 2.4cm, 2.6cm, 1fr, 0.9cm, 0.9cm, 1.0cm, 2.9cm, 2.9cm, 2.0cm),
+        columns: (1.15cm, 3.0cm, 2.3cm, 2.5cm, 1fr, 1.3cm, 1.3cm, 1.3cm, 2.6cm, 2.6cm, 1.9cm),
         table.header(
           [ID], [Riesgo], [Requisito(s) afectado(s)], [Causa], [Efecto sobre las pruebas],
           [Prob], [Imp], [Nivel], [Mitigación], [Contingencia], [Estado],
@@ -588,7 +759,7 @@ categorías y stock · FUN 08 Gestión de pedidos · RNF 01–03.
 #figure(
   chico[
     #table(
-      columns: (1.85cm, 1fr, 2.1cm, 1.1cm, 1.4cm, 2.9cm),
+      columns: (1.85cm, 1fr, 2.1cm, 1.15cm, 1.65cm, 2.9cm),
       table.header([ID], [Condición de prueba], [Requisito(s)], [Riesgo], [Prioridad], [Ejecutabilidad prevista]),
       [CT-CHK-01], [Acceso al checkout como invitado sin exigir la creación de una cuenta], [RF CHK 01], [Alto], [Alta], [Ejecutable],
       [CT-CHK-02], [Finalización del checkout de invitado con producto físico elegible], [RF CHK 01, RF CHK 04], [Alto], [Alta], [Requiere pedido completado],
@@ -607,7 +778,7 @@ categorías y stock · FUN 08 Gestión de pedidos · RNF 01–03.
 #figure(
   chico[
     #table(
-      columns: (1.85cm, 1fr, 2.1cm, 1.1cm, 1.4cm, 2.9cm),
+      columns: (1.85cm, 1fr, 2.1cm, 1.15cm, 1.65cm, 2.9cm),
       table.header([ID], [Condición de prueba], [Requisito(s)], [Riesgo], [Prioridad], [Ejecutabilidad prevista]),
       [CT-CON-01], [Generación de un identificador de orden único al confirmar una compra válida], [RF CON 01], [Alto], [Alta], [Requiere pedido completado],
       [CT-CON-02], [Presentación de la pantalla de confirmación como evidencia visible de la operación], [RF CON 01, RF CON 04], [Alto], [Alta], [Requiere pedido completado],
@@ -625,7 +796,7 @@ categorías y stock · FUN 08 Gestión de pedidos · RNF 01–03.
 #figure(
   chico[
     #table(
-      columns: (1.85cm, 1fr, 2.1cm, 1.1cm, 1.4cm, 2.9cm),
+      columns: (1.85cm, 1fr, 2.1cm, 1.15cm, 1.65cm, 2.9cm),
       table.header([ID], [Condición de prueba], [Requisito(s)], [Riesgo], [Prioridad], [Ejecutabilidad prevista]),
       [CT-ADM-01], [Persistencia de nombre, código, precio, estado, cantidad y categoría al reabrir el producto], [RF ADM 01], [Alto], [Alta], [Requiere permisos admin],
       [CT-ADM-02], [Guardado de cantidad cero junto con el estado #emph[Out Of Stock]], [RF ADM 02], [Alto], [Alta], [Requiere permisos admin],
@@ -647,7 +818,7 @@ categorías y stock · FUN 08 Gestión de pedidos · RNF 01–03.
 #figure(
   chico[
     #table(
-      columns: (1.85cm, 1fr, 2.1cm, 1.1cm, 1.4cm, 2.9cm),
+      columns: (1.85cm, 1fr, 2.1cm, 1.15cm, 1.65cm, 2.9cm),
       table.header([ID], [Condición de prueba], [Requisito(s)], [Riesgo], [Prioridad], [Ejecutabilidad prevista]),
       [CT-PED-01], [Aparición del pedido confirmado en la lista administrativa conservando el mismo identificador], [RF PED 01], [Alto], [Alta], [Requiere pedido completado],
       [CT-PED-02], [Coincidencia del detalle administrativo con el resumen público del pedido], [RF PED 02], [Alto], [Alta], [Requiere pedido completado],
@@ -664,7 +835,7 @@ categorías y stock · FUN 08 Gestión de pedidos · RNF 01–03.
 #figure(
   chico[
     #table(
-      columns: (1.85cm, 1fr, 2.1cm, 1.1cm, 1.4cm, 2.9cm),
+      columns: (1.85cm, 1fr, 2.1cm, 1.15cm, 1.65cm, 2.9cm),
       table.header([ID], [Condición de prueba], [Requisito(s)], [Riesgo], [Prioridad], [Ejecutabilidad prevista]),
       [CT-RNF-01], [Visibilidad en el panel de pedidos y cambios del sitio público sin reinicio de servicios], [RNF 01], [Alto], [Alta], [Requiere pedido completado],
       [CT-RNF-02], [Existencia de un umbral numérico de sincronización acordado antes del diseño], [RNF 01], [Medio], [Media], [Ejecutable],
@@ -730,6 +901,46 @@ categorías y stock · FUN 08 Gestión de pedidos · RNF 01–03.
 Esta matriz documenta los eslabones *requisito ↔ caso*; el eslabón *ejecución* se registra en §6 y el
 eslabón *defecto* en §7, donde cada DEF cita su requisito, su condición, su caso y su ejecución. La
 condición de prueba (CT) se conserva como paso intermedio del análisis.
+
+#figure(
+  block(width: 100%, breakable: false)[
+    #let sep = 0.60cm
+    #let cols = (1fr, sep, 1fr, sep, 1fr, sep, 1fr, sep, 1fr)
+    #grid(
+      columns: cols,
+      align: center + horizon,
+      row-gutter: 4pt,
+      // Fila 1 — nombre del eslabón
+      text(size: 7pt, fill: luma(90))[ESLABÓN 1 · Requisito], [],
+      text(size: 7pt, fill: luma(90))[paso intermedio · Condición], [],
+      text(size: 7pt, fill: luma(90))[ESLABÓN 2 · Caso], [],
+      text(size: 7pt, fill: luma(90))[ESLABÓN 3 · Ejecución], [],
+      text(size: 7pt, fill: luma(90))[ESLABÓN 4 · Defecto],
+      // Fila 2 — cajas encadenadas
+      caja(fondo: rgb("#e9f1f8"), borde: rgb("#1c4f74"))[*RF CHK 04*], flecha-h,
+      caja(fondo: rgb("#f2f2f2"), borde: rgb("#5a5e62"))[*CT-CHK-04*], flecha-h,
+      caja(fondo: rgb("#e9f1f8"), borde: rgb("#1c4f74"))[*CP-CHK-01*], flecha-h,
+      caja(fondo: rgb("#e9f1f8"), borde: rgb("#1c4f74"))[*Ejecución\ 24-09-2026*], flecha-h,
+      caja(fondo: C-FALLO.fondo, borde: C-FALLO.borde)[*DEF-04*],
+      // Fila 3 — qué aporta cada eslabón
+      text(size: 7pt)[Qué debe cumplir el sistema], [],
+      text(size: 7pt)[Qué comprobar, sin cómo], [],
+      text(size: 7pt)[Cómo comprobarlo, con datos], [],
+      text(size: 7pt)[Qué se observó y cuándo], [],
+      text(size: 7pt)[Qué falló y con qué impacto],
+    )
+    #v(4pt)
+    #align(center)[#text(size: 7.6pt, fill: luma(80))[Cadena real registrada en la trazabilidad de DEF-04 (§7.5): se muestra el primer elemento de cada conjunto declarado.]]
+  ],
+  kind: image,
+  supplement: [Figura],
+  caption: [Cadena de trazabilidad de cuatro eslabones (Requisito ↔ caso ↔ ejecución ↔ defecto), con la condición de prueba como paso intermedio del análisis.],
+)
+
+La cadena completa que DEF-04 declara en §7.5 es
+*RF CHK 04 / RF CON 01 / RF ADM 07 / RNF 01 → CT-CHK-04, CT-RNF-01 → CP-CHK-01, CP-CON-01, CP-RNF-01 →
+ejecución del 24-09-2026 → DEF-04*: un mismo defecto puede colgar de varios requisitos y afectar a varios
+casos, pero cada eslabón conserva su identificador exacto y es recorrible en ambos sentidos.
 
 #figure(
   chico[
@@ -1038,7 +1249,7 @@ nunca *Fallidos*, y la tasa de bloqueo se calcula sobre los casos *planificados*
 #figure(
   chico[
     #table(
-      columns: (3.6cm, 4.4cm, 1.9cm, 1fr),
+      columns: (3.4cm, 4.4cm, 2.2cm, 1fr),
       table.header([Dato], [Valor concreto], [¿Volátil?], [Verificación antes de ejecutar]),
       [Producto elegible], [iPod Nano `36`], [Sí], [#emph[In Stock]; añadir 2 unidades y comprobar que no lleva `***`],
       [Cantidad de compra], [`2`], [No], [Fijada por el diseño],
@@ -1125,14 +1336,14 @@ Cloudflare).
       #table(
         columns: (3.4cm, 5.2cm, 1fr, 2.9cm, 3.6cm),
         table.header([Caso], [Resultado esperado], [Resultado obtenido], [Veredicto], [Causa]),
-        [CP-CHK-01 Checkout como invitado], [El flujo continúa sin exigir creación de cuenta y permite completar la compra], [Guest Checkout disponible; datos guardados con #lit[Success: Your guest account information has been saved!]; el flujo se detiene antes del pago: #lit[No Payment options are available. Please contact us for assistance!] y no existe sección #lit[Shipping Method]], [*Bloqueado* (parcialmente verificado)], [Ambiente sin métodos de pago ni envío configurados],
-        [CP-CON-01 Generación de número y resumen del pedido], [Se crea un único número de orden y se muestra confirmación], [#lit[Confirm Order] no genera pedido, no navega y no emite mensaje alguno], [*Bloqueado*], [Dependencia de CP-CHK-01],
-        [CP-CON-02 Prevención de pedido duplicado], [Doble clic o recarga no generan dos órdenes], [No ejecutable: no es posible generar una primera orden], [*Bloqueado*], [Dependencia de CP-CON-01],
-        [CP-ADM-01 Stock cero reflejado públicamente], [El sitio público impide comprar el producto agotado], [Pendiente: requiere sesión administrativa autenticada por el responsable], [*Pendiente*], [Login manual no realizado aún],
-        [CP-PED-01 Pedido público visible en administración], [El pedido aparece en Sales \> Orders con el mismo identificador], [No ejecutable: no existe pedido que consultar], [*Bloqueado*], [Dependencia de CP-CON-01],
-        [CP-RNF-01 Sincronización sitio–panel], [El cambio administrativo se refleja en el sitio público sin reinicio], [Pendiente: requiere permisos de escritura en el panel], [*Pendiente*], [Login manual + permisos],
-        [CP-RNF-02 Flujo crítico en navegadores], [El flujo se completa en los navegadores seleccionados], [Pendiente], [*Pendiente*], [Falta ejecución multi-navegador],
-        [CP-RNF-03 Tiempo de respuesta del catálogo], [Respuesta menor a 2 segundos], [Pendiente], [*Pendiente*], [Falta medición instrumentada],
+        [CP-CHK-01 Checkout como invitado], [El flujo continúa sin exigir creación de cuenta y permite completar la compra], [Guest Checkout disponible; datos guardados con #lit[Success: Your guest account information has been saved!]; el flujo se detiene antes del pago: #lit[No Payment options are available. Please contact us for assistance!] y no existe sección #lit[Shipping Method]], [#veredicto("Bloqueado", detalle: [(parcialmente verificado)])], [Ambiente sin métodos de pago ni envío configurados],
+        [CP-CON-01 Generación de número y resumen del pedido], [Se crea un único número de orden y se muestra confirmación], [#lit[Confirm Order] no genera pedido, no navega y no emite mensaje alguno], [#veredicto("Bloqueado")], [Dependencia de CP-CHK-01],
+        [CP-CON-02 Prevención de pedido duplicado], [Doble clic o recarga no generan dos órdenes], [No ejecutable: no es posible generar una primera orden], [#veredicto("Bloqueado")], [Dependencia de CP-CON-01],
+        [CP-ADM-01 Stock cero reflejado públicamente], [El sitio público impide comprar el producto agotado], [Pendiente: requiere sesión administrativa autenticada por el responsable], [#veredicto("Pendiente")], [Login manual no realizado aún],
+        [CP-PED-01 Pedido público visible en administración], [El pedido aparece en Sales \> Orders con el mismo identificador], [No ejecutable: no existe pedido que consultar], [#veredicto("Bloqueado")], [Dependencia de CP-CON-01],
+        [CP-RNF-01 Sincronización sitio–panel], [El cambio administrativo se refleja en el sitio público sin reinicio], [Pendiente: requiere permisos de escritura en el panel], [#veredicto("Pendiente")], [Login manual + permisos],
+        [CP-RNF-02 Flujo crítico en navegadores], [El flujo se completa en los navegadores seleccionados], [Pendiente], [#veredicto("Pendiente")], [Falta ejecución multi-navegador],
+        [CP-RNF-03 Tiempo de respuesta del catálogo], [Respuesta menor a 2 segundos], [Pendiente], [#veredicto("Pendiente")], [Falta medición instrumentada],
       )
     ],
     caption: [Registro de ejecución del 24-09-2026: resultado esperado, obtenido y veredicto por caso.],
@@ -1173,16 +1384,16 @@ una limitación del ambiente sino el defecto DEF-04*. Esto cambia los veredictos
 #figure(
   chico[
     #table(
-      columns: (3.4cm, 3.2cm, 3.6cm, 1fr),
+      columns: (3.0cm, 3.0cm, 3.9cm, 1fr),
       table.header([Caso], [Veredicto anterior], [Veredicto actualizado], [Sustento]),
-      [CP-CHK-01], [Bloqueado (ambiente)], [*Falló*], [RF CHK 01 exige completar la compra sin crear cuenta; el sistema lo impide por DEF-04. Además arrastra DEF-01 en los importes],
-      [CP-CON-01], [Bloqueado (ambiente)], [*Bloqueado por defecto DEF-04*], [No es posible confirmar un pedido mientras el sitio no ofrezca método de pago],
-      [CP-CON-02], [Bloqueado (ambiente)], [*Bloqueado por defecto DEF-04*], [Requiere una primera orden existente],
-      [CP-PED-01], [Bloqueado (ambiente)], [*Bloqueado por defecto DEF-04*], [Requiere una orden propia rastreable],
-      [CP-RNF-03], [Pendiente], [*Pasó*], [Cuatro mediciones bajo el umbral; ver §6.9],
-      [CP-RNF-02], [Pendiente], [*Parcialmente ejecutado*], [Flujo crítico verificado en Chrome; faltan Edge y Firefox],
-      [CP-ADM-01], [Pendiente], [*Pendiente*], [Requiere escritura en el panel (cambio de stock a cero)],
-      [CP-RNF-01], [Pendiente], [*Pendiente*], [Requiere escritura en el panel para medir la propagación],
+      [CP-CHK-01], [#veredicto("Bloqueado", detalle: [(ambiente)])], [#veredicto("Falló")], [RF CHK 01 exige completar la compra sin crear cuenta; el sistema lo impide por DEF-04. Además arrastra DEF-01 en los importes],
+      [CP-CON-01], [#veredicto("Bloqueado", detalle: [(ambiente)])], [#veredicto("Bloqueado", detalle: [por defecto DEF-04])], [No es posible confirmar un pedido mientras el sitio no ofrezca método de pago],
+      [CP-CON-02], [#veredicto("Bloqueado", detalle: [(ambiente)])], [#veredicto("Bloqueado", detalle: [por defecto DEF-04])], [Requiere una primera orden existente],
+      [CP-PED-01], [#veredicto("Bloqueado", detalle: [(ambiente)])], [#veredicto("Bloqueado", detalle: [por defecto DEF-04])], [Requiere una orden propia rastreable],
+      [CP-RNF-03], [#veredicto("Pendiente")], [#veredicto("Pasó")], [Cuatro mediciones bajo el umbral; ver §6.9],
+      [CP-RNF-02], [#veredicto("Pendiente")], [#veredicto("Parcialmente ejecutado")], [Flujo crítico verificado en Chrome; faltan Edge y Firefox],
+      [CP-ADM-01], [#veredicto("Pendiente")], [#veredicto("Pendiente")], [Requiere escritura en el panel (cambio de stock a cero)],
+      [CP-RNF-01], [#veredicto("Pendiente")], [#veredicto("Pendiente")], [Requiere escritura en el panel para medir la propagación],
     )
   ],
   caption: [Actualización de veredictos del 24-09-2026 tras la verificación administrativa.],
@@ -1234,8 +1445,8 @@ Intento de ejecución de CP-ADM-01 sobre el producto HP LP3065 (`product_id 47`)
     #table(
       columns: (2.4cm, 4.4cm, 1fr, 3.6cm),
       table.header([Caso], [Resultado esperado], [Resultado obtenido], [Veredicto]),
-      [CP-ADM-01], [Al fijar la cantidad en cero y guardar, el sitio público refleja la falta de disponibilidad], [El panel rechaza la operación: *#lit[Warning: You do not have permission to modify products!]*. El valor no se persiste], [*Bloqueado* (permisos del ambiente)],
-      [CP-RNF-01], [El cambio administrativo se refleja en el sitio público dentro del umbral acordado], [No ejecutable: no es posible provocar un cambio administrativo que medir], [*Bloqueado* (dependencia de CP-ADM-01)],
+      [CP-ADM-01], [Al fijar la cantidad en cero y guardar, el sitio público refleja la falta de disponibilidad], [El panel rechaza la operación: *#lit[Warning: You do not have permission to modify products!]*. El valor no se persiste], [#veredicto("Bloqueado", detalle: [(permisos del ambiente)])],
+      [CP-RNF-01], [El cambio administrativo se refleja en el sitio público dentro del umbral acordado], [No ejecutable: no es posible provocar un cambio administrativo que medir], [#veredicto("Bloqueado", detalle: [(dependencia de CP-ADM-01)])],
     )
   ],
   caption: [Cierre de ejecución del 24-09-2026 a las 02:45: CP-ADM-01 y CP-RNF-01.],
@@ -1269,7 +1480,7 @@ realizan cuatro mediciones, incluyendo una primera visita sin caché.
 #figure(
   chico[
     #table(
-      columns: (0.8cm, 2.9cm, 2.7cm, 1.3cm, 1.3cm, 2.3cm, 2.0cm, 1fr),
+      columns: (0.8cm, 2.7cm, 2.5cm, 1.3cm, 1.3cm, 2.5cm, 2.1cm, 1fr),
       align: (center, left, left, right, right, right, right, left),
       table.header([N.º], [Categoría], [Condición], [TTFB], [HTML], [DOMContentLoaded], [Carga completa], [¿\< 2000 ms?]),
       [1], [Cameras (`path=33`)], [Primera visita, sin caché], [862 ms], [863 ms], [1339 ms], [*1932 ms*], [Sí (margen 68 ms)],
@@ -1285,7 +1496,7 @@ Recursos cargados en la medición 1: *17*.
 
 === Veredicto
 
-*Pasó.* Las cuatro mediciones cumplen el umbral de dos segundos.
+#veredicto("Pasó") Las cuatro mediciones cumplen el umbral de dos segundos.
 
 === Hallazgo de confirmación (no es defecto)
 
@@ -1327,6 +1538,65 @@ intermedio del análisis.
 
 *Ramas:* desde «En análisis»: *Rechazado · Duplicado · Diferido*. Desde «Listo para reprueba»:
 *Reabierto → En corrección*.
+
+#figure(
+  block(width: 100%, breakable: false)[
+    #let s = 0.52cm
+    // --- Cadena principal ---
+    #grid(
+      columns: (1fr, s, 1fr, s, 1fr, s, 1fr, s, 1fr, s, 1fr),
+      align: center + horizon,
+      caja(fondo: rgb("#e9f1f8"), borde: rgb("#1c4f74"), tam: 7.2pt)[*Nuevo*], flecha-h,
+      caja(fondo: rgb("#e9f1f8"), borde: rgb("#1c4f74"), tam: 7.2pt)[*En análisis*], flecha-h,
+      caja(fondo: rgb("#e9f1f8"), borde: rgb("#1c4f74"), tam: 7.2pt)[*Asignado*], flecha-h,
+      caja(fondo: rgb("#e9f1f8"), borde: rgb("#1c4f74"), tam: 7.2pt)[*En corrección*], flecha-h,
+      caja(fondo: C-BLOQ.fondo, borde: C-BLOQ.borde, tam: 7.2pt)[*Listo para reprueba*], flecha-h,
+      caja(fondo: C-PASO.fondo, borde: C-PASO.borde, tam: 7.2pt)[*Cerrado*],
+    )
+    #v(3pt)
+    // --- Flechas de bajada hacia las ramas ---
+    #grid(
+      columns: (1fr, s, 1fr, s, 1fr, s, 1fr, s, 1fr, s, 1fr),
+      align: center,
+      [], [], flecha-v, [], [], [], [], [], flecha-v, [], [],
+    )
+    #v(2pt)
+    // --- Ramas ---
+    #grid(
+      columns: (1fr, 0.8cm, 1fr),
+      align: horizon,
+      block(width: 100%, inset: 6pt, radius: 3pt, stroke: (paint: luma(170), dash: "dashed"))[
+        #set align(center)
+        #text(size: 7.4pt, fill: luma(80))[Ramas desde «En análisis» — el defecto no llega a corrección]
+        #v(4pt)
+        #grid(
+          columns: (1fr, 4pt, 1fr, 4pt, 1fr),
+          caja(fondo: C-PARC.fondo, borde: C-PARC.borde, tam: 7.2pt)[*Rechazado*], [],
+          caja(fondo: C-PARC.fondo, borde: C-PARC.borde, tam: 7.2pt)[*Duplicado*], [],
+          caja(fondo: C-PARC.fondo, borde: C-PARC.borde, tam: 7.2pt)[*Diferido*],
+        )
+      ],
+      [],
+      block(width: 100%, inset: 6pt, radius: 3pt, stroke: (paint: luma(170), dash: "dashed"))[
+        #set align(center)
+        #text(size: 7.4pt, fill: luma(80))[Rama desde «Listo para reprueba» — la prueba de confirmación falla]
+        #v(4pt)
+        #grid(
+          columns: (1fr, 0.52cm, 1fr),
+          align: center + horizon,
+          caja(fondo: C-FALLO.fondo, borde: C-FALLO.borde, tam: 7.2pt)[*Reabierto*], flecha-h,
+          caja(fondo: rgb("#e9f1f8"), borde: rgb("#1c4f74"), tam: 7.2pt)[*En corrección*],
+        )
+      ],
+    )
+  ],
+  kind: image,
+  supplement: [Figura],
+  caption: [Ciclo de vida del defecto aplicado en este bloque: cadena principal y ramas. El paso a «Listo para reprueba» dispara la #emph[prueba de confirmación]; su resultado decide entre «Cerrado» y «Reabierto».],
+)
+
+Los cuatro defectos de este informe están en estado *Nuevo*: ninguno ha pasado por triage, corrección ni
+*prueba de confirmación*.
 
 #nota[
   *Listo para reprueba → prueba de confirmación:* se repite el caso que falló. Las *pruebas de regresión*
@@ -1600,6 +1870,59 @@ condiciones* (§4):
 Los cuatro criterios se evalúan sobre el bloque del Integrante 2. El consolidado global del equipo los
 evalúa de nuevo sobre el total de casos de ambos integrantes.
 
+== Tablero visual de resultados
+
+El tablero se presenta *después* de los criterios de salida, nunca antes: muestra la distribución, no
+autoriza el release. Las cifras son las mismas de §8.4, §8.5 y §8.6; ningún dato es exclusivo del
+gráfico.
+
+#figure(
+  block(width: 100%, breakable: false)[
+    #grid(
+      columns: (1fr, 0.9cm, 1fr),
+      align: top,
+      block(width: 100%)[
+        #align(center)[#text(size: 9pt, weight: "bold")[Veredictos de los 8 casos planificados]]
+        #v(6pt)
+        #grafico-barras((
+          (etiqueta: [Pasó], valor: 1, color: C-PASO),
+          (etiqueta: [Falló], valor: 1, color: C-FALLO),
+          (etiqueta: [Bloqueado], valor: 5, color: C-BLOQ),
+          (etiqueta: [Parcial], valor: 1, color: C-PARC),
+        ))
+        #v(4pt)
+        #align(center)[#text(size: 7.6pt, fill: luma(80))[Total: 8 casos · Pasó CP-RNF-03 · Falló CP-CHK-01 · Parcial CP-RNF-02]]
+      ],
+      [],
+      block(width: 100%)[
+        #align(center)[#text(size: 9pt, weight: "bold")[Defectos registrados por severidad]]
+        #v(6pt)
+        #grafico-barras((
+          (etiqueta: [Crítica], valor: 1, color: C-FALLO),
+          (etiqueta: [Alta], valor: 2, color: C-BLOQ),
+          (etiqueta: [Media], valor: 1, color: C-PARC),
+        ))
+        #v(4pt)
+        #align(center)[#text(size: 7.6pt, fill: luma(80))[Total: 4 defectos, todos en estado Nuevo · Crítica: DEF-04 · Alta: DEF-01, DEF-02 · Media: DEF-03]]
+      ],
+    )
+  ],
+  kind: image,
+  supplement: [Figura],
+  caption: [Tablero visual del cierre: distribución de veredictos sobre los 8 casos planificados y de los 4 defectos registrados por severidad. Gráficos dibujados con primitivas nativas del documento.],
+)
+
+*Lectura del tablero.* La barra dominante es *Bloqueado* (5 de 8): el resultado del bloque no se explica
+por pruebas que salieran mal, sino por alcance que nunca llegó a ejecutarse. De esos 5 bloqueos, 3 son
+por defecto del producto (DEF-04) y 2 por restricción de permisos del ambiente. En el gráfico de
+severidad, la única barra *Crítica* corresponde a DEF-04, que es a la vez la causa de tres de los cinco
+bloqueos: una sola corrección libera la mayor parte del alcance detenido.
+
+*Codificación de color usada en todo el informe* —el color acompaña siempre al texto del veredicto, nunca
+lo sustituye:
+
+#leyenda-veredictos
+
 #page(flipped: true)[
   == Evaluación intermedia registrada el 24-09-2026 (antes de la verificación administrativa)
 
@@ -1645,16 +1968,16 @@ texto literal del sistema en la bitácora (demo público sin métodos de pago ni
 
 #figure(
   table(
-    columns: (6.4cm, 2.0cm, 3.2cm, 1fr),
+    columns: (6.2cm, 1.9cm, 3.5cm, 1fr),
     table.header([Caso], [Prioridad], [Veredicto], [Causa / defecto asociado]),
-    [CP-CHK-01 Checkout como invitado], [Alta], [*Falló*], [DEF-04 (impide completar), DEF-01 (importes inconsistentes)],
-    [CP-CON-01 Número y resumen del pedido], [Alta], [*Bloqueado*], [Por defecto DEF-04],
-    [CP-CON-02 Prevención de pedido duplicado], [Alta], [*Bloqueado*], [Por defecto DEF-04],
-    [CP-ADM-01 Stock cero reflejado públicamente], [Alta], [*Bloqueado*], [Ambiente: sin permisos de escritura],
-    [CP-PED-01 Pedido visible en administración], [Alta], [*Bloqueado*], [Por defecto DEF-04],
-    [CP-RNF-01 Sincronización sitio–panel], [Alta], [*Bloqueado*], [Ambiente: sin permisos de escritura],
-    [CP-RNF-02 Flujo crítico en navegadores], [Media], [*Ejecución parcial*], [Verificado en Chrome; faltan Edge y Firefox],
-    [CP-RNF-03 Tiempo de respuesta del catálogo], [Alta], [*Pasó*], [4 mediciones bajo el umbral],
+    [CP-CHK-01 Checkout como invitado], [Alta], [#veredicto("Falló")], [DEF-04 (impide completar), DEF-01 (importes inconsistentes)],
+    [CP-CON-01 Número y resumen del pedido], [Alta], [#veredicto("Bloqueado")], [Por defecto DEF-04],
+    [CP-CON-02 Prevención de pedido duplicado], [Alta], [#veredicto("Bloqueado")], [Por defecto DEF-04],
+    [CP-ADM-01 Stock cero reflejado públicamente], [Alta], [#veredicto("Bloqueado")], [Ambiente: sin permisos de escritura],
+    [CP-PED-01 Pedido visible en administración], [Alta], [#veredicto("Bloqueado")], [Por defecto DEF-04],
+    [CP-RNF-01 Sincronización sitio–panel], [Alta], [#veredicto("Bloqueado")], [Ambiente: sin permisos de escritura],
+    [CP-RNF-02 Flujo crítico en navegadores], [Media], [#veredicto("Ejecución parcial")], [Verificado en Chrome; faltan Edge y Firefox],
+    [CP-RNF-03 Tiempo de respuesta del catálogo], [Alta], [#veredicto("Pasó")], [4 mediciones bajo el umbral],
   ),
   caption: [Tabla global de resultados del bloque al cierre del 24-09-2026.],
 )
@@ -1809,13 +2132,14 @@ el defecto conocido en lugar de detectar defectos nuevos.
 + *Un bloqueo bien documentado vale más que un caso aprobado sin trazabilidad.* El 62.5 % de bloqueo es un
   resultado legítimo del proceso, sustentado en mensajes literales del sistema y registrado en bitácora.
 
-#pagebreak()
-
 // =====================================================================
-= Anexos
-// =====================================================================
-
 #page(flipped: true)[
+  = Anexos
+
+  Tres anexos sostienen la trazabilidad del bloque: el *Anexo A* registra el estado fechado del ambiente
+  que justifica cada veredicto Bloqueado; el *Anexo B* documenta la estrategia de resiliencia adoptada; el
+  *Anexo C* lista el testware entregado bajo Gestión de la Configuración.
+
   == Anexo A — Bitácora de ambiente
 
   Registro fechado del estado del sistema bajo prueba. Toda ejecución debe citar la entrada de bitácora
@@ -1931,3 +2255,56 @@ cuando el ambiente permita reproducir el estado correspondiente.
 
 Evidencia ya capturada e incorporada: `CP-ADM-01_paso03_warning-permiso-modificar-productos_20260924.png`
 (§6.8 y §7.10).
+
+#pagebreak()
+
+// =====================================================================
+= Glosario
+// =====================================================================
+
+Términos técnicos empleados en este informe, con el significado exacto con que se usan aquí. No
+sustituyen al temario: fijan el vocabulario para que cada veredicto y cada métrica se lean sin
+ambigüedad.
+
+#figure(
+  table(
+    columns: (4.4cm, 1fr),
+    table.header([Término], [Significado con que se usa en este informe]),
+    [*Condición de prueba*],
+    [Aspecto de la base de pruebas verificable por uno o más casos. Describe *qué* comprobar, nunca *cómo* ni con qué datos. En este informe son las CT-XXX-NN del §4 y son el *paso intermedio del análisis* entre el requisito y el caso; ninguna contiene pasos, valores ni resultados.],
+
+    [*Caso de prueba*],
+    [Conjunto de precondiciones, datos concretos, pasos, resultado esperado y criterio de aceptación que hace verificable una o varias condiciones. Son los CP-XXX-NN del §5: aquí sí aparecen el *cómo* y los datos.],
+
+    [*Prueba de confirmación*],
+    [Reejecución del caso que falló, una vez que el defecto pasa al estado *Listo para reprueba*, para comprobar que la corrección resuelve lo reportado. Es el término usado en este proyecto; no se emplea «re-testing».],
+
+    [*Pruebas de regresión*],
+    [Pruebas sobre funcionalidad que ya operaba, para detectar que la corrección de un defecto no haya roto otra cosa. Son distintas de la prueba de confirmación: aquí se aplicarían sobre los casos que comparten precondiciones con el caso corregido.],
+
+    [*Gestión de la Configuración*],
+    [Control de versiones e integridad del testware: identificador `vMAJOR.MINOR` con autor, fecha y motivo del cambio; no se edita sobre una versión ya publicada; toda modificación posterior a la línea base se registra con caso afectado, motivo, responsable y fecha. Declarada en §2.10 e inventariada en el Anexo C.],
+
+    [*Testware*],
+    [Todo el material producido por la actividad de prueba y sujeto a Gestión de la Configuración: plan, riesgos, condiciones, casos, datos, registros de ejecución, evidencias, reporte de defectos y este informe. Su inventario está en el Anexo C (§11.3).],
+
+    [*Severidad*],
+    [Grado de impacto técnico o funcional del defecto sobre el sistema. La propone QA. Escala declarada por el equipo: *Crítica · Alta · Media · Baja* (§7.1). El CTFL no impone una escala: lo esencial es usar la misma con el mismo significado en todos los defectos.],
+
+    [*Prioridad*],
+    [Urgencia con que el negocio quiere que el defecto se atienda. La define el Product Owner. Es un eje *independiente* de la severidad y por eso viaja en un campo separado: un defecto puede ser de severidad Media y prioridad Alta, o al revés.],
+
+    [*Riesgo de producto*],
+    [Posibilidad de que el sistema falle frente a un requisito y dañe al negocio: venta sin inventario, pedido duplicado, datos inconsistentes. Se registra como RPD-NN (§3.3) y es lo que determina la prioridad de los casos.],
+
+    [*Riesgo de proyecto*],
+    [Posibilidad de que el equipo no pueda ejecutar la prueba prevista por ambiente, permisos, datos o tiempo. Se registra como RPR-NN (§3.2). No dice nada sobre la calidad del sistema, pero determina cuánta evidencia se puede obtener y qué casos terminan Bloqueados.],
+
+    [*Criterio de salida*],
+    [Umbral declarado *antes* de medir, contra el que se decide si el trabajo de prueba puede darse por concluido. Son CS1–CS4 (§8.1). La conclusión se redacta siempre como *estado frente a los criterios de salida*, nunca como una etiqueta de dictamen.],
+
+    [*Veredicto Bloqueado*],
+    [Resultado de un caso que *no pudo ejecutarse* por un impedimento externo al propio caso —falta de ambiente, de permisos, de datos o dependencia de otro caso—, registrado con el texto literal del sistema y su fecha. No es Fallido: un caso bloqueado nunca llegó a producir evidencia sobre el requisito, por eso no entra en el denominador de la *tasa de aprobación* y sí en el de la *tasa de bloqueo*, que se calcula sobre los casos *planificados*.],
+  ),
+  caption: [Glosario de términos técnicos empleados en el informe.],
+)
