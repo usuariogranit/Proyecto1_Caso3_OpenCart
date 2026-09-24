@@ -31,7 +31,7 @@ Se diseñan los ocho aunque parte del ambiente esté bloqueada: **la ejecutabili
   8. Registrar el mensaje del paso.
   9. Avanzar a método de envío y de pago; registrar las opciones ofrecidas.
 - **Resultado esperado:** El flujo avanza sin crear cuenta. Con apellido vacío bloquea e indica el campo; completo, guarda la identidad ("Success: Your guest account information has been saved!") y ofrece al menos un envío y un pago seleccionables.
-- **Criterio de aceptación:** Confirmación alcanzada sin registro, bloqueo específico del campo vacío y envío y pago seleccionables. Si no hay ninguno: **Bloqueado**, no Fallido.
+- **Criterio de aceptación:** Confirmación alcanzada sin registro, bloqueo específico del campo vacío y envío y pago seleccionables. Si el selector no ofrece el pago habilitado: **Falló** (DEF-04). Los casos dependientes sin precondición se registran **Bloqueados**.
 
 ### CP-CON-01 · Generación de número y resumen del pedido
 - **Condición:** CT-CON-01, 02, 03, 04 · **Requisito(s):** RF CON 01, 02 · **Prioridad:** Alta

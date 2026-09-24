@@ -127,3 +127,12 @@ defecto conocido en lugar de detectar defectos nuevos.
 | Consolidación y cierre | `04_ejecucion/F_CONSOLIDACION_Y_CIERRE.md` |
 | Defectos y hallazgos | `05_defectos/HALLAZGOS.md` |
 | Evidencias | `evidencias/CP-XXX-NN/` |
+
+
+## Complemento de gestión v1.1
+
+Alta prioridad ejecutada: 2/7 = 28.6 %. Pendientes de completar: 5 bloqueados + 1 parcial = 6 (5 Alta, 1 Media). No hay ritmo observado ni fecha final confirmada para calcular capacidad; se requieren ambos antes de comprometer un plazo.
+
+Acciones: investigar DEF-04 y repetir CP-CHK-01 para desbloquear CON-01, CON-02 y PED-01; disponer de un ambiente con escritura para ADM-01 y RNF-01; completar RNF-02 en Edge y Firefox. Asignaciones y fechas pendientes. Riesgo residual documentado, sin aceptación de negocio registrada.
+
+El corte de resultados anterior no se sustituye por una captura complementaria. Ver `00_gestion/REVISION_CLASE7_20260924.md` para evidencias y limitaciones nuevas.

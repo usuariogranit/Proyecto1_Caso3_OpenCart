@@ -95,20 +95,17 @@ sobre el total de casos de ambos integrantes.
 | **CS3** · Defectos críticos abiertos | 0 | **No se cumple: 1 defecto de severidad Crítica abierto** — DEF-04, estado Nuevo. El sitio público no ofrece ningún método de pago pese a que el panel tiene Cash On Delivery habilitado en todas las zonas | `05_defectos/HALLAZGOS.md`, DEF-04 |
 | **CS4** · Defectos de severidad alta abiertos | ≤ 2 | **Se cumple, en el límite: 2 defectos Alta abiertos** (DEF-01 y DEF-02, estado Nuevo). Un tercer defecto Alto incumpliría el criterio | `05_defectos/HALLAZGOS.md` |
 
-**Métricas de apoyo con dato duro al 24-09-2026** (se presentan *después* de los criterios, no antes):
+**Métricas vigentes del cierre del 24-09-2026:**
 
-| Métrica | Valor | Denominador aplicado |
+| Métrica | Cálculo | Resultado |
 |---|---|---|
-| % ejecutado | 0 / 8 = **0 %** | Planificados |
-| Tasa de bloqueo | 4 / 8 = **50 %** | Planificados |
-| Tasa de aprobación | **no calculable** (0 ejecutados) | Ejecutados |
-| % de alta prioridad ejecutada | 0 / 7 = **0 %** | Casos Alta planificados |
-| Pendientes (bloqueados + no ejecutados) | 4 + 4 = **8** | — |
+| Ejecución | 2 / 8 planificados | 25.0 % |
+| Aprobación | 1 / 2 ejecutados | 50.0 % |
+| Bloqueo | 5 / 8 planificados | 62.5 % |
+| Alta prioridad ejecutada | 2 / 7 | 28.6 % |
+| Pendientes de completar | 5 bloqueados + 1 parcial | 6: 5 Alta y 1 Media |
 
-**Contexto obligatorio de estas cifras:** el 50 % bloqueado no está repartido al azar. Se concentra en la cadena
-transaccional pago → confirmación → visibilidad operativa, que es justamente el área de mayor riesgo económico del
-bloque; hoy su cobertura efectiva es cero. La causa está registrada con texto literal del sistema en la bitácora
-(demo público sin métodos de pago ni de envío configurados).
+El parcial permanece pendiente de completar y no cuenta como ejecutado en estas métricas. Tres bloqueos dependen de DEF-04 y dos de permisos administrativos. Las cifras anteriores 0/8 y 4/8 describían un corte previo, no el cierre.
 
 **Estado frente a los criterios de salida al cierre del 24-09-2026:** *no se cumplen CS1, CS2 ni CS3.* Solo 2 de 7
 casos de prioridad Alta pudieron ejecutarse (28.6 %), la tasa de aprobación sobre ejecutados es de 50.0 % frente al
@@ -142,7 +139,7 @@ crítico DEF-04 y cambió la evaluación de CS3.
 - **Severidad** (grado de impacto; la propone el tester) y **prioridad** (urgencia de corregir; la define el Product
   Owner o el negocio) son **dos ejes independientes** y no se fusionan en un solo campo.
 
-**Estado de los defectos del bloque al 24-09-2026:** DEF-01, DEF-02 y DEF-03 están en estado **Nuevo**
+**Estado de los defectos del bloque al 24-09-2026:** DEF-01, DEF-02, DEF-03 y DEF-04 están en estado **Nuevo**
 (`05_defectos/HALLAZGOS.md`). Ninguno ha pasado por triage ni por prueba de confirmación.
 
 ---

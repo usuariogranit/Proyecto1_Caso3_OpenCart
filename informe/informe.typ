@@ -265,6 +265,7 @@
     columns: (2.2cm, 2.6cm, 1fr, 4.6cm),
     table.header([Versión], [Fecha], [Autor], [Estado]),
     [v1.0], [24-09-2026], [Granit Espinoza Salazar — Integrante 2, Analista de QA del bloque transaccional y administrativo], [Emitido — línea base de entrega con corte de información al 24-09-2026],
+    [v1.1], [24-09-2026], [Revisión asistida; validación final a cargo del responsable], [Borrador revisado con Clase 7, capturas reales y corrección de métricas; pendiente de aprobación humana],
   ),
   caption: [Control de versiones del documento.],
 )
@@ -294,11 +295,11 @@ de *23 de 33 (70 %)*; los huecos son conscientes y se concentran en lo que exige
 *Hallazgo crítico.* *DEF-04* — el sitio público no ofrece *ningún* método de pago pese a que el panel
 administrativo tiene *Cash On Delivery habilitado para todas las zonas geográficas* (Geo Zone = All
 Zones). El checkout se detiene con #lit[No Payment options are available. Please contact us for
-assistance!] y no se renderiza la sección #lit[Shipping Method]. *Impacto de negocio:* ningún cliente
-puede completar una compra; el flujo de ingresos del sitio está inutilizable por completo mientras el
-defecto persista. Severidad *Crítica*, prioridad *Alta*, estado *Nuevo*. DEF-04 bloquea por sí solo tres
+assistance!] y no se renderiza la sección #lit[Shipping Method]. *Impacto de negocio:* el recorrido de compra probado no puede completarse. No se han probado todas las combinaciones de cliente, producto y país; la causa raíz permanece en investigación. Severidad *Crítica*, prioridad *Alta*, estado *Nuevo*. DEF-04 bloquea por sí solo tres
 casos de alta prioridad (CP-CON-01, CP-CON-02, CP-PED-01) y hace fallar a CP-CHK-01. Se documentan además
 DEF-01 y DEF-02 (severidad Alta) y DEF-03 (Media).
+
+*Criterios previos a la decisión (Clase 7, diapositiva 10).* CS1: 100 % de casos Alta ejecutados; CS2: aprobación ≥ 90 % de ejecutados; CS3: 0 críticos abiertos; CS4: máximo 2 altos abiertos. Se adoptan para este bloque los umbrales del ejercicio de clase.
 
 *Métricas del cierre* (denominadores declarados en §8.1, sin mezclar):
 
@@ -333,8 +334,7 @@ quedó bloqueado* —concentrado en la cadena transaccional pago → confirmaci�
   §2.2) para levantar el bloqueo de CP-ADM-01 y CP-RNF-01, hoy imputable al ambiente y no al producto.
 + *Cerrar los umbrales pendientes* —fecha de entrega como ancla del cronograma y umbral numérico de
   RNF-01— antes del siguiente ciclo, para que esos casos tengan criterio de aceptación verificable.
-+ *Completar CP-RNF-02 en Edge y Firefox* y capturar las evidencias E-01 a E-05, hoy identificadas pero
-  no reproducibles en el ambiente actual.
++ *Completar CP-RNF-02 en Edge y Firefox* y la evidencia E-02 pendiente. E-01, E-03 y E-04 ya tienen capturas complementarias; E-05 dispone de una captura parcial del formulario de stock.
 + *No abrir automatización todavía* sobre el flujo de compra: hoy no es estable y las pruebas fallarían
   por el defecto conocido en lugar de detectar defectos nuevos (§9).
 
@@ -721,7 +721,7 @@ Aun ejecutando todo el bloque queda sin cubrir:
 + los *navegadores móviles*, fuera del conjunto de RNF 02;
 + toda verificación que exija *escritura administrativa* mientras persista RPR-01.
 
-Se trasladan al cierre como *riesgo residual explícitamente aceptado*, dentro del estado frente a los
+Se trasladan al cierre como *riesgo residual documentado, pendiente de aceptación por el responsable de negocio*, dentro del estado frente a los
 criterios de salida, no como cobertura lograda.
 
 == Vínculo riesgo → prioridad de prueba
@@ -1052,7 +1052,7 @@ verificadas el 24-09-2026.
 + Avanzar a método de envío y de pago; registrar las opciones ofrecidas.
 
 #campo[Resultado esperado:][El flujo avanza sin crear cuenta. Con apellido vacío bloquea e indica el campo; completo, guarda la identidad (#lit[Success: Your guest account information has been saved!]) y ofrece al menos un envío y un pago seleccionables.]
-#campo[Criterio de aceptación:][Confirmación alcanzada sin registro, bloqueo específico del campo vacío y envío y pago seleccionables. Si no hay ninguno: *Bloqueado*, no *Fallido*.]
+#campo[Criterio de aceptación:][Confirmación alcanzada sin registro, bloqueo específico del campo vacío y envío y pago seleccionables. Si el caso alcanza el selector y no ofrece el pago habilitado, *Falló* (DEF-04). Los casos dependientes que no pueden alcanzar su precondición quedan *Bloqueados*.]
 
 == CP-CON-01 · Generación de número y resumen del pedido
 
@@ -1350,7 +1350,7 @@ Cloudflare).
   )
 ]
 
-#evidencia-pendiente("E-03")[Pantalla de checkout con el mensaje literal #lit[No Payment options are available. Please contact us for assistance!] y ausencia de la sección #lit[Shipping Method] (sustento de CP-CHK-01 y de DEF-04).]
+#figure(image("evidencias/gestion-20260924/OC-05_checkout-sin-pago.jpg", width: 100%, height: 13cm, fit: "contain"), caption: [E-03: selector sin métodos de pago, datos ficticios y botón Confirm Order deshabilitado. Verificación complementaria; no constituye una ejecución completa adicional.])
 
 == Observación metodológica de la ejecución
 
@@ -1422,7 +1422,7 @@ una limitación del ambiente sino el defecto DEF-04*. Esto cambia los veredictos
 Este contraste es la evidencia directa de *DEF-02*: el sitio publica etiquetas de disponibilidad que no
 corresponden al inventario registrado en el panel, y la validación real recién ocurre en el carrito.
 
-#evidencia-pendiente("E-05")[Panel Catalog \> Products mostrando la columna de cantidad de inventario de los productos listados (sustento de DEF-02).]
+#figure(image("evidencias/gestion-20260924/OC-03_stock-configurado.jpg", width: 100%, height: 13cm, fit: "contain"), caption: [E-05 parcial: formulario de product_id 28 con Quantity = 0 y Out Of Stock Status = In Stock. La captura documenta el formulario abierto; no prueba una escritura ni sustituye la lista completa de inventario.])
 
 == Métricas parciales al 24-09-2026
 
@@ -1538,6 +1538,8 @@ Escala declarada por el equipo: *Crítica · Alta · Media · Baja*. El CTFL no 
 organización define la suya, y lo esencial es usar la misma escala con el mismo significado en todos los
 defectos.
 
+*Responsabilidad de clasificación.* Las prioridades de los cuatro defectos son propuestas de QA pendientes de ratificación del Product Owner; no consta triage ni aprobación del negocio. La escala de severidad usa Crítica (interrumpe el flujo transaccional probado), Alta (inconsistencia funcional importante), Media (degrada la interacción) y Baja (cosmética). La prioridad Alta solicita atención inmediata, Media el siguiente ciclo y Baja atención diferible.
+
 Trazabilidad: *Requisito ↔ caso ↔ ejecución ↔ defecto*; la condición de prueba (CT) se conserva como paso
 intermedio del análisis.
 
@@ -1619,9 +1621,11 @@ Los cuatro defectos de este informe están en estado *Nuevo*: ninguno ha pasado 
   Product Owner o el negocio) son dos ejes independientes y no se fusionan en un solo campo.
 ]
 
-== DEF-01 · `[Carrito y resumen de checkout]` El total de línea omite el Eco Tax por unidad al aumentar la cantidad, mostrando \$242.00 en lugar de \$244.00 para 2 unidades
+== DEF-01 · `[Carrito y resumen de checkout]` El total de línea difiere de precio unitario × cantidad, mostrando \$242.00 en lugar de \$244.00 para 2 unidades
 
 #campo[Trazabilidad:][RF CAR 03 / RF CHK 05 / RF CON 02 ↔ CP-CHK-01 ↔ ejecución del 24-09-2026 (§6) ↔ DEF-01 · condición de prueba intermedia: CT-CHK-05]
+
+#campo[Identidad y entorno:][Reportante del registro: Granit, Analista QA. Fecha: 24-09-2026. OpenCart Demo 4.0.2.3; sitio público y panel, Chrome en macOS. Versión exacta de Chrome del registro original no consignada; no se inventa. Caso y requisito en la trazabilidad superior.]
 
 *Pasos para reproducir:*
 
@@ -1631,18 +1635,20 @@ Los cuatro defectos de este informe están en estado *Nuevo*: ninguno ha pasado 
 + Continuar a Checkout y observar el resumen.
 
 #campo[Resultado esperado:][El total de línea es coherente con precio unitario × cantidad y con el total general.]
-#campo[Resultado obtenido:][Mini-carrito #lit[iPod Nano x 2 — \$244.00]; tabla del carrito #lit[Unit Price \$122.00 / Total \$242.00]; resumen de checkout #lit[2x iPod Nano \$242.00]; Total general #lit[\$244.00]. Desglose: Sub-Total \$200.00 + Eco Tax (-2.00) \$4.00 + VAT (20 %) \$40.00 = \$244.00. El total de línea aplica el Eco Tax una sola vez (200 + 40 + 2 = 242) en lugar de por unidad.]
+#campo[Resultado obtenido:][Mini-carrito #lit[iPod Nano x 2 — \$244.00]; tabla del carrito #lit[Unit Price \$122.00 / Total \$242.00]; resumen de checkout #lit[2x iPod Nano \$242.00]; Total general #lit[\$244.00]. Desglose: Sub-Total \$200.00 + Eco Tax (-2.00) \$4.00 + VAT (20 %) \$40.00 = \$244.00. La diferencia es compatible con aplicar el Eco Tax una sola vez (200 + 40 + 2 = 242); es una hipótesis, no una causa raíz confirmada.]
 #campo[Severidad:][*Alta* (dos importes contradictorios para la misma compra, en la misma pantalla, arrastrados hasta el resumen del pedido)]
 #campo[Prioridad:][*Alta* (afecta la confianza en el monto a pagar y el margen del negocio)]
 #campo[Evidencia:][`evidencias/CP-CHK-01/` — captura del resumen de checkout con ambas cifras visibles]
 #campo[Estado:][Nuevo]
 #campo[Fecha:][24-09-2026]
 
-#evidencia-pendiente("E-01")[Carrito y resumen de checkout mostrando el importe de línea \$242.00 frente al Total general \$244.00 para 2 × iPod Nano (sustento de DEF-01).]
+#figure(image("evidencias/gestion-20260924/OC-04_carrito-importes.jpg", width: 100%, height: 13cm, fit: "contain"), caption: [E-01: carrito reproducido con 2 iPod Nano; precio unitario USD 122, línea USD 242 y total USD 244. Captura complementaria del 24-09-2026.])
 
 == DEF-02 · `[Ficha de producto y carrito]` Un producto publicado como #lit[In Stock] es rechazado por el control de inventario al llegar al carrito y bloquea el checkout
 
 #campo[Trazabilidad:][RF PRO 01 / RF PRO 05 / RF ADM 03 / RF CHK 01 ↔ CP-CHK-01 ↔ ejecución del 24-09-2026 (§6) ↔ DEF-02 · condición de prueba intermedia: CT-ADM-03]
+
+#campo[Identidad y entorno:][Reportante del registro: Granit, Analista QA. Fecha: 24-09-2026. OpenCart Demo 4.0.2.3; sitio público y panel, Chrome en macOS. Versión exacta de Chrome del registro original no consignada; no se inventa. Caso y requisito en la trazabilidad superior.]
 
 *Pasos para reproducir:*
 
@@ -1665,6 +1671,8 @@ Los cuatro defectos de este informe están en estado *Nuevo*: ninguno ha pasado 
 
 #campo[Trazabilidad:][RF CHK 04 / RF CON 01 ↔ CP-CON-01 ↔ ejecución del 24-09-2026 (§6) ↔ DEF-03 · condición de prueba intermedia: CT-CON-01]
 
+#campo[Identidad y entorno:][Reportante del registro: Granit, Analista QA. Fecha: 24-09-2026. OpenCart Demo 4.0.2.3; sitio público y panel, Chrome en macOS. Versión exacta de Chrome del registro original no consignada; no se inventa. Caso y requisito en la trazabilidad superior.]
+
 *Pasos para reproducir:*
 
 + Completar Guest Checkout con datos válidos.
@@ -1682,6 +1690,8 @@ Los cuatro defectos de este informe están en estado *Nuevo*: ninguno ha pasado 
 
 #campo[Trazabilidad:][RF CHK 04 / RF CON 01 / RF ADM 07 / RNF 01 → CT-CHK-04, CT-RNF-01 → CP-CHK-01, CP-CON-01, CP-RNF-01 → ejecución del 24-09-2026 → DEF-04]
 
+#campo[Identidad y entorno:][Reportante del registro: Granit, Analista QA. Fecha: 24-09-2026. OpenCart Demo 4.0.2.3; sitio público y panel, Chrome en macOS. Versión exacta de Chrome del registro original no consignada; no se inventa. Caso y requisito en la trazabilidad superior.]
+
 *Pasos para reproducir:*
 
 + Agregar iPod Nano (`product_id 36`) al carrito, cantidad 2.
@@ -1691,7 +1701,7 @@ Los cuatro defectos de este informe están en estado *Nuevo*: ninguno ha pasado 
 + Pulsar #lit[Choose] en Payment Method.
 
 #campo[Resultado esperado:][Se ofrece al menos el método habilitado en el panel (Cash On Delivery), permitiendo continuar hasta la confirmación del pedido.]
-#campo[Resultado obtenido:][#lit[No Payment options are available. Please contact us for assistance!]. No se renderiza sección #lit[Shipping Method]. La consulta directa al recurso `index.php?route=checkout/payment_method` responde *HTTP 200 con cuerpo vacío*. El comportamiento se reproduce con dos países distintos, por lo que no depende de la zona geográfica del cliente.]
+#campo[Resultado obtenido:][#lit[No Payment options are available. Please contact us for assistance!]. No se renderiza sección #lit[Shipping Method]. La consulta directa al recurso `index.php?route=checkout/payment_method` responde *HTTP 200 con cuerpo vacío*. El comportamiento se reproduce con dos países distintos, lo que reduce la hipótesis de una restricción específica de esos países, sin demostrar una causa raíz.]
 
 *Evidencia contrastada en el panel administrativo (24-09-2026):*
 
@@ -1702,13 +1712,13 @@ Los cuatro defectos de este informe están en estado *Nuevo*: ninguno ha pasado 
 - Sales \> Orders contiene pedidos recientes (el más nuevo, 3639 del 23/09/2026 por \$740.00), lo que
   demuestra que el flujo sí operó antes.
 
-#campo[Severidad:][*Crítica* (ningún cliente puede completar una compra; el flujo transaccional completo queda inutilizable)]
-#campo[Prioridad:][*Alta* (pérdida total de ventas mientras persista)]
+#campo[Severidad:][*Crítica* propuesta por QA (bloquea el recorrido transaccional probado; alcance global y causa raíz pendientes de triage)]
+#campo[Prioridad:][*Alta* (riesgo de pérdida de ventas en el recorrido afectado; pendiente de ratificación por negocio)]
 #campo[Estado:][Nuevo]
 #campo[Impacto sobre el alcance de pruebas:][bloquea CP-CON-01, CP-CON-02 y CP-PED-01. Estos casos se registran como *bloqueados por defecto*, no como bloqueados por ambiente.]
 #campo[Fecha:][24-09-2026]
 
-#evidencia-pendiente("E-04")[Panel Extensions \> Payments mostrando *Cash On Delivery = Enabled* con Geo Zone = All Zones (sustento de DEF-04).]
+#figure(image("evidencias/gestion-20260924/OC-02_cod-todas-zonas.jpg", width: 100%, height: 13cm, fit: "contain"), caption: [E-04: Cash On Delivery habilitado con Geo Zone = All Zones. Consulta de configuración sin guardar cambios.])
 
 == OBS-01 · Limitación de ambiente (no es defecto de producto) y su corrección registrada
 
@@ -1987,6 +1997,8 @@ que no sería admisible es sostener la primera lectura habiendo visto el panel.
     [*Tasa de ejecución*], [2 / 8], [*25.0 %*],
     [*Tasa de aprobación*], [1 / 2], [*50.0 %*],
     [*Tasa de bloqueo*], [5 / 8], [*62.5 %*],
+    [Alta prioridad ejecutada], [2 / 7], [28.6 %],
+    [Pendientes de completar], [5 bloqueados + 1 parcial], [6: 5 Alta y 1 Media],
   ),
   caption: [Métricas consolidadas del bloque, con los denominadores declarados en §8.1.],
 )
@@ -2030,9 +2042,8 @@ impone una escala única. Ninguno ha pasado por triage ni por *prueba de confirm
 
 === Estado frente a los criterios de salida
 
-Tres de los cuatro criterios de salida no se cumplen. El defecto *DEF-04* inutiliza por completo el flujo
-de compra: el sitio público no ofrece ningún método de pago aunque el panel administrativo tiene Cash On
-Delivery habilitado para todas las zonas geográficas. Ningún cliente puede completar una transacción.
+Tres de los cuatro criterios de salida no se cumplen. El defecto *DEF-04* bloquea el recorrido de compra probado: el sitio público no ofrece ningún método de pago aunque el panel administrativo tiene Cash On
+Delivery habilitado para todas las zonas geográficas. No se completó la compra con los datos ensayados; no se extrapola este resultado a todos los clientes.
 *No se cumplen los criterios de salida CS1, CS2 y CS3 → el release no está listo*, y la tasa de ejecución
 del 25 % no es un dato menor: no se trata de que las pruebas hayan salido mayoritariamente bien, sino de
 que la mayor parte del alcance nunca pudo entrar a ejecución.
@@ -2223,28 +2234,29 @@ Alternativas conservadas en el plan: Jira/Zephyr, TestLink, o las tablas del pro
 Cualquiera que se elija debe sostener la trazabilidad *Requisito ↔ caso ↔ ejecución ↔ defecto*; la
 condición de prueba (CT) se conserva como paso intermedio del análisis.
 
-=== Evidencias gráficas pendientes de captura
+=== Estado verificable de las evidencias gráficas
 
-Las capturas siguientes están identificadas y su ubicación en el informe ya está marcada; se incorporarán
-cuando el ambiente permita reproducir el estado correspondiente.
+E-01, E-03 y E-04 están incorporadas. E-05 es parcial y E-02 sigue pendiente. Los archivos originales y sus huellas SHA-256 constan en `informe/evidencias/gestion-20260924/manifest.json`. La nueva captura no convierte retrospectivamente una observación antigua en evidencia capturada entonces.
 
 #figure(
   table(
     columns: (1.6cm, 1fr, 3.0cm),
     table.header([ID], [Contenido requerido], [Sustenta]),
-    [E-01], [Carrito y resumen de checkout con el importe de línea \$242.00 frente al Total \$244.00], [DEF-01],
-    [E-02], [Carrito con el producto marcado `***` y el mensaje de stock literal], [DEF-02],
-    [E-03], [Checkout con #lit[No Payment options are available. Please contact us for assistance!]], [DEF-04],
-    [E-04], [Panel Extensions \> Payments con Cash On Delivery Enabled y Geo Zone = All Zones], [DEF-04],
-    [E-05], [Panel Catalog \> Products con las cantidades de inventario], [DEF-02],
+    [E-01], [Capturada: carrito con línea \$242.00 y Total \$244.00], [DEF-01],
+    [E-02], [Pendiente: carrito con producto marcado `***` y mensaje de stock], [DEF-02],
+    [E-03], [Capturada: checkout sin opciones de pago], [DEF-04],
+    [E-04], [Capturada: configuración de Cash On Delivery habilitada para All Zones], [DEF-04],
+    [E-05], [Parcial: formulario de stock del producto 28; lista completa pendiente], [DEF-02],
   ),
-  caption: [Evidencias gráficas pendientes de captura y defecto que sustentan.],
+  caption: [Estado de capturas y defecto relacionado.],
 )
 
 Evidencia ya capturada e incorporada: `CP-ADM-01_paso03_warning-permiso-modificar-productos_20260924.png`
 (§6.8 y §7.10).
 
 #pagebreak()
+
+#include "gestion_clase7.typ"
 
 // =====================================================================
 = Glosario

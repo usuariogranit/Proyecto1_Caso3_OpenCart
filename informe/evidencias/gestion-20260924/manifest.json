@@ -1,0 +1,37 @@
+{
+  "fecha": "2026-09-24",
+  "zona": "America/Lima",
+  "alcance": "Verificación complementaria de interfaz; no nueva corrida completa",
+  "capturas": [
+    {
+      "archivo": "OC-01_metodos-pago.jpg",
+      "capturado": "2026-09-24T08:23:11.433623-05:00",
+      "sha256": "cfcf7073929bbf60fbb04082799197601abe4dd96b844211827dbb14e94f5c81"
+    },
+    {
+      "archivo": "OC-02_cod-todas-zonas.jpg",
+      "capturado": "2026-09-24T08:23:26.797721-05:00",
+      "sha256": "3870039a31e5f4115701d43ffd192347b1a7326f6fb34ca43af0879e982dc896"
+    },
+    {
+      "archivo": "OC-03_stock-configurado.jpg",
+      "capturado": "2026-09-24T08:23:36.693100-05:00",
+      "sha256": "eb711e095df952287872e7c699a0402ec670fb3247c85659850c706215405be4"
+    },
+    {
+      "archivo": "OC-04_carrito-importes.jpg",
+      "capturado": "2026-09-24T08:24:24.771181-05:00",
+      "sha256": "412176eb23f379c0715ee32d7059be99201b1205b0d389ceb1528071af850685"
+    },
+    {
+      "archivo": "OC-05_checkout-sin-pago.jpg",
+      "capturado": "2026-09-24T08:24:50.879818-05:00",
+      "sha256": "b84a77c41442a2e3be9178269a26ba029518f48f738923d61bb049cf3fa11d66"
+    },
+    {
+      "archivo": "QASE-01_estado-inicial.jpg",
+      "capturado": "2026-09-24T08:22:38.551241-05:00",
+      "sha256": "73c80e2e5eb464531cf89361b715e1f21ca2e5dc11a4027a555b040da93dddad"
+    }
+  ]
+}

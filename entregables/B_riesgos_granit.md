@@ -68,7 +68,7 @@
 
 ## 4. Riesgos residuales
 
-Aun ejecutando todo mi bloque queda sin cubrir: (a) la **concurrencia** —dos clientes comprando la última unidad—, que el demo no permite controlar; (b) la **integración real de pago**, al operar con métodos de prueba; (c) la **persistencia a largo plazo** de los pedidos, porque el ambiente compartido se restablece; (d) los **navegadores móviles**, fuera del conjunto de RNF 02; y (e) toda verificación que exija escritura administrativa mientras persista RPR-01. Se trasladan al cierre como **riesgo residual explícitamente aceptado**, dentro del estado frente a los criterios de salida, no como cobertura lograda.
+Aun ejecutando todo mi bloque queda sin cubrir: (a) la **concurrencia** —dos clientes comprando la última unidad—, que el demo no permite controlar; (b) la **integración real de pago**, al operar con métodos de prueba; (c) la **persistencia a largo plazo** de los pedidos, porque el ambiente compartido se restablece; (d) los **navegadores móviles**, fuera del conjunto de RNF 02; y (e) toda verificación que exija escritura administrativa mientras persista RPR-01. Se trasladan al cierre como **riesgo residual documentado, pendiente de aceptación por negocio**, dentro del estado frente a los criterios de salida, no como cobertura lograda.
 
 ---
 

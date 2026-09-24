@@ -9,11 +9,11 @@ Ramas desde «En análisis»: **Rechazado · Duplicado · Diferido**. Rama desde
 «Listo para reprueba» dispara la **prueba de confirmación** (se repite el caso que falló); la **regresión** verifica que la corrección no rompa otra cosa.
 
 ---
-## DEF-01 · [Carrito y resumen de checkout] El total de línea omite el Eco Tax por unidad al aumentar la cantidad, mostrando $242.00 en lugar de $244.00 para 2 unidades
+## DEF-01 · [Carrito y resumen de checkout] El total de línea difiere de precio unitario × cantidad, mostrando $242.00 en lugar de $244.00 para 2 unidades
 - **Trazabilidad:** RF CAR 03 / RF CHK 05 / RF CON 02 ↔ CP-CHK-01 ↔ ejecución del 24-09-2026 (`04_ejecucion/EJECUCION_GRANIT_20260924.md`) ↔ DEF-01 · condición de prueba intermedia: CT-CHK-05
 - **Pasos para reproducir:** 1) Agregar iPod Nano al carrito. 2) Fijar cantidad 2. 3) Abrir Shopping Cart. 4) Continuar a Checkout y observar el resumen.
 - **Resultado esperado:** El total de línea es coherente con precio unitario × cantidad y con el total general.
-- **Resultado obtenido:** Mini-carrito "iPod Nano x 2 — $244.00"; tabla del carrito "Unit Price $122.00 / Total $242.00"; resumen de checkout "2x iPod Nano $242.00"; Total general "$244.00". Desglose: Sub-Total $200.00 + Eco Tax (-2.00) $4.00 + VAT (20%) $40.00 = $244.00. El total de línea aplica el Eco Tax una sola vez (200 + 40 + 2 = 242) en lugar de por unidad.
+- **Resultado obtenido:** Mini-carrito "iPod Nano x 2 — $244.00"; tabla del carrito "Unit Price $122.00 / Total $242.00"; resumen de checkout "2x iPod Nano $242.00"; Total general "$244.00". Desglose: Sub-Total $200.00 + Eco Tax (-2.00) $4.00 + VAT (20%) $40.00 = $244.00. La diferencia es compatible con aplicar Eco Tax una sola vez; es una hipótesis pendiente de confirmar.
 - **Severidad:** Alta (dos importes contradictorios para la misma compra, en la misma pantalla, arrastrados hasta el resumen del pedido)
 - **Prioridad:** Alta (afecta la confianza en el monto a pagar y el margen del negocio)
 - **Evidencia:** `evidencias/CP-CHK-01/` — captura del resumen de checkout con ambas cifras visibles
@@ -89,3 +89,15 @@ El intento de agregar al carrito un producto agotado (iPhone, product_id 40, "Av
 el contenido del carrito en la sesión del 24-09-2026, a diferencia de lo observado por el equipo el 18-09-2026. La
 discrepancia puede deberse a la interacción o al estado del demo. **Pendiente de reejecución controlada** antes de
 afirmar cualquier comportamiento. Pertenece al bloque del Integrante 1.
+
+
+## Revisión de evidencia VC-20260924-01
+
+Ver `00_gestion/REVISION_CLASE7_20260924.md` y las capturas en `informe/evidencias/gestion-20260924/`. Los resultados anteriores conservan su corte histórico.
+
+- DEF-01: diferencia de importes reproducida; causa tributaria propuesta, no confirmada.
+- DEF-04: ausencia de pago reproducida para los datos ensayados; configuración COD habilitada verificada. Alcance global y causa raíz pendientes de investigación.
+- DEF-02: el formulario existente tiene Quantity 0 y Out Of Stock Status In Stock; revisar si el hallazgo procede de configuración. No se modificó ni se recargó el formulario para comprobar persistencia.
+- DEF-03: Confirm Order está deshabilitado y existe mensaje de ausencia de pago. El clic del registro original no se reprodujo; requiere triage.
+
+Las prioridades publicadas son propuestas de QA pendientes de ratificación por negocio. La revisión local de posibles duplicados identifica el par DEF-03/DEF-04 para triage, sin asegurar causa común ni cerrar registros. Reportante histórico: Granit, QA; OpenCart Demo 4.0.2.3, Chrome/macOS. La versión exacta de Chrome original no consta.
