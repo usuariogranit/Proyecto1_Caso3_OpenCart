@@ -8,3 +8,10 @@ Resultados de prioridad Alta: 3 Pasó, 2 Falló y 9 Bloqueados.
 Los bloqueos están documentados y no se contabilizan como aprobados.
 
 La fuente editable y el conjunto completo de evidencias permanecen en la carpeta principal del proyecto.
+
+EXPOSICIÓN
+Presentación editable: Proyecto1_Caso3_Grupo5_Exposicion.pptx
+Guion: Guion_Exposicion_12_minutos.md
+Duración: 12 minutos. Franco presenta diapositivas 1–7 (6 minutos).
+Granit presenta diapositivas 8–14 (6 minutos). Preguntas después.
+Las notas de cada diapositiva contienen el guion, el tiempo y las fuentes.
