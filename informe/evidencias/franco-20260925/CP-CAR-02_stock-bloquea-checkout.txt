@@ -1,0 +1,149 @@
+- navigation:
+  - list:
+    - link "$ ":
+      - /url: "#"
+      - strong: $
+      - generic: 
+  - list:
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=information/contact
+      - generic: 
+    - link " ":
+      - /url: ""
+      - generic: 
+      - generic: 
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=account/wishlist
+      - generic: 
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/cart
+      - generic: 
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/checkout
+      - generic: 
+- banner:
+  - link "Your Store":
+    - /url: https://demo.opencart.com/en-gb?route=common/home
+    - img "Your Store"
+  - textbox "Search"
+  - button "":
+    - generic: 
+  - button " 148 item(s) - $18,056.00":
+    - generic: 
+    - text: 148 item(s) - $18,056.00
+  - text:   
+- main:
+  - navigation:
+    - generic: Categories
+    - button "":
+      - generic: 
+  - list:
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=common/home
+      - generic: 
+    - link "Shopping Cart":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/cart
+  - generic: 
+  - text: Products marked with *** are not available in the desired quantity or not in stock!
+  - button
+  - heading "Shopping Cart (0.00kg)" [level=1]
+  - table:
+    - rowgroup:
+      - row "Image Product Name Model Quantity Unit Price Total":
+        - cell "Image"
+        - cell "Product Name"
+        - cell "Model"
+        - cell "Quantity"
+        - cell "Unit Price"
+        - cell "Total"
+    - rowgroup:
+      - row "iPod Nano iPod Nano *** Product 9 148   $122.00 $17,762.00":
+        - cell "iPod Nano":
+          - link "iPod Nano":
+            - /url: https://demo.opencart.com/en-gb/product/ipod-nano
+            - img "iPod Nano"
+        - cell "iPod Nano ***":
+          - link "iPod Nano":
+            - /url: https://demo.opencart.com/en-gb/product/ipod-nano
+          - text: "***"
+        - cell "Product 9"
+        - cell "148  ":
+          - textbox: "148"
+          - button "":
+            - generic: 
+          - button "":
+            - generic: 
+        - cell "$122.00"
+        - cell "$17,762.00"
+    - rowgroup:
+      - row "Sub-Total $14,800.00":
+        - cell "Sub-Total":
+          - strong: Sub-Total
+        - cell "$14,800.00"
+      - row "Eco Tax (-2.00) $296.00":
+        - cell "Eco Tax (-2.00)":
+          - strong: Eco Tax (-2.00)
+        - cell "$296.00"
+      - row "VAT (20%) $2,960.00":
+        - cell "VAT (20%)":
+          - strong: VAT (20%)
+        - cell "$2,960.00"
+      - row "Total $18,056.00":
+        - cell "Total":
+          - strong: Total
+        - cell "$18,056.00"
+  - heading "What would you like to do next?" [level=2]
+  - paragraph: Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.
+  - heading "Use Coupon Code" [level=2]:
+    - button "Use Coupon Code"
+  - heading "Use Gift Certificate" [level=2]:
+    - button "Use Gift Certificate"
+  - link "Continue Shopping":
+    - /url: https://demo.opencart.com/en-gb?route=common/home
+  - link "Checkout":
+    - /url: https://demo.opencart.com/en-gb?route=checkout/checkout
+- contentinfo:
+  - heading "Information" [level=5]
+  - list:
+    - link "Terms & Conditions":
+      - /url: https://demo.opencart.com/en-gb/information/terms
+    - link "Delivery Information":
+      - /url: https://demo.opencart.com/en-gb/information/delivery
+    - link "About Us":
+      - /url: https://demo.opencart.com/en-gb/information/about-us
+    - link "Privacy Policy":
+      - /url: https://demo.opencart.com/en-gb/information/privacy
+  - heading "Customer Service" [level=5]
+  - list:
+    - link "Contact Us":
+      - /url: https://demo.opencart.com/en-gb?route=information/contact
+    - link "Returns":
+      - /url: https://demo.opencart.com/en-gb?route=account/returns.add
+    - link "Site Map":
+      - /url: https://demo.opencart.com/en-gb?route=information/sitemap
+  - heading "Extras" [level=5]
+  - list:
+    - link "Brands":
+      - /url: https://demo.opencart.com/en-gb/brands
+    - link "Gift Certificates":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/voucher
+    - link "Affiliate":
+      - /url: https://demo.opencart.com/en-gb?route=account/affiliate
+    - link "Specials":
+      - /url: https://demo.opencart.com/en-gb?route=product/special
+  - heading "My Account" [level=5]
+  - list:
+    - link "My Account":
+      - /url: https://demo.opencart.com/en-gb?route=account/account
+    - link "Order History":
+      - /url: https://demo.opencart.com/en-gb?route=account/order
+    - link "Wish List":
+      - /url: https://demo.opencart.com/en-gb?route=account/wishlist
+    - link "Newsletter":
+      - /url: https://demo.opencart.com/en-gb?route=account/newsletter
+  - separator
+  - paragraph:
+    - text: Powered By
+    - link "OpenCart":
+      - /url: https://www.opencart.com
+    - text: Your Store © 2026

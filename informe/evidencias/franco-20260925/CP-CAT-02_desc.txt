@@ -1,0 +1,302 @@
+- navigation:
+  - list:
+    - link "$ ":
+      - /url: "#"
+      - strong: $
+      - generic: 
+  - list:
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=information/contact
+      - generic: 
+    - link " ":
+      - /url: ""
+      - generic: 
+      - generic: 
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=account/wishlist
+      - generic: 
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/cart
+      - generic: 
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/checkout
+      - generic: 
+- banner:
+  - link "Your Store":
+    - /url: https://demo.opencart.com/en-gb?route=common/home
+    - img "Your Store"
+  - textbox "Search"
+  - button "":
+    - generic: 
+  - button " 0 item(s) - $0.00":
+    - generic: 
+    - text: 0 item(s) - $0.00
+- main:
+  - navigation:
+    - generic: Categories
+    - button "":
+      - generic: 
+  - list:
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=common/home
+      - generic: 
+    - link "Desktops":
+      - /url: https://demo.opencart.com/en-gb/catalog/desktops?sort=p.price&order=DESC&limit=25
+  - heading "Desktops" [level=2]
+  - img "Desktops"
+  - paragraph: Example of category description text
+  - separator
+  - heading "Refine Search" [level=3]
+  - list:
+    - link "PC (0)":
+      - /url: https://demo.opencart.com/en-gb/catalog/desktops/pc?sort=p.price&order=DESC&limit=25
+    - link "Mac (1)":
+      - /url: https://demo.opencart.com/en-gb/catalog/desktops/mac?sort=p.price&order=DESC&limit=25
+  - link "":
+    - /url: https://demo.opencart.com/en-gb?route=product/compare
+    - generic: 
+  - text:  
+  - generic: Sort By
+  - combobox "Sort By":
+    - option "Default"
+    - option "Name (A - Z)"
+    - option "Name (Z - A)"
+    - option "Price (Low > High)"
+    - option "Price (High > Low)" [selected]
+    - option "Rating (Highest)"
+    - option "Rating (Lowest)"
+    - option "Model (A - Z)"
+    - option "Model (Z - A)"
+  - generic: Show
+  - combobox "Show":
+    - option "10"
+    - option "25" [selected]
+    - option "50"
+    - option "75"
+    - option "100"
+  - link "Sony VAIO":
+    - /url: https://demo.opencart.com/en-gb/product/desktops/sony-vaio?sort=p.price&order=DESC&limit=25
+    - img "Sony VAIO"
+  - heading "Sony VAIO" [level=4]:
+    - link "Sony VAIO":
+      - /url: https://demo.opencart.com/en-gb/product/desktops/sony-vaio?sort=p.price&order=DESC&limit=25
+  - paragraph: Unprecedented power. The next generation of processing technology has arrived. Built into the newest..
+  - text: $1,202.00
+  - generic: "Ex Tax: $1,000.00"
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - link "MacBook Air":
+    - /url: https://demo.opencart.com/en-gb/product/desktops/macbook-air?sort=p.price&order=DESC&limit=25
+    - img "MacBook Air"
+  - heading "MacBook Air" [level=4]:
+    - link "MacBook Air":
+      - /url: https://demo.opencart.com/en-gb/product/desktops/macbook-air?sort=p.price&order=DESC&limit=25
+  - paragraph: MacBook Air is ultrathin, ultraportable, and ultra unlike anything else. But you don’t lose in..
+  - text: $1,202.00
+  - generic: "Ex Tax: $1,000.00"
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - link "MacBook":
+    - /url: https://demo.opencart.com/en-gb/product/desktops/macbook?sort=p.price&order=DESC&limit=25
+    - img "MacBook"
+  - heading "MacBook" [level=4]:
+    - link "MacBook":
+      - /url: https://demo.opencart.com/en-gb/product/desktops/macbook?sort=p.price&order=DESC&limit=25
+  - paragraph: Intel Core 2 Duo processor Powered by an Intel Core 2 Duo processor at speeds up to 2.16GHz, t..
+  - text: $602.00
+  - generic: "Ex Tax: $500.00"
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - link "Palm Treo Pro":
+    - /url: https://demo.opencart.com/en-gb/product/desktops/palm-treo-pro?sort=p.price&order=DESC&limit=25
+    - img "Palm Treo Pro"
+  - heading "Palm Treo Pro" [level=4]:
+    - link "Palm Treo Pro":
+      - /url: https://demo.opencart.com/en-gb/product/desktops/palm-treo-pro?sort=p.price&order=DESC&limit=25
+  - paragraph: Redefine your workday with the Palm Treo Pro smartphone. Perfectly balanced, you can respond to busi..
+  - text: $337.99
+  - generic: "Ex Tax: $279.99"
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - link "Samsung SyncMaster 941BW":
+    - /url: https://demo.opencart.com/en-gb/product/desktops/samsung-syncmaster-941bw?sort=p.price&order=DESC&limit=25
+    - img "Samsung SyncMaster 941BW"
+  - heading "Samsung SyncMaster 941BW" [level=4]:
+    - link "Samsung SyncMaster 941BW":
+      - /url: https://demo.opencart.com/en-gb/product/desktops/samsung-syncmaster-941bw?sort=p.price&order=DESC&limit=25
+  - paragraph: Imagine the advantages of going big without slowing down. The big 19" 941BW monitor combines wi..
+  - text: $242.00
+  - generic: "Ex Tax: $200.00"
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - link "iPhone":
+    - /url: https://demo.opencart.com/en-gb/product/desktops/iphone?sort=p.price&order=DESC&limit=25
+    - img "iPhone"
+  - heading "iPhone" [level=4]:
+    - link "iPhone":
+      - /url: https://demo.opencart.com/en-gb/product/desktops/iphone?sort=p.price&order=DESC&limit=25
+  - paragraph: iPhone is a revolutionary new mobile phone that allows you to make a call by simply tapping a name o..
+  - text: $123.20
+  - generic: "Ex Tax: $101.00"
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - link "Product 8":
+    - /url: https://demo.opencart.com/en-gb/product/desktops/product-8?sort=p.price&order=DESC&limit=25
+    - img "Product 8"
+  - heading "Product 8" [level=4]:
+    - link "Product 8":
+      - /url: https://demo.opencart.com/en-gb/product/desktops/product-8?sort=p.price&order=DESC&limit=25
+  - paragraph: Product 8..
+  - text: $122.00
+  - generic: "Ex Tax: $100.00"
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - link "iPod Classic":
+    - /url: https://demo.opencart.com/en-gb/product/desktops/ipod-classic?sort=p.price&order=DESC&limit=25
+    - img "iPod Classic"
+  - heading "iPod Classic" [level=4]:
+    - link "iPod Classic":
+      - /url: https://demo.opencart.com/en-gb/product/desktops/ipod-classic?sort=p.price&order=DESC&limit=25
+  - paragraph: More room to move. With 80GB or 160GB of storage and up to 40 hours of battery life, the new..
+  - text: $122.00
+  - generic: "Ex Tax: $100.00"
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - link "HTC Touch HD":
+    - /url: https://demo.opencart.com/en-gb/product/desktops/htc-touch-hd?sort=p.price&order=DESC&limit=25
+    - img "HTC Touch HD"
+  - heading "HTC Touch HD" [level=4]:
+    - link "HTC Touch HD":
+      - /url: https://demo.opencart.com/en-gb/product/desktops/htc-touch-hd?sort=p.price&order=DESC&limit=25
+  - paragraph: HTC Touch - in High Definition. Watch music videos and streaming content in awe-inspiring high defin..
+  - text: $122.00
+  - generic: "Ex Tax: $100.00"
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - link "HP LP3065":
+    - /url: https://demo.opencart.com/en-gb/product/desktops/hp-lp3065?sort=p.price&order=DESC&limit=25
+    - img "HP LP3065"
+  - heading "HP LP3065" [level=4]:
+    - link "HP LP3065":
+      - /url: https://demo.opencart.com/en-gb/product/desktops/hp-lp3065?sort=p.price&order=DESC&limit=25
+  - paragraph: Stop your co-workers in their tracks with the stunning new 30-inch diagonal HP LP3065 Flat Panel Mon..
+  - text: $122.00
+  - generic: "Ex Tax: $100.00"
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - link "Apple Cinema 30\"":
+    - /url: https://demo.opencart.com/en-gb/product/desktops/apple-cinema?sort=p.price&order=DESC&limit=25
+    - img "Apple Cinema 30\""
+  - heading "Apple Cinema 30\"" [level=4]:
+    - link "Apple Cinema 30\"":
+      - /url: https://demo.opencart.com/en-gb/product/desktops/apple-cinema?sort=p.price&order=DESC&limit=25
+  - paragraph: The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed speci..
+  - text: $110.00 $122.00
+  - generic: "Ex Tax: $90.00"
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - link "Canon EOS 5D":
+    - /url: https://demo.opencart.com/en-gb/product/desktops/canon-eos-5d?sort=p.price&order=DESC&limit=25
+    - img "Canon EOS 5D"
+  - heading "Canon EOS 5D" [level=4]:
+    - link "Canon EOS 5D":
+      - /url: https://demo.opencart.com/en-gb/product/desktops/canon-eos-5d?sort=p.price&order=DESC&limit=25
+  - paragraph: Canon's press material for the EOS 5D states that it 'defines (a) new D-SLR category', while we're n..
+  - text: $98.00 $122.00
+  - generic: "Ex Tax: $80.00"
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - generic: Showing 1 to 12 of 12 (1 Pages)
+- contentinfo:
+  - heading "Information" [level=5]
+  - list:
+    - link "Terms & Conditions":
+      - /url: https://demo.opencart.com/en-gb/information/terms
+    - link "Delivery Information":
+      - /url: https://demo.opencart.com/en-gb/information/delivery
+    - link "About Us":
+      - /url: https://demo.opencart.com/en-gb/information/about-us
+    - link "Privacy Policy":
+      - /url: https://demo.opencart.com/en-gb/information/privacy
+  - heading "Customer Service" [level=5]
+  - list:
+    - link "Contact Us":
+      - /url: https://demo.opencart.com/en-gb?route=information/contact
+    - link "Returns":
+      - /url: https://demo.opencart.com/en-gb?route=account/returns.add
+    - link "Site Map":
+      - /url: https://demo.opencart.com/en-gb?route=information/sitemap
+  - heading "Extras" [level=5]
+  - list:
+    - link "Brands":
+      - /url: https://demo.opencart.com/en-gb/brands
+    - link "Gift Certificates":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/voucher
+    - link "Affiliate":
+      - /url: https://demo.opencart.com/en-gb?route=account/affiliate
+    - link "Specials":
+      - /url: https://demo.opencart.com/en-gb?route=product/special
+  - heading "My Account" [level=5]
+  - list:
+    - link "My Account":
+      - /url: https://demo.opencart.com/en-gb?route=account/account
+    - link "Order History":
+      - /url: https://demo.opencart.com/en-gb?route=account/order
+    - link "Wish List":
+      - /url: https://demo.opencart.com/en-gb?route=account/wishlist
+    - link "Newsletter":
+      - /url: https://demo.opencart.com/en-gb?route=account/newsletter
+  - separator
+  - paragraph:
+    - text: Powered By
+    - link "OpenCart":
+      - /url: https://www.opencart.com
+    - text: Your Store © 2026

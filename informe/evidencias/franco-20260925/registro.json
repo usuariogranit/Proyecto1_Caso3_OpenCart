@@ -1,0 +1,177 @@
+[
+  {
+    "id": "PRO-APPLE",
+    "time": "2026-09-25T06:03:07.400Z",
+    "url": "https://demo.opencart.com/en-gb/product/apple-cinema",
+    "note": "Reanudación: Radio requerido sin alternativas y errores de campos vacíos; carrito vacío.",
+    "file": "PRO-APPLE_20260925.png"
+  },
+  {
+    "id": "CP-PRO-01_resultado",
+    "time": "2026-09-25T06:03:30.640Z",
+    "url": "https://demo.opencart.com/en-gb/product/canon-eos-5d",
+    "note": "Canon: Select required!, sin agregar; único campo obligatorio omitido.",
+    "file": "CP-PRO-01_resultado_20260925.png"
+  },
+  {
+    "id": "CP-CAT-02_asc",
+    "time": "2026-09-25T06:03:52.723Z",
+    "url": "https://demo.opencart.com/en-gb/catalog/desktops?sort=p.price&order=ASC&limit=25",
+    "note": "12 precios de venta no decrecientes: 98,110,122,122,122,122,123.20,242,337.99,602,1202,1202.",
+    "file": "CP-CAT-02_asc_20260925.png"
+  },
+  {
+    "id": "CP-CAT-02_desc",
+    "time": "2026-09-25T06:03:54.772Z",
+    "url": "https://demo.opencart.com/en-gb/catalog/desktops?sort=p.price&order=DESC&limit=25",
+    "note": "Orden descendente; conservar snapshot completo como respaldo.",
+    "file": "CP-CAT-02_desc_20260925.png"
+  },
+  {
+    "id": "CP-PRO-02_bloqueo",
+    "time": "2026-09-25T06:04:04.193Z",
+    "url": "https://demo.opencart.com/en-gb/product/desktops/product-8",
+    "note": "Product 8: Size obligatorio sin alternativas; Canon tampoco tiene alternativas y Apple carece de Radio.",
+    "file": "CP-PRO-02_bloqueo_20260925.png"
+  },
+  {
+    "id": "CAR-precondicion-HTC",
+    "time": "2026-09-25T06:04:24.734Z",
+    "url": "https://demo.opencart.com/en-gb?route=checkout/cart",
+    "note": "HTC marcado sin stock; no apto para cantidad válida.",
+    "file": "CAR-precondicion-HTC_20260925.png"
+  },
+  {
+    "id": "CP-CAR-01_qty1",
+    "time": "2026-09-25T06:04:57.398Z",
+    "url": "https://demo.opencart.com/en-gb?route=checkout/cart",
+    "note": "iPod Nano 1: unit122 línea122 subtotal100 eco2 VAT20 total122, sin aviso stock.",
+    "file": "CP-CAR-01_qty1_20260925.png"
+  },
+  {
+    "id": "CP-CAR-01_qty2",
+    "time": "2026-09-25T06:05:26.127Z",
+    "url": "https://demo.opencart.com/en-gb?route=checkout/cart",
+    "note": "Comparación tras actualizar a 2.",
+    "file": "CP-CAR-01_qty2_20260925.png"
+  },
+  {
+    "id": "CP-CAR-02_decimal",
+    "time": "2026-09-25T06:05:51.479Z",
+    "url": "https://demo.opencart.com/en-gb?route=checkout/cart",
+    "note": "Entrada1.5; resultado observado en snapshot.",
+    "file": "CP-CAR-02_decimal_20260925.png"
+  },
+  {
+    "id": "CP-CAR-02_negativo",
+    "time": "2026-09-25T06:06:10.018Z",
+    "url": "https://demo.opencart.com/en-gb?route=checkout/cart",
+    "note": "Resultado al enviar -1.",
+    "file": "CP-CAR-02_negativo_20260925.png"
+  },
+  {
+    "id": "CP-CAR-02_cero",
+    "time": "2026-09-25T06:06:46.179Z",
+    "url": "https://demo.opencart.com/en-gb?route=checkout/cart",
+    "note": "Cero retira línea y total cero.",
+    "file": "CP-CAR-02_cero_20260925.png"
+  },
+  {
+    "id": "CP-CUP-02_inexistente",
+    "time": "2026-09-25T06:07:17.946Z",
+    "url": "https://demo.opencart.com/en-gb?route=checkout/cart",
+    "note": "Código inexistente rechazado; total permanece122.",
+    "file": "CP-CUP-02_inexistente_20260925.png"
+  },
+  {
+    "id": "CP-CUP-02_vencido",
+    "time": "2026-09-25T06:07:27.541Z",
+    "url": "https://demo.opencart.com/en-gb?route=checkout/cart",
+    "note": "2222 deshabilitado y vencido; comprobar aviso en snapshot.",
+    "file": "CP-CUP-02_vencido_20260925.png"
+  },
+  {
+    "id": "CP-CUP-02_error-visible",
+    "time": "2026-09-25T06:07:28.168Z",
+    "url": "https://demo.opencart.com/en-gb?route=checkout/cart",
+    "note": "Error de código inválido visible.",
+    "file": "CP-CUP-02_error-visible_20260925.png"
+  },
+  {
+    "id": "CP-CUP-02_vencido-error",
+    "time": "2026-09-25T06:07:36.499Z",
+    "url": "https://demo.opencart.com/en-gb?route=checkout/cart",
+    "note": "Cupón2222 rechazado con aviso; coincide con estado no vigente.",
+    "file": "CP-CUP-02_vencido-error_20260925.png"
+  },
+  {
+    "id": "CP-CHK-01_apellido-vacio",
+    "time": "2026-09-25T06:08:09.558Z",
+    "url": "https://demo.opencart.com/en-gb?route=checkout/checkout",
+    "note": "Apellido vacío identificado; datos ficticios.",
+    "file": "CP-CHK-01_apellido-vacio_20260925.png"
+  },
+  {
+    "id": "CP-CHK-01_sin-pago",
+    "time": "2026-09-25T06:08:21.420Z",
+    "url": "https://demo.opencart.com/en-gb?route=checkout/checkout",
+    "note": "Datos guardados; no hay métodos seleccionables; confirmación bloqueada.",
+    "file": "CP-CHK-01_sin-pago_20260925.png"
+  },
+  {
+    "id": "CP-CAR-02_stockS",
+    "time": "2026-09-25T06:08:50.140Z",
+    "url": "https://demo.opencart.com/en-gb?route=checkout/cart",
+    "note": "S=147: sin marca de insuficiencia.",
+    "file": "CP-CAR-02_stockS_20260925.png"
+  },
+  {
+    "id": "CP-CAR-02_stockSmas1",
+    "time": "2026-09-25T06:09:06.376Z",
+    "url": "https://demo.opencart.com/en-gb?route=checkout/cart",
+    "note": "148 marcado***; stock147.",
+    "file": "CP-CAR-02_stockSmas1_20260925.png"
+  },
+  {
+    "id": "CP-CAR-02_stock-bloquea-checkout",
+    "time": "2026-09-25T06:09:07.597Z",
+    "url": "https://demo.opencart.com/en-gb?route=checkout/cart",
+    "note": "Checkout con148 retorna carrito y aviso.",
+    "file": "CP-CAR-02_stock-bloquea-checkout_20260925.png"
+  },
+  {
+    "id": "CP-CAR-02_texto",
+    "time": "2026-09-25T06:09:17.792Z",
+    "url": "https://demo.opencart.com/en-gb?route=checkout/cart",
+    "note": "abc elimina línea; total cero, no pedido inválido.",
+    "file": "CP-CAR-02_texto_20260925.png"
+  },
+  {
+    "id": "CP-CAR-02_vacio",
+    "time": "2026-09-25T06:10:00.676Z",
+    "url": "https://demo.opencart.com/en-gb?route=checkout/cart",
+    "note": "Vacío normalizado a1; subtotal100 total122.",
+    "file": "CP-CAR-02_vacio_20260925.png"
+  },
+  {
+    "id": "CP-CAT-02_asc_detalle",
+    "time": "2026-09-25T06:23:50.826Z",
+    "url": "https://demo.opencart.com/en-gb/catalog/desktops?sort=p.price&order=ASC&limit=25",
+    "note": "Repetición para captura legible de selector y primeros precios; lista completa enTXT.",
+    "file": "CP-CAT-02_asc_detalle_20260925.png"
+  },
+  {
+    "id": "CP-CAT-02_desc_detalle",
+    "time": "2026-09-25T06:24:02.231Z",
+    "url": "https://demo.opencart.com/en-gb/catalog/desktops?sort=p.price&order=DESC&limit=25",
+    "note": "Selector descendente y primeros productos; respaldoTXTcompleto.",
+    "file": "CP-CAT-02_desc_detalle_20260925.png"
+  },
+  {
+    "id": "CP-PRO-02_bloqueo_detalle",
+    "time": "2026-09-25T06:24:03.509Z",
+    "url": "https://demo.opencart.com/en-gb/product/desktops/product-8",
+    "note": "Size requerido sólo muestra placeholder.",
+    "file": "CP-PRO-02_bloqueo_detalle_20260925.png"
+  }
+]

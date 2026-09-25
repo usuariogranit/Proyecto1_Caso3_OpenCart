@@ -1,0 +1,541 @@
+- navigation:
+  - list:
+    - link "$ ":
+      - /url: "#"
+      - strong: $
+      - generic: 
+  - list:
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=information/contact
+      - generic: 
+    - link " ":
+      - /url: ""
+      - generic: 
+      - generic: 
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=account/wishlist
+      - generic: 
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/cart
+      - generic: 
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/checkout
+      - generic: 
+- banner:
+  - link "Your Store":
+    - /url: https://demo.opencart.com/en-gb?route=common/home
+    - img "Your Store"
+  - textbox "Search"
+  - button "":
+    - generic: 
+  - button " 1 item(s) - $122.00":
+    - generic: 
+    - text: 1 item(s) - $122.00
+  - text:   
+- main:
+  - navigation:
+    - generic: Categories
+    - button "":
+      - generic: 
+  - list:
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=common/home
+      - generic: 
+    - link "Shopping Cart":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/cart
+    - link "Checkout":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/checkout
+  - heading "Checkout" [level=1]
+  - paragraph:
+    - text: If you already have an account with us, please login at the
+    - link "login page":
+      - /url: https://demo.opencart.com/en-gb?route=account/login&redirect=https%3A//demo.opencart.com/en-gb%3Froute%3Dcheckout/checkout
+      - strong: login page
+    - text: .
+  - group "Your Personal Details":
+    - generic: Your Personal Details
+    - radio "Register Account"
+    - generic: Register Account
+    - radio "Guest Checkout" [checked]
+    - generic: Guest Checkout
+    - generic: "* First Name"
+    - textbox "* First Name":
+      - /placeholder: First Name
+      - text: Test
+    - generic: "* Last Name"
+    - textbox "* Last Name":
+      - /placeholder: Last Name
+    - generic: Last Name must be between 1 and 32 characters!
+    - generic: "* E-Mail"
+    - textbox "* E-Mail":
+      - /placeholder: E-Mail
+  - group "Shipping Address":
+    - generic: Shipping Address
+    - generic: Company
+    - textbox "Company"
+    - generic: "* Address 1"
+    - textbox "* Address 1":
+      - /placeholder: Address 1
+      - text: Av. Prueba 123
+    - generic: Address 2
+    - textbox "Address 2"
+    - generic: "* City"
+    - textbox "* City":
+      - /placeholder: City
+      - text: London
+    - generic: "* Post Code"
+    - textbox "* Post Code":
+      - /placeholder: Post Code
+      - text: SW1A 1AA
+    - generic: "* Country"
+    - combobox "* Country":
+      - option "--- Please Select ---"
+      - option "Aaland Islands"
+      - option "Afghanistan"
+      - option "Albania"
+      - option "Algeria"
+      - option "American Samoa"
+      - option "Andorra"
+      - option "Angola"
+      - option "Anguilla"
+      - option "Antarctica"
+      - option "Antigua and Barbuda"
+      - option "Argentina"
+      - option "Armenia"
+      - option "Aruba"
+      - option "Ascension Island (British)"
+      - option "Australia"
+      - option "Austria"
+      - option "Azerbaijan"
+      - option "Bahamas"
+      - option "Bahrain"
+      - option "Bangladesh"
+      - option "Barbados"
+      - option "Belarus"
+      - option "Belgium"
+      - option "Belize"
+      - option "Benin"
+      - option "Bermuda"
+      - option "Bhutan"
+      - option "Bolivia"
+      - option "Bonaire, Sint Eustatius and Saba"
+      - option "Bosnia and Herzegovina"
+      - option "Botswana"
+      - option "Bouvet Island"
+      - option "Brazil"
+      - option "British Indian Ocean Territory"
+      - option "Brunei Darussalam"
+      - option "Bulgaria"
+      - option "Burkina Faso"
+      - option "Burundi"
+      - option "Cambodia"
+      - option "Cameroon"
+      - option "Canada"
+      - option "Canary Islands"
+      - option "Cape Verde"
+      - option "Cayman Islands"
+      - option "Central African Republic"
+      - option "Chad"
+      - option "Chile"
+      - option "China"
+      - option "Christmas Island"
+      - option "Cocos (Keeling) Islands"
+      - option "Colombia"
+      - option "Comoros"
+      - option "Congo"
+      - option "Cook Islands"
+      - option "Costa Rica"
+      - option "Cote D'Ivoire"
+      - option "Croatia"
+      - option "Cuba"
+      - option "Curacao"
+      - option "Cyprus"
+      - option "Czech Republic"
+      - option "Democratic Republic of Congo"
+      - option "Denmark"
+      - option "Djibouti"
+      - option "Dominica"
+      - option "Dominican Republic"
+      - option "East Timor"
+      - option "Ecuador"
+      - option "Egypt"
+      - option "El Salvador"
+      - option "Equatorial Guinea"
+      - option "Eritrea"
+      - option "Estonia"
+      - option "Ethiopia"
+      - option "Falkland Islands (Malvinas)"
+      - option "Faroe Islands"
+      - option "Fiji"
+      - option "Finland"
+      - option "France, Metropolitan"
+      - option "French Guiana"
+      - option "French Polynesia"
+      - option "French Southern Territories"
+      - option "FYROM"
+      - option "Gabon"
+      - option "Gambia"
+      - option "Georgia"
+      - option "Germany"
+      - option "Ghana"
+      - option "Gibraltar"
+      - option "Greece"
+      - option "Greenland"
+      - option "Grenada"
+      - option "Guadeloupe"
+      - option "Guam"
+      - option "Guatemala"
+      - option "Guernsey"
+      - option "Guinea"
+      - option "Guinea-Bissau"
+      - option "Guyana"
+      - option "Haiti"
+      - option "Heard and Mc Donald Islands"
+      - option "Honduras"
+      - option "Hong Kong"
+      - option "Hungary"
+      - option "Iceland"
+      - option "India"
+      - option "Indonesia"
+      - option "Iran (Islamic Republic of)"
+      - option "Iraq"
+      - option "Ireland"
+      - option "Isle of Man"
+      - option "Israel"
+      - option "Italy"
+      - option "Jamaica"
+      - option "Japan"
+      - option "Jersey"
+      - option "Jordan"
+      - option "Kazakhstan"
+      - option "Kenya"
+      - option "Kiribati"
+      - option "Kosovo, Republic of"
+      - option "Kuwait"
+      - option "Kyrgyzstan"
+      - option "Lao People's Democratic Republic"
+      - option "Latvia"
+      - option "Lebanon"
+      - option "Lesotho"
+      - option "Liberia"
+      - option "Libyan Arab Jamahiriya"
+      - option "Liechtenstein"
+      - option "Lithuania"
+      - option "Luxembourg"
+      - option "Macau"
+      - option "Madagascar"
+      - option "Malawi"
+      - option "Malaysia"
+      - option "Maldives"
+      - option "Mali"
+      - option "Malta"
+      - option "Marshall Islands"
+      - option "Martinique"
+      - option "Mauritania"
+      - option "Mauritius"
+      - option "Mayotte"
+      - option "Mexico"
+      - option "Micronesia, Federated States of"
+      - option "Moldova, Republic of"
+      - option "Monaco"
+      - option "Mongolia"
+      - option "Montenegro"
+      - option "Montserrat"
+      - option "Morocco"
+      - option "Mozambique"
+      - option "Myanmar"
+      - option "Namibia"
+      - option "Nauru"
+      - option "Nepal"
+      - option "Netherlands"
+      - option "Netherlands Antilles"
+      - option "New Caledonia"
+      - option "New Zealand"
+      - option "Nicaragua"
+      - option "Niger"
+      - option "Nigeria"
+      - option "Niue"
+      - option "Norfolk Island"
+      - option "North Korea"
+      - option "Northern Mariana Islands"
+      - option "Norway"
+      - option "Oman"
+      - option "Pakistan"
+      - option "Palau"
+      - option "Palestinian Territory, Occupied"
+      - option "Panama"
+      - option "Papua New Guinea"
+      - option "Paraguay"
+      - option "Peru"
+      - option "Philippines"
+      - option "Pitcairn"
+      - option "Poland"
+      - option "Portugal"
+      - option "Puerto Rico"
+      - option "Qatar"
+      - option "Reunion"
+      - option "România"
+      - option "Russian Federation"
+      - option "Rwanda"
+      - option "Saint Kitts and Nevis"
+      - option "Saint Lucia"
+      - option "Saint Vincent and the Grenadines"
+      - option "Samoa"
+      - option "San Marino"
+      - option "Sao Tome and Principe"
+      - option "Saudi Arabia"
+      - option "Senegal"
+      - option "Serbia"
+      - option "Seychelles"
+      - option "Sierra Leone"
+      - option "Singapore"
+      - option "Slovak Republic"
+      - option "Slovenia"
+      - option "Solomon Islands"
+      - option "Somalia"
+      - option "South Africa"
+      - option "South Georgia & South Sandwich Islands"
+      - option "South Korea"
+      - option "South Sudan"
+      - option "Spain"
+      - option "Sri Lanka"
+      - option "St. Barthelemy"
+      - option "St. Helena"
+      - option "St. Martin (French part)"
+      - option "St. Pierre and Miquelon"
+      - option "Sudan"
+      - option "Suriname"
+      - option "Svalbard and Jan Mayen Islands"
+      - option "Swaziland"
+      - option "Sweden"
+      - option "Switzerland"
+      - option "Syrian Arab Republic"
+      - option "Taiwan"
+      - option "Tajikistan"
+      - option "Tanzania, United Republic of"
+      - option "Thailand"
+      - option "Togo"
+      - option "Tokelau"
+      - option "Tonga"
+      - option "Trinidad and Tobago"
+      - option "Tristan da Cunha"
+      - option "Tunisia"
+      - option "Turkey"
+      - option "Turkmenistan"
+      - option "Turks and Caicos Islands"
+      - option "Tuvalu"
+      - option "Uganda"
+      - option "Ukraine"
+      - option "United Arab Emirates"
+      - option "United Kingdom" [selected]
+      - option "United States"
+      - option "United States Minor Outlying Islands"
+      - option "Uruguay"
+      - option "Uzbekistan"
+      - option "Vanuatu"
+      - option "Vatican City State (Holy See)"
+      - option "Venezuela"
+      - option "Viet Nam"
+      - option "Virgin Islands (British)"
+      - option "Virgin Islands (U.S.)"
+      - option "Wallis and Futuna Islands"
+      - option "Western Sahara"
+      - option "Yemen"
+      - option "Zambia"
+      - option "Zimbabwe"
+    - generic: "* Region / State"
+    - combobox "* Region / State":
+      - option "--- Please Select ---"
+      - option "Aberdeen"
+      - option "Aberdeenshire"
+      - option "Anglesey"
+      - option "Angus"
+      - option "Argyll and Bute"
+      - option "Bedfordshire"
+      - option "Berkshire"
+      - option "Blaenau Gwent"
+      - option "Bridgend"
+      - option "Bristol"
+      - option "Buckinghamshire"
+      - option "Caerphilly"
+      - option "Cambridgeshire"
+      - option "Cardiff"
+      - option "Carmarthenshire"
+      - option "Ceredigion"
+      - option "Cheshire"
+      - option "Clackmannanshire"
+      - option "Conwy"
+      - option "Cornwall"
+      - option "County Antrim"
+      - option "County Armagh"
+      - option "County Down"
+      - option "County Fermanagh"
+      - option "County Londonderry"
+      - option "County Tyrone"
+      - option "Cumbria"
+      - option "Denbighshire"
+      - option "Derbyshire"
+      - option "Devon"
+      - option "Dorset"
+      - option "Dumfries and Galloway"
+      - option "Dundee"
+      - option "Durham"
+      - option "East Ayrshire"
+      - option "East Dunbartonshire"
+      - option "East Lothian"
+      - option "East Renfrewshire"
+      - option "East Riding of Yorkshire"
+      - option "East Sussex"
+      - option "Edinburgh"
+      - option "Essex"
+      - option "Falkirk"
+      - option "Fife"
+      - option "Flintshire"
+      - option "Glasgow"
+      - option "Gloucestershire"
+      - option "Greater London" [selected]
+      - option "Greater Manchester"
+      - option "Gwynedd"
+      - option "Hampshire"
+      - option "Herefordshire"
+      - option "Hertfordshire"
+      - option "Highlands"
+      - option "Inverclyde"
+      - option "Isle of Wight"
+      - option "Kent"
+      - option "Lancashire"
+      - option "Leicestershire"
+      - option "Lincolnshire"
+      - option "Merseyside"
+      - option "Merthyr Tydfil"
+      - option "Midlothian"
+      - option "Monmouthshire"
+      - option "Moray"
+      - option "Neath Port Talbot"
+      - option "Newport"
+      - option "Norfolk"
+      - option "North Ayrshire"
+      - option "North Lanarkshire"
+      - option "North Yorkshire"
+      - option "Northamptonshire"
+      - option "Northumberland"
+      - option "Nottinghamshire"
+      - option "Orkney Islands"
+      - option "Oxfordshire"
+      - option "Pembrokeshire"
+      - option "Perth and Kinross"
+      - option "Powys"
+      - option "Renfrewshire"
+      - option "Rhondda Cynon Taff"
+      - option "Rutland"
+      - option "Scottish Borders"
+      - option "Shetland Islands"
+      - option "Shropshire"
+      - option "Somerset"
+      - option "South Ayrshire"
+      - option "South Lanarkshire"
+      - option "South Yorkshire"
+      - option "Staffordshire"
+      - option "Stirling"
+      - option "Suffolk"
+      - option "Surrey"
+      - option "Swansea"
+      - option "Torfaen"
+      - option "Tyne and Wear"
+      - option "Vale of Glamorgan"
+      - option "Warwickshire"
+      - option "West Dunbartonshire"
+      - option "West Lothian"
+      - option "West Midlands"
+      - option "West Sussex"
+      - option "West Yorkshire"
+      - option "Western Isles"
+      - option "Wiltshire"
+      - option "Worcestershire"
+      - option "Wrexham"
+  - generic: "*"
+  - generic: I wish to subscribe to the Your Store newsletter.
+  - checkbox "I wish to subscribe to the Your Store newsletter."
+  - button "Continue"
+  - group "Payment Method":
+    - generic: Payment Method
+    - generic: 
+    - textbox "Choose payment method..."
+    - button "Choose"
+  - strong: Add Comments About Your Order
+  - textbox "Add Comments About Your Order"
+  - table:
+    - rowgroup:
+      - row "Product Name Total":
+        - cell "Product Name"
+        - cell "Total"
+    - rowgroup:
+      - row "1x iPod Nano $122.00":
+        - cell "1x iPod Nano":
+          - text: 1x
+          - link "iPod Nano":
+            - /url: https://demo.opencart.com/en-gb/product/ipod-nano
+        - cell "$122.00"
+    - rowgroup:
+      - row "Sub-Total $100.00":
+        - cell "Sub-Total":
+          - strong: Sub-Total
+        - cell "$100.00"
+      - row "Eco Tax (-2.00) $2.00":
+        - cell "Eco Tax (-2.00)":
+          - strong: Eco Tax (-2.00)
+        - cell "$2.00"
+      - row "VAT (20%) $20.00":
+        - cell "VAT (20%)":
+          - strong: VAT (20%)
+        - cell "$20.00"
+      - row "Total $122.00":
+        - cell "Total":
+          - strong: Total
+        - cell "$122.00"
+  - button "Confirm Order" [disabled]
+- contentinfo:
+  - heading "Information" [level=5]
+  - list:
+    - link "Terms & Conditions":
+      - /url: https://demo.opencart.com/en-gb/information/terms
+    - link "Delivery Information":
+      - /url: https://demo.opencart.com/en-gb/information/delivery
+    - link "About Us":
+      - /url: https://demo.opencart.com/en-gb/information/about-us
+    - link "Privacy Policy":
+      - /url: https://demo.opencart.com/en-gb/information/privacy
+  - heading "Customer Service" [level=5]
+  - list:
+    - link "Contact Us":
+      - /url: https://demo.opencart.com/en-gb?route=information/contact
+    - link "Returns":
+      - /url: https://demo.opencart.com/en-gb?route=account/returns.add
+    - link "Site Map":
+      - /url: https://demo.opencart.com/en-gb?route=information/sitemap
+  - heading "Extras" [level=5]
+  - list:
+    - link "Brands":
+      - /url: https://demo.opencart.com/en-gb/brands
+    - link "Gift Certificates":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/voucher
+    - link "Affiliate":
+      - /url: https://demo.opencart.com/en-gb?route=account/affiliate
+    - link "Specials":
+      - /url: https://demo.opencart.com/en-gb?route=product/special
+  - heading "My Account" [level=5]
+  - list:
+    - link "My Account":
+      - /url: https://demo.opencart.com/en-gb?route=account/account
+    - link "Order History":
+      - /url: https://demo.opencart.com/en-gb?route=account/order
+    - link "Wish List":
+      - /url: https://demo.opencart.com/en-gb?route=account/wishlist
+    - link "Newsletter":
+      - /url: https://demo.opencart.com/en-gb?route=account/newsletter
+  - separator
+  - paragraph:
+    - text: Powered By
+    - link "OpenCart":
+      - /url: https://www.opencart.com
+    - text: Your Store © 2026

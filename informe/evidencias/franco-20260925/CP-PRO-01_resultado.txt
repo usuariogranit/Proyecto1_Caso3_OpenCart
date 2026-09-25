@@ -1,0 +1,140 @@
+- navigation:
+  - list:
+    - link "$ ":
+      - /url: "#"
+      - strong: $
+      - generic: 
+  - list:
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=information/contact
+      - generic: 
+    - link " ":
+      - /url: ""
+      - generic: 
+      - generic: 
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=account/wishlist
+      - generic: 
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/cart
+      - generic: 
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/checkout
+      - generic: 
+- banner:
+  - link "Your Store":
+    - /url: https://demo.opencart.com/en-gb?route=common/home
+    - img "Your Store"
+  - textbox "Search"
+  - button "":
+    - generic: 
+  - button " 0 item(s) - $0.00":
+    - generic: 
+    - text: 0 item(s) - $0.00
+- main:
+  - navigation:
+    - generic: Categories
+    - button "":
+      - generic: 
+  - list:
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=common/home
+      - generic: 
+    - link "Canon EOS 5D":
+      - /url: https://demo.opencart.com/en-gb/product/canon-eos-5d
+  - link "Canon EOS 5D":
+    - /url: https://demo.opencart.com/image/cache/catalog/demo/canon_eos_5d_1-800x800.jpg
+    - img "Canon EOS 5D"
+  - link "Canon EOS 5D":
+    - /url: https://demo.opencart.com/image/cache/catalog/demo/canon_eos_5d_3-800x800.jpg
+    - img "Canon EOS 5D"
+  - link "Canon EOS 5D":
+    - /url: https://demo.opencart.com/image/cache/catalog/demo/canon_eos_5d_2-800x800.jpg
+    - img "Canon EOS 5D"
+  - heading "Canon EOS 5D" [level=1]
+  - list:
+    - text: "Brand:"
+    - link "Canon":
+      - /url: https://demo.opencart.com/en-gb/canon?route=product/manufacturer.info
+    - listitem: "Product Code: Product 3"
+    - listitem: "Reward Points: 200"
+    - listitem: "Availability: 2-3 Days"
+  - list:
+    - listitem: $122.00
+    - heading "$98.00" [level=2]
+    - listitem: "Ex Tax: $80.00"
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - separator
+  - heading "Available Options" [level=3]
+  - generic: "* Select"
+  - combobox "* Select":
+    - option "--- Please Select ---" [selected]
+  - generic: Select required!
+  - generic: Qty
+  - textbox "Qty": "1"
+  - button "Add to Cart"
+  - paragraph:
+    - generic: 
+    - generic: 
+    - generic: 
+    - generic: 
+    - generic: 
+    - link "0 reviews":
+      - /url: ""
+    - text: /
+    - link "Write a review":
+      - /url: ""
+  - tablist:
+    - tab "Description" [selected]
+    - tab "Reviews (0)"
+  - tabpanel:
+    - paragraph: Canon's press material for the EOS 5D states that it 'defines (a) new D-SLR category', while we're not typically too concerned with marketing talk this particular statement is clearly pretty accurate. The EOS 5D is unlike any previous digital SLR in that it combines a full-frame (35 mm sized) high resolution sensor (12.8 megapixels) with a relatively compact body (slightly larger than the EOS 20D, although in your hand it feels noticeably 'chunkier'). The EOS 5D is aimed to slot in between the EOS 20D and the EOS-1D professional digital SLR's, an important difference when compared to the latter is that the EOS 5D doesn't have any environmental seals. While Canon don't specifically refer to the EOS 5D as a 'professional' digital SLR it will have obvious appeal to professionals who want a high quality digital SLR in a body lighter than the EOS-1D. It will also no doubt appeal to current EOS 20D owners (although lets hope they've not bought too many EF-S lenses...) äë
+  - text: "* * *"
+- contentinfo:
+  - heading "Information" [level=5]
+  - list:
+    - link "Terms & Conditions":
+      - /url: https://demo.opencart.com/en-gb/information/terms
+    - link "Delivery Information":
+      - /url: https://demo.opencart.com/en-gb/information/delivery
+    - link "About Us":
+      - /url: https://demo.opencart.com/en-gb/information/about-us
+    - link "Privacy Policy":
+      - /url: https://demo.opencart.com/en-gb/information/privacy
+  - heading "Customer Service" [level=5]
+  - list:
+    - link "Contact Us":
+      - /url: https://demo.opencart.com/en-gb?route=information/contact
+    - link "Returns":
+      - /url: https://demo.opencart.com/en-gb?route=account/returns.add
+    - link "Site Map":
+      - /url: https://demo.opencart.com/en-gb?route=information/sitemap
+  - heading "Extras" [level=5]
+  - list:
+    - link "Brands":
+      - /url: https://demo.opencart.com/en-gb/brands
+    - link "Gift Certificates":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/voucher
+    - link "Affiliate":
+      - /url: https://demo.opencart.com/en-gb?route=account/affiliate
+    - link "Specials":
+      - /url: https://demo.opencart.com/en-gb?route=product/special
+  - heading "My Account" [level=5]
+  - list:
+    - link "My Account":
+      - /url: https://demo.opencart.com/en-gb?route=account/account
+    - link "Order History":
+      - /url: https://demo.opencart.com/en-gb?route=account/order
+    - link "Wish List":
+      - /url: https://demo.opencart.com/en-gb?route=account/wishlist
+    - link "Newsletter":
+      - /url: https://demo.opencart.com/en-gb?route=account/newsletter
+  - separator
+  - paragraph:
+    - text: Powered By
+    - link "OpenCart":
+      - /url: https://www.opencart.com
+    - text: Your Store © 2026

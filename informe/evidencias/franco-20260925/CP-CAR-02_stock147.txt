@@ -1,0 +1,367 @@
+- banner:
+  - link "OpenCart":
+    - /url: https://demo.opencart.com/TlbeVW/index.php?route=common/dashboard&user_token=REDACTADO
+    - img "OpenCart"
+  - text: 
+  - list:
+    - link "":
+      - /url: "#"
+      - generic: 
+    - link "English":
+      - /url: en-gb
+      - img "English"
+    - link "demo demo demo demo ":
+      - /url: "#"
+      - img "demo demo"
+      - text: demo demo
+      - generic: 
+    - text:    
+    - link " Logout":
+      - /url: https://demo.opencart.com/TlbeVW/index.php?route=common/logout&user_token=REDACTADO
+      - generic: 
+      - text: Logout
+- navigation:
+  - generic: 
+  - text: Navigation
+  - list:
+    - link " Dashboard":
+      - /url: https://demo.opencart.com/TlbeVW/index.php?route=common/dashboard&user_token=REDACTADO
+      - generic: 
+      - text: Dashboard
+    - link " Catalog ":
+      - /url: "#collapse-1"
+      - generic: 
+      - text: Catalog 
+    - list:
+      - link "Categories":
+        - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/category&user_token=REDACTADO
+      - link "Products":
+        - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product&user_token=REDACTADO
+      - link "Subscription Plans":
+        - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/subscription_plan&user_token=REDACTADO
+      - link "Filters":
+        - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/filter&user_token=REDACTADO
+      - link "Attributes ":
+        - /url: "#collapse-1-4"
+      - text:  
+      - link "Options":
+        - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/option&user_token=REDACTADO
+      - link "Manufacturers":
+        - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/manufacturer&user_token=REDACTADO
+      - link "Downloads":
+        - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/download&user_token=REDACTADO
+      - link "Reviews":
+        - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/review&user_token=REDACTADO
+      - link "Information":
+        - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/information&user_token=REDACTADO
+    - link " Extensions ":
+      - /url: "#collapse-2"
+      - generic: 
+      - text: Extensions 
+    - text:      
+    - link " Design ":
+      - /url: "#collapse-3"
+      - generic: 
+      - text: Design 
+    - text:     
+    - link " Sales ":
+      - /url: "#collapse-4"
+      - generic: 
+      - text: Sales 
+    - text:       
+    - link " Customers ":
+      - /url: "#collapse-5"
+      - generic: 
+      - text: Customers 
+    - text:     
+    - link " Marketing ":
+      - /url: "#collapse-6"
+      - generic: 
+      - text: Marketing 
+    - text:    
+    - link " System ":
+      - /url: "#collapse-7"
+      - generic: 
+      - text: System 
+    - text:                                   
+    - link " Reports ":
+      - /url: "#collapse-8"
+      - generic: 
+      - text: Reports 
+    - text:   
+  - list:
+    - text: Orders Completed
+    - generic: 0%
+    - progressbar:
+      - generic: 0%
+    - text: Orders Processing
+    - generic: 100%
+    - progressbar:
+      - generic: 100%
+    - text: Other Statuses
+    - generic: 0%
+    - progressbar:
+      - generic: 0%
+- text: 
+- link "+":
+  - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product.form&user_token=REDACTADO
+  - generic: +
+- button "":
+  - generic: 
+- button "":
+  - generic: 
+- heading "Products" [level=1]
+- list:
+  - link "Home":
+    - /url: https://demo.opencart.com/TlbeVW/index.php?route=common/dashboard&user_token=REDACTADO
+  - text: 
+  - link "Products":
+    - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product&user_token=REDACTADO
+- generic: 
+- text: Filter
+- generic: Product Name
+- textbox "Product Name"
+- generic: Model
+- textbox "Model"
+- generic: Price
+- textbox "Price"
+- generic: Quantity
+- textbox "Quantity"
+- generic: Status
+- combobox "Status":
+  - option [selected]
+  - option "Enabled"
+  - option "Disabled"
+- button " Filter":
+  - generic: 
+  - text: Filter
+- generic: 
+- text: Product List
+- table:
+  - rowgroup:
+    - row "Image Product Name  Model Price Quantity Action":
+      - cell:
+        - checkbox
+      - cell "Image"
+      - cell "Product Name ":
+        - link "Product Name ":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product.list&user_token=REDACTADO&sort=pd.name&order=DESC
+      - cell "Model":
+        - link "Model":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product.list&user_token=REDACTADO&sort=p.model&order=DESC
+      - cell "Price":
+        - link "Price":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product.list&user_token=REDACTADO&sort=p.price&order=DESC
+      - cell "Quantity":
+        - link "Quantity":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product.list&user_token=REDACTADO&sort=p.quantity&order=DESC
+      - cell "Action"
+  - rowgroup:
+    - row "Apple Cinema 30\" Apple Cinema 30\" Enabled Product 15 $100.00 $90.00 447  ":
+      - cell:
+        - checkbox
+      - cell "Apple Cinema 30\"":
+        - img "Apple Cinema 30\""
+      - cell "Apple Cinema 30\" Enabled":
+        - text: Apple Cinema 30"
+        - text: Enabled
+      - cell "Product 15"
+      - cell "$100.00 $90.00":
+        - text: $100.00
+        - generic: $90.00
+      - cell "447":
+        - generic: "447"
+      - cell " ":
+        - link "":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product.form&user_token=REDACTADO&product_id=42
+          - generic: 
+        - button "":
+          - generic: 
+        - text: +
+    - row "Canon EOS 5D Canon EOS 5D Enabled Product 3 $100.00 $80.00 0  ":
+      - cell:
+        - checkbox
+      - cell "Canon EOS 5D":
+        - img "Canon EOS 5D"
+      - cell "Canon EOS 5D Enabled":
+        - text: Canon EOS 5D
+        - text: Enabled
+      - cell "Product 3"
+      - cell "$100.00 $80.00":
+        - text: $100.00
+        - generic: $80.00
+      - cell "0":
+        - generic: "0"
+      - cell " ":
+        - link "":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product.form&user_token=REDACTADO&product_id=30
+          - generic: 
+        - button "":
+          - generic: 
+        - text: +
+    - row "HP LP3065 HP LP3065 Enabled Product 21 $100.00 1000  ":
+      - cell:
+        - checkbox
+      - cell "HP LP3065":
+        - img "HP LP3065"
+      - cell "HP LP3065 Enabled":
+        - text: HP LP3065
+        - text: Enabled
+      - cell "Product 21"
+      - cell "$100.00"
+      - cell "1000":
+        - generic: "1000"
+      - cell " ":
+        - link "":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product.form&user_token=REDACTADO&product_id=47
+          - generic: 
+        - button "":
+          - generic: 
+        - text: +
+    - row "HTC Touch HD HTC Touch HD Enabled Product 1 $100.00 0  ":
+      - cell:
+        - checkbox
+      - cell "HTC Touch HD":
+        - img "HTC Touch HD"
+      - cell "HTC Touch HD Enabled":
+        - text: HTC Touch HD
+        - text: Enabled
+      - cell "Product 1"
+      - cell "$100.00"
+      - cell "0":
+        - generic: "0"
+      - cell " ":
+        - link "":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product.form&user_token=REDACTADO&product_id=28
+          - generic: 
+        - button "":
+          - generic: 
+        - text: +
+    - row "iMac iMac Enabled Product 14 $100.00 0  ":
+      - cell:
+        - checkbox
+      - cell "iMac":
+        - img "iMac"
+      - cell "iMac Enabled":
+        - text: iMac
+        - text: Enabled
+      - cell "Product 14"
+      - cell "$100.00"
+      - cell "0":
+        - generic: "0"
+      - cell " ":
+        - link "":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product.form&user_token=REDACTADO&product_id=41
+          - generic: 
+        - button "":
+          - generic: 
+        - text: +
+    - row "iPhone iPhone Enabled product 11 $101.00 0  ":
+      - cell:
+        - checkbox
+      - cell "iPhone":
+        - img "iPhone"
+      - cell "iPhone Enabled":
+        - text: iPhone
+        - text: Enabled
+      - cell "product 11"
+      - cell "$101.00"
+      - cell "0":
+        - generic: "0"
+      - cell " ":
+        - link "":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product.form&user_token=REDACTADO&product_id=40
+          - generic: 
+        - button "":
+          - generic: 
+        - text: +
+    - row "iPod Classic iPod Classic Enabled product 20 $100.00 0  ":
+      - cell:
+        - checkbox
+      - cell "iPod Classic":
+        - img "iPod Classic"
+      - cell "iPod Classic Enabled":
+        - text: iPod Classic
+        - text: Enabled
+      - cell "product 20"
+      - cell "$100.00"
+      - cell "0":
+        - generic: "0"
+      - cell " ":
+        - link "":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product.form&user_token=REDACTADO&product_id=48
+          - generic: 
+        - button "":
+          - generic: 
+        - text: +
+    - row "iPod Nano iPod Nano Enabled Product 9 $100.00 147  ":
+      - cell:
+        - checkbox
+      - cell "iPod Nano":
+        - img "iPod Nano"
+      - cell "iPod Nano Enabled":
+        - text: iPod Nano
+        - text: Enabled
+      - cell "Product 9"
+      - cell "$100.00"
+      - cell "147":
+        - generic: "147"
+      - cell " ":
+        - link "":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product.form&user_token=REDACTADO&product_id=36
+          - generic: 
+        - button "":
+          - generic: 
+        - text: +
+    - row "iPod Shuffle iPod Shuffle Enabled Product 7 $100.00 0  ":
+      - cell:
+        - checkbox
+      - cell "iPod Shuffle":
+        - img "iPod Shuffle"
+      - cell "iPod Shuffle Enabled":
+        - text: iPod Shuffle
+        - text: Enabled
+      - cell "Product 7"
+      - cell "$100.00"
+      - cell "0":
+        - generic: "0"
+      - cell " ":
+        - link "":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product.form&user_token=REDACTADO&product_id=34
+          - generic: 
+        - button "":
+          - generic: 
+        - text: +
+    - row "iPod Touch iPod Touch Enabled Product 5 $100.00 0  ":
+      - cell:
+        - checkbox
+      - cell "iPod Touch":
+        - img "iPod Touch"
+      - cell "iPod Touch Enabled":
+        - text: iPod Touch
+        - text: Enabled
+      - cell "Product 5"
+      - cell "$100.00"
+      - cell "0":
+        - generic: "0"
+      - cell " ":
+        - link "":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product.form&user_token=REDACTADO&product_id=32
+          - generic: 
+        - button "":
+          - generic: 
+        - text: +
+- list:
+  - generic: "1"
+  - link "2":
+    - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product.list&user_token=REDACTADO&page=2
+  - link ">":
+    - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product.list&user_token=REDACTADO&page=2
+  - link ">|":
+    - /url: https://demo.opencart.com/TlbeVW/index.php?route=catalog/product.list&user_token=REDACTADO&page=2
+- generic: Showing 1 to 10 of 19 (2 Pages)
+- contentinfo:
+  - link "OpenCart":
+    - /url: https://www.opencart.com
+  - text: © 2009-2026 All Rights Reserved.
+  - text: Version 4.0.2.3

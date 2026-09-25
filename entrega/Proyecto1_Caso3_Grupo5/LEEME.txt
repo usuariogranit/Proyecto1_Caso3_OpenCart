@@ -1,0 +1,10 @@
+PROYECTO 1 - CASO 3 OPENCART - GRUPO 5
+Entrega: 25 de septiembre de 2026
+
+Archivo a presentar: Proyecto1_Caso3_Grupo5.pdf
+
+El PDF contiene el informe integrado y las evidencias seleccionadas de la ejecución.
+Resultados de prioridad Alta: 3 Pasó, 2 Falló y 9 Bloqueados.
+Los bloqueos están documentados y no se contabilizan como aprobados.
+
+La fuente editable y el conjunto completo de evidencias permanecen en la carpeta principal del proyecto.

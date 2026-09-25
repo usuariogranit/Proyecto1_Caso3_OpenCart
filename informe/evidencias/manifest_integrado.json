@@ -1,0 +1,327 @@
+[
+  {
+    "path": "informe/evidencias/CP-ADM-01/CP-ADM-01_paso03_warning-permiso-modificar-productos_20260924.png",
+    "bytes": 44942,
+    "sha256": "99071f7dbcf3e0a620f94c1f7addc4b0057c23b5e2fc516e6a10234d9e91db1b"
+  },
+  {
+    "path": "informe/evidencias/franco-20260924/CP-PRO-02_paso01_opcion-radio-sin-valores_20260924.png",
+    "bytes": 21065,
+    "sha256": "5d240cc57a63c6f159f33c7815b24b24426dc0d012b6dd58457d19c9f2387821"
+  },
+  {
+    "path": "informe/evidencias/franco-20260924/registro.json",
+    "bytes": 324,
+    "sha256": "5bda246ff549c1e2a0e8c86d6391509ca035f633019cbb7ef56960a1c09788e6"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CAR-precondicion-HTC.txt",
+    "bytes": 5238,
+    "sha256": "e6fe7917bec526c5557fcc26eae135d82a408a24b9a005fedc76b318e0e591ba"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CAR-precondicion-HTC_20260925.png",
+    "bytes": 25403,
+    "sha256": "d9adc4f7755f741cde20b81de82e0b197ac448887e3124faf173386c88066916"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-01_qty1.txt",
+    "bytes": 4860,
+    "sha256": "e08a6226fb9ec03adec2c565c9ac92b4be608aaaf9ea911542902b6caddf7753"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-01_qty1_20260925.png",
+    "bytes": 22076,
+    "sha256": "eaf6f9a9c4ce1ec6a207db2e357beb8ad2d45416bd37d89c2142939b5551356c"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-01_qty2.txt",
+    "bytes": 4949,
+    "sha256": "b67f467704928a555ce2f4cbb5c3654a7ea129f2f91c6141d9d1a8261e5fd8a0"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-01_qty2_20260925.png",
+    "bytes": 28282,
+    "sha256": "28b57ef7a4a61a649e7d29e2089f6d12092efd5c766cf70ab2a89c8e0b89a309"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-02_cero.txt",
+    "bytes": 3988,
+    "sha256": "e3f5ae855b9df71248ad48abb6e741ac0d5d9a2a3404716216bba51400a46d58"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-02_cero_20260925.png",
+    "bytes": 26533,
+    "sha256": "252c56af1350ec0b76d9931dc112bc1680befb83875496c5f44dc8b3980cb2ce"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-02_decimal.txt",
+    "bytes": 4949,
+    "sha256": "3a318f953358dcea64853478300388f93f7265c22b22c0bf41028a561c839ecf"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-02_decimal_20260925.png",
+    "bytes": 28178,
+    "sha256": "7b4265cbb2e97b03c1516c3623acf23c1f9653ac6fde79577dea6914d4317391"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-02_negativo.txt",
+    "bytes": 4028,
+    "sha256": "ebe66009ef5ee6b2108b88d834f7fc8c8b838116fca14388b8e4e0924e38b7c1"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-02_negativo_20260925.png",
+    "bytes": 27242,
+    "sha256": "3140f710f2953ef3e65565428e0a851b546fdf11bfc1f590983716a6812411c5"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-02_stock-bloquea-checkout.txt",
+    "bytes": 5058,
+    "sha256": "b59c37301845c9880266216ff57738c6a816d60b75e8c59dc86a4d9eb74c3f28"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-02_stock-bloquea-checkout_20260925.png",
+    "bytes": 25861,
+    "sha256": "fdb5f242e25e94fd37599a6e65466b8c698d9a38c9054095994da002a3aeac91"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-02_stock147.txt",
+    "bytes": 12123,
+    "sha256": "b90a9b747f5a2a1cd073a5c2141b7c1135286937b78d249701d15574527735a3"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-02_stock147_20260925.png",
+    "bytes": 70367,
+    "sha256": "38f260456ee3207ef8ec90b3f3022ac10ead3da9a7397429b77acb59392b3019"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-02_stockS.txt",
+    "bytes": 4904,
+    "sha256": "9b0417d548987420910ce533cf28bad9a70d03a31b9ab67d71895eebcd275b43"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-02_stockS_20260925.png",
+    "bytes": 28195,
+    "sha256": "6ddb400b7a147a5da7ac97a251db50a52fe5c298ca35f62a0d3d87a7e36e9aad"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-02_stockSmas1.txt",
+    "bytes": 4936,
+    "sha256": "170765ad887e61f0070462647c0787524ab0cbcdffb6c308fcdde18dbb94f61f"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-02_stockSmas1_20260925.png",
+    "bytes": 28228,
+    "sha256": "edc9c0150c03a360c9e92bbe42d441a2f17283fd2ab207789b7a3e0ba08164b9"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-02_texto.txt",
+    "bytes": 3988,
+    "sha256": "e3f5ae855b9df71248ad48abb6e741ac0d5d9a2a3404716216bba51400a46d58"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-02_texto_20260925.png",
+    "bytes": 25775,
+    "sha256": "aeea79969637a5b7e37a4377f4237f7baa930a4f0772bf3fad5f62227f1075cf"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-02_vacio.txt",
+    "bytes": 4860,
+    "sha256": "e08a6226fb9ec03adec2c565c9ac92b4be608aaaf9ea911542902b6caddf7753"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAR-02_vacio_20260925.png",
+    "bytes": 27515,
+    "sha256": "fe4f47c34f869cd97656262be93771c2f3b0e2e5d9f90340066620df3de62d08"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAT-02_asc.txt",
+    "bytes": 11154,
+    "sha256": "078116023c46eb8fb93e3a60f34b9941558a0575fa58065ee17aa4f7a0b1a697"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAT-02_asc_20260925.png",
+    "bytes": 19185,
+    "sha256": "dfde20b2e8fa17b753821df3c1180576e4da16e1b7c26c60165020694643a2c5"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAT-02_asc_detalle.txt",
+    "bytes": 11163,
+    "sha256": "cb45b3451a45f3a841134ad5d6c9f95740fa1b09800eedcfc12d136e4b14c3b5"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAT-02_asc_detalle_20260925.png",
+    "bytes": 19199,
+    "sha256": "691aaca33dba3f2a7a38158f64a09babef1433d8a4835d7d7f6801306a7e0c0b"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAT-02_desc.txt",
+    "bytes": 11181,
+    "sha256": "436802a85b8698e35271eb1ab32a4347196f3cc0af65ba9431822c684fd94a5e"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAT-02_desc_20260925.png",
+    "bytes": 19185,
+    "sha256": "dfde20b2e8fa17b753821df3c1180576e4da16e1b7c26c60165020694643a2c5"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAT-02_desc_detalle.txt",
+    "bytes": 11190,
+    "sha256": "99f4e1982a42e06be7fb9168da0d312770832f8a03a3886c76740d0ec955fe5f"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CAT-02_desc_detalle_20260925.png",
+    "bytes": 18045,
+    "sha256": "05e5fbb1edfa47656a31c92fb1fa940fb1bc5277995c37aca9a4957c84d2221e"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CHK-01_apellido-vacio.txt",
+    "bytes": 16368,
+    "sha256": "758a91bbda3972f28224dd5940aef67945b7265c0e0c60cd427c0630dfcfa4a5"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CHK-01_apellido-vacio_20260925.png",
+    "bytes": 16133,
+    "sha256": "1bf397033826dc4baba793c66cc66a2e2b3cdd574148b9c3dec2654cb944b8f2"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CHK-01_sin-pago.txt",
+    "bytes": 16508,
+    "sha256": "6b123a1ae438eeb3ebfb8f2cf4a7b32b83eadd78af06e63d9fcc0e3463c19d15"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CHK-01_sin-pago_20260925.png",
+    "bytes": 17819,
+    "sha256": "749f534d537c16d01dfd82b8d317293f09b62bdca5e66be1e84930d85b000da5"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CUP-01_admin.txt",
+    "bytes": 6178,
+    "sha256": "b4a3e4b207876f7254bfe885e8f9ce96592e827fdc1cc16d060180d6d80fd584"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CUP-01_cupones-no-vigentes_20260925.png",
+    "bytes": 60584,
+    "sha256": "1df7dcdc0e0c0ba9cbaae8ff4e046f67037d4db47ad0754b41f828621684101e"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CUP-02_error-visible.txt",
+    "bytes": 5098,
+    "sha256": "e71b4dc6575b952a3e1437dc52e462ee1f874749dfcdc50685fb52f37a3f5bc6"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CUP-02_error-visible_20260925.png",
+    "bytes": 22348,
+    "sha256": "d6549511a3c3c27ab6f701da1287a398ce7d3743d84c5f814e90fc4ee64bc80d"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CUP-02_inexistente.txt",
+    "bytes": 4993,
+    "sha256": "593d727180fa50995ad6293700d5cd7bb921abe80cc61ec004906baf56e8be49"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CUP-02_inexistente_20260925.png",
+    "bytes": 19147,
+    "sha256": "ffacd21bdd3e409f7db4e2271ee838b98f6fe9f1a17593c056ea0d9a161c773b"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CUP-02_vencido-error.txt",
+    "bytes": 5083,
+    "sha256": "dd4c8a1c2f984fa89fa0acf928cd60889a2e20956afe08e14c548b70cfd16744"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CUP-02_vencido-error_20260925.png",
+    "bytes": 21226,
+    "sha256": "7f225c15f8b06bf7c284d8a6946b668a5a2e7a264698b9d6e051e08330e4e298"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CUP-02_vencido.txt",
+    "bytes": 4978,
+    "sha256": "67998de8ad8c577ea056a198d2478d83fed4b840e58d44f901b3572c52ea1263"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-CUP-02_vencido_20260925.png",
+    "bytes": 20792,
+    "sha256": "67484cd33dcda3840dd252092c2661707eed46bd57bce7808871342e5eedd561"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-PRO-01_resultado.txt",
+    "bytes": 5380,
+    "sha256": "b237efe356ac173891247c76a1075254448311313b7ab88b2527505432244059"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-PRO-01_resultado_20260925.png",
+    "bytes": 26498,
+    "sha256": "1f8dfb46f479b114ed5717211e8a6d13ccdc843779593db5662ddf1cd000667e"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-PRO-02_bloqueo.txt",
+    "bytes": 3856,
+    "sha256": "a3c4fe8d9e5e41397ea067276cac389ae7f9f4c4c0b39f01387a3450725c441b"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-PRO-02_bloqueo_20260925.png",
+    "bytes": 20670,
+    "sha256": "bcc372d936b63ae04ef0a5ee8f0a00c0ca8dc46b74ed310ea7650ee464a7cc01"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-PRO-02_bloqueo_detalle.txt",
+    "bytes": 3856,
+    "sha256": "a3c4fe8d9e5e41397ea067276cac389ae7f9f4c4c0b39f01387a3450725c441b"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/CP-PRO-02_bloqueo_detalle_20260925.png",
+    "bytes": 13424,
+    "sha256": "39de1b040b6e2893d769b6559706ab2c7ba83005dd4b01e53a3468b7074e3bc2"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/PRO-APPLE.txt",
+    "bytes": 14923,
+    "sha256": "07b686e75dcd620b70827f7459d3b90d88473fbeaeecaff644e2db5b1f422999"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/PRO-APPLE_20260925.png",
+    "bytes": 20054,
+    "sha256": "9258d5b943729b2cf6c807f8506c78871cd1b590378bac0387ffbc1c02217295"
+  },
+  {
+    "path": "informe/evidencias/franco-20260925/registro.json",
+    "bytes": 6784,
+    "sha256": "32596beedbe16209df3bb44a700634508817db29c99434757d936f9e847a8b2b"
+  },
+  {
+    "path": "informe/evidencias/gestion-20260924/manifest.json",
+    "bytes": 1380,
+    "sha256": "547954c74bdea400b836600da84357037846f00a21caa55681698b6ae13fb5aa"
+  },
+  {
+    "path": "informe/evidencias/gestion-20260924/OC-01_metodos-pago.jpg",
+    "bytes": 116232,
+    "sha256": "cfcf7073929bbf60fbb04082799197601abe4dd96b844211827dbb14e94f5c81"
+  },
+  {
+    "path": "informe/evidencias/gestion-20260924/OC-02_cod-todas-zonas.jpg",
+    "bytes": 93364,
+    "sha256": "3870039a31e5f4115701d43ffd192347b1a7326f6fb34ca43af0879e982dc896"
+  },
+  {
+    "path": "informe/evidencias/gestion-20260924/OC-03_stock-configurado.jpg",
+    "bytes": 266682,
+    "sha256": "eb711e095df952287872e7c699a0402ec670fb3247c85659850c706215405be4"
+  },
+  {
+    "path": "informe/evidencias/gestion-20260924/OC-04_carrito-importes.jpg",
+    "bytes": 125259,
+    "sha256": "412176eb23f379c0715ee32d7059be99201b1205b0d389ceb1528071af850685"
+  },
+  {
+    "path": "informe/evidencias/gestion-20260924/OC-05_checkout-sin-pago.jpg",
+    "bytes": 134384,
+    "sha256": "b84a77c41442a2e3be9178269a26ba029518f48f738923d61bb049cf3fa11d66"
+  },
+  {
+    "path": "informe/evidencias/gestion-20260924/QASE-01_estado-inicial.jpg",
+    "bytes": 51281,
+    "sha256": "73c80e2e5eb464531cf89361b715e1f21ca2e5dc11a4027a555b040da93dddad"
+  }
+]

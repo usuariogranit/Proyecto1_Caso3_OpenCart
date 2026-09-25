@@ -1,0 +1,350 @@
+- navigation:
+  - list:
+    - link "$ ":
+      - /url: "#"
+      - strong: $
+      - generic: 
+  - list:
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=information/contact
+      - generic: 
+    - link " ":
+      - /url: ""
+      - generic: 
+      - generic: 
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=account/wishlist
+      - generic: 
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/cart
+      - generic: 
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/checkout
+      - generic: 
+- banner:
+  - link "Your Store":
+    - /url: https://demo.opencart.com/en-gb?route=common/home
+    - img "Your Store"
+  - textbox "Search"
+  - button "":
+    - generic: 
+  - button " 0 item(s) - $0.00":
+    - generic: 
+    - text: 0 item(s) - $0.00
+- main:
+  - navigation:
+    - generic: Categories
+    - button "":
+      - generic: 
+  - list:
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=common/home
+      - generic: 
+    - link "Apple Cinema 30\"":
+      - /url: https://demo.opencart.com/en-gb/product/apple-cinema
+  - link "Apple Cinema 30\"":
+    - /url: https://demo.opencart.com/image/cache/catalog/demo/apple_cinema_30-800x800.jpg
+    - img "Apple Cinema 30\""
+  - link "Apple Cinema 30\"":
+    - /url: https://demo.opencart.com/image/cache/catalog/demo/canon_eos_5d_2-800x800.jpg
+    - img "Apple Cinema 30\""
+  - link "Apple Cinema 30\"":
+    - /url: https://demo.opencart.com/image/cache/catalog/demo/canon_eos_5d_1-800x800.jpg
+    - img "Apple Cinema 30\""
+  - link "Apple Cinema 30\"":
+    - /url: https://demo.opencart.com/image/cache/catalog/demo/compaq_presario-800x800.jpg
+    - img "Apple Cinema 30\""
+  - link "Apple Cinema 30\"":
+    - /url: https://demo.opencart.com/image/cache/catalog/demo/hp_1-800x800.jpg
+    - img "Apple Cinema 30\""
+  - link "Apple Cinema 30\"":
+    - /url: https://demo.opencart.com/image/cache/catalog/demo/canon_logo-800x800.jpg
+    - img "Apple Cinema 30\""
+  - heading "Apple Cinema 30\"" [level=1]
+  - list:
+    - text: "Brand:"
+    - link "Apple":
+      - /url: https://demo.opencart.com/en-gb/apple?route=product/manufacturer.info
+    - listitem: "Product Code: Product 15"
+    - listitem: "Reward Points: 100"
+    - listitem: "Availability: In Stock"
+  - list:
+    - listitem: $122.00
+    - heading "$110.00" [level=2]
+    - listitem: "Ex Tax: $90.00"
+    - listitem: "Price in reward points: 400"
+    - separator
+    - listitem: 10 or more $107.60
+    - listitem: 20 or more $94.40
+    - listitem: 30 or more $81.20
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - separator
+  - heading "Available Options" [level=3]
+  - generic: "* Radio"
+  - generic: Radio required!
+  - generic: "* Checkbox"
+  - checkbox "Checkbox 3 (+$38.00)"
+  - generic: Checkbox 3 (+$38.00)
+  - checkbox "Checkbox 4 (+$50.00)"
+  - generic: Checkbox 4 (+$50.00)
+  - generic: Checkbox required!
+  - generic: "* Text"
+  - textbox "* Text":
+    - /placeholder: Text
+    - text: test
+  - generic: "* Select"
+  - combobox "* Select":
+    - option "--- Please Select ---" [selected]
+    - option "Blue (+$5.60)"
+    - option "Green (+$3.20)"
+    - option "Yellow (+$4.40)"
+  - generic: Select required!
+  - generic: "* Textarea"
+  - textbox "* Textarea":
+    - /placeholder: Textarea
+  - generic: Textarea required!
+  - generic: "* File"
+  - button "* File":
+    - generic: 
+    - text: Upload File
+  - generic: File required!
+  - generic: "* Date"
+  - textbox "* Date": 2011-02-20
+  - generic: 
+  - generic: "* Time"
+  - textbox "* Time": 22:25
+  - generic: 
+  - generic: "* Date & Time"
+  - textbox "* Date & Time": 2011-02-20 22:25
+  - generic: 
+  - generic: Qty
+  - textbox "Qty": "2"
+  - button "Add to Cart"
+  - generic: 
+  - text: This product has a minimum quantity of 2
+  - paragraph:
+    - generic: 
+    - generic: 
+    - generic: 
+    - generic: 
+    - generic: 
+    - link "0 reviews":
+      - /url: ""
+    - text: /
+    - link "Write a review":
+      - /url: ""
+  - tablist:
+    - tab "Description" [selected]
+    - tab "Specification"
+    - tab "Reviews (0)"
+  - tabpanel:
+    - paragraph:
+      - generic: The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed specifically for the creative professional, this display provides more space for easier access to all the tools and palettes needed to edit, format and composite your work. Combine this display with a Mac Pro, MacBook Pro, or PowerMac G5 and there's no limit to what you can achieve.
+      - generic: The Cinema HD features an active-matrix liquid crystal display that produces flicker-free images that deliver twice the brightness, twice the sharpness and twice the contrast ratio of a typical CRT display. Unlike other flat panels, it's designed with a pure digital interface to deliver distortion-free images that never need adjusting. With over 4 million digital pixels, the display is uniquely suited for scientific and technical applications such as visualizing molecular structures or analyzing geological data.
+      - generic: "Offering accurate, brilliant color performance, the Cinema HD delivers up to 16.7 million colors across a wide gamut allowing you to see subtle nuances between colors from soft pastels to rich jewel tones. A wide viewing angle ensures uniform color from edge to edge. Apple's ColorSync technology allows you to create custom profiles to maintain consistent color onscreen and in print. The result: You can confidently use this display in all your color-critical applications."
+      - generic: Housed in a new aluminum design, the display has a very thin bezel that enhances visual accuracy. Each display features two FireWire 400 ports and two USB 2.0 ports, making attachment of desktop peripherals, such as iSight, iPod, digital and still cameras, hard drives, printers and scanners, even more accessible and convenient. Taking advantage of the much thinner and lighter footprint of an LCD, the new displays support the VESA (Video Electronics Standards Association) mounting interface standard. Customers with the optional Cinema Display VESA Mount Adapter kit gain the flexibility to mount their display in locations most appropriate for their work environment.
+      - generic: The Cinema HD features a single cable design with elegant breakout for the USB 2.0, FireWire 400 and a pure digital connection using the industry standard Digital Video Interface (DVI) interface. The DVI connection allows for a direct pure-digital connection.
+    - heading "Features:" [level=3]
+    - paragraph: Unrivaled display performance
+    - list:
+      - listitem: 30-inch (viewable) active-matrix liquid crystal display provides breathtaking image quality and vivid, richly saturated color.
+      - listitem: Support for 2560-by-1600 pixel resolution for display of high definition still and video imagery.
+      - listitem: Wide-format design for simultaneous display of two full pages of text and graphics.
+      - listitem: Industry standard DVI connector for direct attachment to Mac- and Windows-based desktops and notebooks
+      - listitem: Incredibly wide (170 degree) horizontal and vertical viewing angle for maximum visibility and color performance.
+      - listitem: Lightning-fast pixel response for full-motion digital video playback.
+      - listitem: Support for 16.7 million saturated colors, for use in all graphics-intensive applications.
+    - paragraph: Simple setup and operation
+    - list:
+      - listitem: Single cable with elegant breakout for connection to DVI, USB and FireWire ports
+      - listitem: Built-in two-port USB 2.0 hub for easy connection of desktop peripheral devices.
+      - listitem: Two FireWire 400 ports to support iSight and other desktop peripherals
+    - paragraph: Sleek, elegant design
+    - list:
+      - listitem: Huge virtual workspace, very small footprint.
+      - listitem: Narrow Bezel design to minimize visual impact of using dual displays
+      - listitem: Unique hinge design for effortless adjustment
+      - listitem: Support for VESA mounting solutions (Apple Cinema Display VESA Mount Adapter sold separately)
+    - heading "Technical specifications" [level=3]
+    - paragraph: Screen size (diagonal viewable image size)
+    - list:
+      - listitem: "Apple Cinema HD Display: 30 inches (29.7-inch viewable)"
+    - paragraph: Screen type
+    - list:
+      - listitem: Thin film transistor (TFT) active-matrix liquid crystal display (AMLCD)
+    - paragraph: Resolutions
+    - list:
+      - listitem: 2560 x 1600 pixels (optimum resolution)
+      - listitem: 2048 x 1280
+      - listitem: 1920 x 1200
+      - listitem: 1280 x 800
+      - listitem: 1024 x 640
+    - paragraph: Display colors (maximum)
+    - list:
+      - listitem: 16.7 million
+    - paragraph: Viewing angle (typical)
+    - list:
+      - listitem: 170° horizontal; 170° vertical
+    - paragraph: Brightness (typical)
+    - list:
+      - listitem: "30-inch Cinema HD Display: 400 cd/m2"
+    - paragraph: Contrast ratio (typical)
+    - list:
+      - listitem: 700:1
+    - paragraph: Response time (typical)
+    - list:
+      - listitem: 16 ms
+    - paragraph: Pixel pitch
+    - list:
+      - listitem: "30-inch Cinema HD Display: 0.250 mm"
+    - paragraph: Screen treatment
+    - list:
+      - listitem: Antiglare hardcoat
+    - paragraph: User controls (hardware and software)
+    - list:
+      - listitem: Display Power,
+      - listitem: System sleep, wake
+      - listitem: Brightness
+      - listitem: Monitor tilt
+    - paragraph:
+      - text: Connectors and cables
+      - text: Cable
+    - list:
+      - listitem: DVI (Digital Visual Interface)
+      - listitem: FireWire 400
+      - listitem: USB 2.0
+      - listitem: DC power (24 V)
+    - paragraph: Connectors
+    - list:
+      - listitem: Two-port, self-powered USB 2.0 hub
+      - listitem: Two FireWire 400 ports
+      - listitem: Kensington security port
+    - paragraph:
+      - text: VESA mount adapter
+      - text: Requires optional Cinema Display VESA Mount Adapter (M9649G/A)
+    - list:
+      - listitem: Compatible with VESA FDMI (MIS-D, 100, C) compliant mounting solutions
+    - paragraph: Electrical requirements
+    - list:
+      - listitem: "Input voltage: 100-240 VAC 50-60Hz"
+      - listitem: "Maximum power when operating: 150W"
+      - listitem: "Energy saver mode: 3W or less"
+    - paragraph: Environmental requirements
+    - list:
+      - listitem: "Operating temperature: 50° to 95° F (10° to 35° C)"
+      - listitem: "Storage temperature: -40° to 116° F (-40° to 47° C)"
+      - listitem: "Operating humidity: 20% to 80% noncondensing"
+      - listitem: "Maximum operating altitude: 10,000 feet"
+    - paragraph: Agency approvals
+    - list:
+      - listitem: FCC Part 15 Class B
+      - listitem: EN55022 Class B
+      - listitem: EN55024
+      - listitem: VCCI Class B
+      - listitem: AS/NZS 3548 Class B
+      - listitem: CNS 13438 Class B
+      - listitem: ICES-003 Class B
+      - listitem: ISO 13406 part 2
+      - listitem: MPR II
+      - listitem: IEC 60950
+      - listitem: UL 60950
+      - listitem: CSA 60950
+      - listitem: EN60950
+      - listitem: ENERGY STAR
+      - listitem: TCO '03
+    - paragraph:
+      - text: Size and weight
+      - text: 30-inch Apple Cinema HD Display
+    - list:
+      - listitem: "Height: 21.3 inches (54.3 cm)"
+      - listitem: "Width: 27.2 inches (68.8 cm)"
+      - listitem: "Depth: 8.46 inches (21.5 cm)"
+      - listitem: "Weight: 27.5 pounds (12.5 kg)"
+    - paragraph: System Requirements
+    - list:
+      - listitem: Mac Pro, all graphic options
+      - listitem: MacBook Pro
+      - listitem: Power Mac G5 (PCI-X) with ATI Radeon 9650 or better or NVIDIA GeForce 6800 GT DDL or better
+      - listitem: Power Mac G5 (PCI Express), all graphics options
+      - listitem: PowerBook G4 with dual-link DVI support
+      - listitem: Windows PC and graphics card that supports DVI ports with dual-link digital bandwidth and VESA DDC standard for plug-and-play setup
+  - text: "* * *"
+  - heading "Related Products" [level=3]
+  - link "iPhone":
+    - /url: https://demo.opencart.com/en-gb/product/iphone
+    - img "iPhone"
+  - heading "iPhone" [level=4]:
+    - link "iPhone":
+      - /url: https://demo.opencart.com/en-gb/product/iphone
+  - paragraph: iPhone is a revolutionary new mobile phone that allows you to make a call by simply tapping a name o..
+  - text: $123.20
+  - generic: "Ex Tax: $101.00"
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - link "iMac":
+    - /url: https://demo.opencart.com/en-gb/product/imac
+    - img "iMac"
+  - heading "iMac" [level=4]:
+    - link "iMac":
+      - /url: https://demo.opencart.com/en-gb/product/imac
+  - paragraph: Just when you thought iMac had everything, now there´s even more. More powerful Intel Core 2 Duo pro..
+  - text: $122.00
+  - generic: "Ex Tax: $100.00"
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+- contentinfo:
+  - heading "Information" [level=5]
+  - list:
+    - link "Terms & Conditions":
+      - /url: https://demo.opencart.com/en-gb/information/terms
+    - link "Delivery Information":
+      - /url: https://demo.opencart.com/en-gb/information/delivery
+    - link "About Us":
+      - /url: https://demo.opencart.com/en-gb/information/about-us
+    - link "Privacy Policy":
+      - /url: https://demo.opencart.com/en-gb/information/privacy
+  - heading "Customer Service" [level=5]
+  - list:
+    - link "Contact Us":
+      - /url: https://demo.opencart.com/en-gb?route=information/contact
+    - link "Returns":
+      - /url: https://demo.opencart.com/en-gb?route=account/returns.add
+    - link "Site Map":
+      - /url: https://demo.opencart.com/en-gb?route=information/sitemap
+  - heading "Extras" [level=5]
+  - list:
+    - link "Brands":
+      - /url: https://demo.opencart.com/en-gb/brands
+    - link "Gift Certificates":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/voucher
+    - link "Affiliate":
+      - /url: https://demo.opencart.com/en-gb?route=account/affiliate
+    - link "Specials":
+      - /url: https://demo.opencart.com/en-gb?route=product/special
+  - heading "My Account" [level=5]
+  - list:
+    - link "My Account":
+      - /url: https://demo.opencart.com/en-gb?route=account/account
+    - link "Order History":
+      - /url: https://demo.opencart.com/en-gb?route=account/order
+    - link "Wish List":
+      - /url: https://demo.opencart.com/en-gb?route=account/wishlist
+    - link "Newsletter":
+      - /url: https://demo.opencart.com/en-gb?route=account/newsletter
+  - separator
+  - paragraph:
+    - text: Powered By
+    - link "OpenCart":
+      - /url: https://www.opencart.com
+    - text: Your Store © 2026

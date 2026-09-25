@@ -1,103 +1,95 @@
-# REPORTE DE HALLAZGOS Y DEFECTOS — Bloque Granit
-Nomenclatura aplicada: **[Módulo / Funcionalidad] + [Qué falla] + [Bajo qué condición]**
-Severidad = impacto técnico/funcional evaluado por QA · Prioridad = urgencia de atención definida por negocio (Product Owner). Son **dos ejes independientes** y por eso van en campos separados.
-Escala declarada por el equipo: **Crítica · Alta · Media · Baja**. El CTFL no impone una escala: cada organización define la suya, y lo esencial es usar la misma escala con el mismo significado en todos los defectos.
-Trazabilidad: **Requisito ↔ caso ↔ ejecución ↔ defecto**; la condición de prueba (CT) se conserva como paso intermedio del análisis.
+# 4.5 Hallazgos relevantes
 
-**Ciclo de vida del defecto aplicado:** Nuevo → En análisis → Asignado → En corrección → **Listo para reprueba** → Cerrado.
-Ramas desde «En análisis»: **Rechazado · Duplicado · Diferido**. Rama desde «Listo para reprueba»: **Reabierto → En corrección**.
-«Listo para reprueba» dispara la **prueba de confirmación** (se repite el caso que falló); la **regresión** verifica que la corrección no rompa otra cosa.
+Severidad estima impacto; prioridad propone urgencia de atención, sin atribuir decisión a un Product Owner no consultado. Defecto confirmado aquí significa comportamiento observable contrario al oráculo, no causa de código demostrada. Estado de DEF-01: abierto/reproducido. DEF-04: abierto, en análisis de causa/configuración. Los demás son observaciones o confirmaciones, no errores de código inventados.
 
----
-## DEF-01 · [Carrito y resumen de checkout] El total de línea difiere de precio unitario × cantidad, mostrando $242.00 en lugar de $244.00 para 2 unidades
-- **Trazabilidad:** RF CAR 03 / RF CHK 05 / RF CON 02 ↔ CP-CHK-01 ↔ ejecución del 24-09-2026 (`04_ejecucion/EJECUCION_GRANIT_20260924.md`) ↔ DEF-01 · condición de prueba intermedia: CT-CHK-05
-- **Pasos para reproducir:** 1) Agregar iPod Nano al carrito. 2) Fijar cantidad 2. 3) Abrir Shopping Cart. 4) Continuar a Checkout y observar el resumen.
-- **Resultado esperado:** El total de línea es coherente con precio unitario × cantidad y con el total general.
-- **Resultado obtenido:** Mini-carrito "iPod Nano x 2 — $244.00"; tabla del carrito "Unit Price $122.00 / Total $242.00"; resumen de checkout "2x iPod Nano $242.00"; Total general "$244.00". Desglose: Sub-Total $200.00 + Eco Tax (-2.00) $4.00 + VAT (20%) $40.00 = $244.00. La diferencia es compatible con aplicar Eco Tax una sola vez; es una hipótesis pendiente de confirmar.
-- **Severidad:** Alta (dos importes contradictorios para la misma compra, en la misma pantalla, arrastrados hasta el resumen del pedido)
-- **Prioridad:** Alta (afecta la confianza en el monto a pagar y el margen del negocio)
-- **Evidencia:** `evidencias/CP-CHK-01/` — captura del resumen de checkout con ambas cifras visibles
-- **Estado:** Nuevo
-- **Fecha:** 24-09-2026
+## DEF-01 - Total de línea inconsistente al aumentar cantidad
 
-## DEF-02 · [Ficha de producto y carrito] Un producto publicado como "In Stock" es rechazado por el control de inventario al llegar al carrito y bloquea el checkout
-- **Trazabilidad:** RF PRO 01 / RF PRO 05 / RF ADM 03 / RF CHK 01 ↔ CP-CHK-01 ↔ ejecución del 24-09-2026 (`04_ejecucion/EJECUCION_GRANIT_20260924.md`) ↔ DEF-02 · condición de prueba intermedia: CT-ADM-03
-- **Pasos para reproducir:** 1) Abrir HTC Touch HD (product_id 28); la ficha indica "Availability: In Stock". 2) Agregar al carrito. 3) Abrir Shopping Cart. 4) Pulsar Checkout.
-- **Resultado esperado:** Un producto publicado como disponible puede comprarse, o bien la ficha informa la indisponibilidad antes de agregarlo.
-- **Resultado obtenido:** El carrito marca el producto con `***` y muestra "Products marked with *** are not available in the desired quantity or not in stock!". El intento de checkout devuelve al carrito. El mismo comportamiento se reprodujo con iPod Touch (32).
-- **Severidad:** Alta (inconsistencia entre disponibilidad publicada e inventario real; la validación se ejecuta tarde y bloquea la venta)
-- **Prioridad:** Alta (es exactamente la queja de negocio que originó el caso: clientes que compran productos sin stock real)
-- **Evidencia:** `evidencias/CP-CHK-01/`
-- **Estado:** Nuevo
-- **Fecha:** 24-09-2026
+Clasificación: Defecto observable reproducido; causa raíz no confirmada. Severidad: Alta. Prioridad propuesta: Alta.
 
-## DEF-03 · [Checkout] El botón "Confirm Order" no entrega retroalimentación al usuario cuando no existe método de pago disponible
-- **Trazabilidad:** RF CHK 04 / RF CON 01 ↔ CP-CON-01 ↔ ejecución del 24-09-2026 (`04_ejecucion/EJECUCION_GRANIT_20260924.md`) ↔ DEF-03 · condición de prueba intermedia: CT-CON-01
-- **Pasos para reproducir:** 1) Completar Guest Checkout con datos válidos. 2) Sin método de pago seleccionable, pulsar "Confirm Order".
-- **Resultado esperado:** El sistema impide la confirmación e informa explícitamente qué falta.
-- **Resultado obtenido:** La acción no produce navegación, ni pedido, ni mensaje. Solo persiste el aviso previo del módulo de pago.
-- **Severidad:** Media (falta de retroalimentación ante acción bloqueada)
-- **Prioridad:** Media (impacta la experiencia, no el dinero)
-- **Nota de alcance:** la ausencia de métodos de pago es una **limitación del ambiente**, no un defecto del producto; el defecto reportado es la falta de retroalimentación.
-- **Estado:** Nuevo
-- **Fecha:** 24-09-2026
+Trazabilidad: E-RF03 -> CT-CAR-01 -> CP-CAR-01. Pasos: Añadir iPod Nano 1; abrir carrito; cambiar a 2 y actualizar.
 
----
-## OBS-01 · Limitación de ambiente (no es defecto de producto)
-El demo público no tiene métodos de pago ni de envío configurados: "No Payment options are available. Please contact us for assistance!" y no se renderiza la sección "Shipping Method". Esto bloquea CP-CON-01, CP-CON-02, CP-PED-01 y CP-RNF-01. Registrado en `00_gestion/BITACORA_AMBIENTE.md`.
+Esperado: 122 por 2 =244 en la línea, misma semántica fiscal; total general 244. Obtenido: Línea 242; unitario 122; total 244; subtotal 200, Eco Tax 4 y VAT40. Reproducido 25/09.
 
-## OBS-02 · Referencia cruzada al bloque del Integrante 1
-Productos marcados "Out Of Stock" (MacBook, iPhone, iMac) conservan el botón "Add to Cart" activo. Pertenece a FUN-02, bloque de Franco; se documenta aquí solo por su efecto sobre el flujo de checkout.
+Evidencia (Anexo A): CP-CAR-01_qty1 / qty 2; H-OC04. Recomendación: Revisar cálculo/presentación de línea, especialmente tasa fija por cantidad como hipótesis. Reprobar 1, 2 y frontera de stock tras corrección.
 
----
-## DEF-04 · [Checkout / Sincronización sitio–panel] El sitio público no ofrece ningún método de pago pese a que el panel administrativo tiene Cash On Delivery habilitado para todas las zonas geográficas
-- **Trazabilidad:** RF CHK 04 / RF CON 01 / RF ADM 07 / RNF 01 → CT-CHK-04, CT-RNF-01 → CP-CHK-01, CP-CON-01, CP-RNF-01 → ejecución del 24-09-2026 → DEF-04
-- **Pasos para reproducir:**
-  1. Agregar iPod Nano (product_id 36) al carrito, cantidad 2.
-  2. Ir a Checkout y seleccionar Guest Checkout.
-  3. Completar los datos obligatorios (probado con dirección de Reino Unido y de Estados Unidos).
-  4. Pulsar Continue; el sistema responde "Success: Your guest account information has been saved!".
-  5. Pulsar "Choose" en Payment Method.
-- **Resultado esperado:** Se ofrece al menos el método habilitado en el panel (Cash On Delivery), permitiendo continuar hasta la confirmación del pedido.
-- **Resultado obtenido:** "No Payment options are available. Please contact us for assistance!". No se renderiza sección "Shipping Method". La consulta directa al recurso `index.php?route=checkout/payment_method` responde **HTTP 200 con cuerpo vacío**. El comportamiento se reproduce con dos países distintos, por lo que no depende de la zona geográfica del cliente.
-- **Evidencia contrastada en el panel administrativo (24-09-2026):**
-  - Extensions > Payments: **Cash On Delivery = Enabled** (Sort Order 5), Free Checkout = Enabled, Bank Transfer = Disabled, Cheque / Money Order = Disabled.
-  - Configuración de Cash On Delivery: **Geo Zone = All Zones**, Order Status = Pending.
-  - Extensions > Shipping: **Flat Rate = Enabled**, Cost 5.00, **Geo Zone = All Zones**.
-  - Sales > Orders contiene pedidos recientes (el más nuevo, 3639 del 23/09/2026 por $740.00), lo que demuestra que el flujo sí operó antes.
-- **Severidad:** Crítica (ningún cliente puede completar una compra; el flujo transaccional completo queda inutilizable)
-- **Prioridad:** Alta (pérdida total de ventas mientras persista)
-- **Estado:** Nuevo
-- **Impacto sobre el alcance de pruebas:** bloquea CP-CON-01, CP-CON-02 y CP-PED-01. Estos casos se registran como **bloqueados por defecto**, no como bloqueados por ambiente.
-- **Fecha:** 24-09-2026
+## DEF-04 - Checkout invitado sin método de pago seleccionable
 
----
-## CORRECCIÓN A OBS-01 (registrada el 24-09-2026, posterior a la verificación administrativa)
-OBS-01 clasificaba la ausencia de métodos de pago como **limitación del ambiente**. La verificación en el panel
-administrativo descartó esa hipótesis: los métodos están habilitados y sin restricción de zona. La observación se
-reclasifica como el defecto **DEF-04**. Se conserva el registro original para dejar trazable la evolución del análisis:
-una hipótesis inicial razonable, refutada con evidencia posterior, es parte del proceso de análisis y no se oculta.
+Clasificación: Fallo del recorrido probado; configuración/causa en análisis. Severidad: Crítica para el recorrido ensayado. Prioridad propuesta: Alta.
 
-## OBS-03 · Señal a investigar sobre duplicación de pedidos (no confirmada)
-En Sales > Orders se observan las órdenes **3633, 3634 y 3635**, todas del cliente "John smith", todas por **$105.00**
-y todas con fecha **21/09/2026**. Es un patrón compatible con el riesgo de duplicación que evalúa CP-CON-02, pero el
-demo es un ambiente compartido y esas órdenes pueden provenir de pruebas legítimas repetidas por terceros. **No se
-declara defecto**: se registra como señal a verificar cuando DEF-04 permita generar pedidos propios.
+Trazabilidad: E-RF05 -> CT-CHK-03 -> CP-CHK-01. Pasos: Carrito Nano 1; elegir Guest; completar dirección ficticia UK/London; continuar; Choose en Payment Method.
 
-## OBS-04 · Dato pendiente de verificación controlada
-El intento de agregar al carrito un producto agotado (iPhone, product_id 40, "Availability: Out Of Stock") no modificó
-el contenido del carrito en la sesión del 24-09-2026, a diferencia de lo observado por el equipo el 18-09-2026. La
-discrepancia puede deberse a la interacción o al estado del demo. **Pendiente de reejecución controlada** antes de
-afirmar cualquier comportamiento. Pertenece al bloque del Integrante 1.
+Esperado: Método aplicable seleccionable que permita continuar. Obtenido: No Payment options are available. Please contact us for assistance! Confirm Order deshabilitado. Historial 24/09 muestra COD habilitado en All Zones; no demuestra todas las condiciones de aplicabilidad.
 
+Evidencia (Anexo A): CP-CHK-01_sin-pago; H-OC01, H-OC02, H-OC05. Recomendación: Investigar aplicabilidad, producto/envío/configuración y permisos. No afirmar que ningún cliente puede comprar ni que la causa sea sincronización.
 
-## Revisión de evidencia VC-20260924-01
+## OBS-02 - Disponibilidad de ficha no garantiza stock utilizable
 
-Ver `00_gestion/REVISION_CLASE7_20260924.md` y las capturas en `informe/evidencias/gestion-20260924/`. Los resultados anteriores conservan su corte histórico.
+Clasificación: Observación; reemplaza clasificación automática de DEF-02. Severidad: Alta potencial. Prioridad propuesta: Alta de investigación.
 
-- DEF-01: diferencia de importes reproducida; causa tributaria propuesta, no confirmada.
-- DEF-04: ausencia de pago reproducida para los datos ensayados; configuración COD habilitada verificada. Alcance global y causa raíz pendientes de investigación.
-- DEF-02: el formulario existente tiene Quantity 0 y Out Of Stock Status In Stock; revisar si el hallazgo procede de configuración. No se modificó ni se recargó el formulario para comprobar persistencia.
-- DEF-03: Confirm Order está deshabilitado y existe mensaje de ausencia de pago. El clic del registro original no se reprodujo; requiere triage.
+Trazabilidad: E-RF08 -> CT-CAR-03 -> CP-CAR-02 (preparación). Pasos: Abrir HTC In Stock; añadir 1; abrir carrito; contrastar inventario administrativo 0.
 
-Las prioridades publicadas son propuestas de QA pendientes de ratificación por negocio. La revisión local de posibles duplicados identifica el par DEF-03/DEF-04 para triage, sin asegurar causa común ni cerrar registros. Reportante histórico: Granit, QA; OpenCart Demo 4.0.2.3, Chrome/macOS. La versión exacta de Chrome original no consta.
+Esperado: Comunicación coherente del stock disponible. Obtenido: Ficha In Stock, carrito***; panel 0. Una etiqueta de agotado configurada como In Stock puede explicar presentación. No hay venta sin stock demostrada.
+
+Evidencia (Anexo A): CAR-precondicion-HTC; historial de configuración. Recomendación: Revisar etiqueta Out Of Stock Status y regla comercial antes de declarar defecto de código.
+
+## OBS-03 - Confirmación deshabilitada cuando falta pago
+
+Clasificación: Comportamiento observado; no se confirma como defecto. Severidad: Informativa. Prioridad propuesta: Baja.
+
+Trazabilidad: E-RF06 -> CT-CON-01 -> CP-CON-01. Pasos: Llegar al checkout sin método de pago y observar Confirm Order.
+
+Esperado: No confirmar sin pago y comunicar el impedimento. Obtenido: El botón aparece deshabilitado y el aviso de pago es visible.
+
+Evidencia (Anexo A): CP-CHK-01_sin-pago; H-OC05. Recomendación: Mantener esta validación en la regresión del checkout cuando exista un método de pago aplicable.
+
+## OBS-F01 - Opciones requeridas sin alternativas seleccionables
+
+Clasificación: Impedimento de datos/configuración; defecto de código no confirmado. Severidad: Alta en productos afectados. Prioridad propuesta: Alta.
+
+Trazabilidad: E-RF02 -> CT-PRO-02/03 -> CP-PRO-02. Pasos: Abrir Apple Cinema, Canon y Product 8; inspeccionar Radio/Select/Size.
+
+Esperado: Para caso positivo, todas las opciones requeridas deben ser seleccionables. Obtenido: Radio de Apple sin valores; Canon y Product 8 sólo placeholder. Se bloquea configuración válida.
+
+Evidencia (Anexo A): PRO-APPLE; CP-PRO-02_bloqueo; CP-PRO-01_resultado. Recomendación: Provisionar producto de prueba con opciones activas y stock por opción; repetirCP-PRO-02.
+
+## OBS-F02 - No hay cupón vigente para prueba positiva
+
+Clasificación: Impedimento de datos. Severidad: Alta para cobertura. Prioridad propuesta: Alta.
+
+Trazabilidad: E-RF04 -> CT-CUP-01/03/04/05 -> CP-CUP-01/02. Pasos: Administración Marketing>Coupons; revisar los 3 registros.
+
+Esperado: Cupón de prueba vigente y elegible disponible. Obtenido: 1111, 2222, 3333 deshabilitados; vencen en 2014/2020. No hay representante válido.
+
+Evidencia (Anexo A): CP-CUP-01_cupones-no-vigentes; CP-CUP-01_admin.txt. Recomendación: Proveedor del ambiente debe habilitar fixture controlado; no convertir 2222 en válido por su nombre.
+
+## OBS-F03 - Cantidades inválidas se normalizan sin aviso específico
+
+Clasificación: Observación de usabilidad; no fallo contra oráculo mínimo previo. Severidad: Media. Prioridad propuesta: Media.
+
+Trazabilidad: E-RF03 -> CT-CAR-02 -> CP-CAR-02. Pasos: En Nano 1 probar 1.5,-1, abc y vacío, restableciendo línea entre variantes.
+
+Esperado: No conservar cantidad inválida comprable; sería preferible error explícito. Obtenido: 1.5 y vacío quedan 1; -1 yabc retiran línea. No quedan cantidades inválidas comprables, pero cambia intención sin explicación.
+
+Evidencia (Anexo A): CP-CAR-02_decimal; negativo; texto; vacio. Recomendación: Acordar regla de negocio explícita y mejorar validación; no cambiar retroactivamente el oráculo para fabricar fallo.
+
+## CONF-F01 - Orden por precio y omisión obligatoria funcionan en la muestra
+
+Clasificación: Confirmación relevante. Severidad: Informativa. Prioridad propuesta: Baja.
+
+Trazabilidad: E-RF01/E-RF02 -> CT-CAT-02/CT-PRO-01 -> CP-CAT-02/CP-PRO-01. Pasos: Ordenar 12 productos asc/desc; omitir Select en Canon y añadir.
+
+Esperado: Monotonía y rechazo de omisión. Obtenido: Ambos criterios cumplen en la muestra; no demuestra cobertura de todos los productos.
+
+Evidencia (Anexo A): CP-CAT-02_asc; desc; CP-PRO-01_resultado. Recomendación: Candidatos a regresión automatizada con conjunto estable.
+
+## CONF-F02 - Cantidad superior al stock bloquea checkout
+
+Clasificación: Confirmación relevante. Severidad: Informativa. Prioridad propuesta: Baja.
+
+Trazabilidad: E-RF08 derivado -> CT-CAR-03 -> CP-CAR-02. Pasos: Leer 147 enpanel; actualizar carrito a 147 y luego 148; intentar Checkout.
+
+Esperado: Sin insuficiencia en S; restricción al exceder S. Obtenido: 147 sin***; 148 con*** y regreso a carrito con advertencia. No se creó orden.
+
+Evidencia (Anexo A): CP-CAR-02_stock147; stock S; stock Smas 1; stock-bloquea-checkout. Recomendación: Automatizar frontera en ambiente donde el stock pueda fijarse y restaurarse.
+
+Gestión propuesta: Nuevo -> En análisis -> Asignado -> En corrección -> Listo para reprueba -> Cerrado; rechazo, duplicado, diferido y reabierto se registran con motivo. Nadie corrigió código del demo en este proyecto. Sólo una nueva ejecución satisfactoria después de la corrección permitiría cerrar un defecto; mejorar este informe no cierra DEF-01/04.

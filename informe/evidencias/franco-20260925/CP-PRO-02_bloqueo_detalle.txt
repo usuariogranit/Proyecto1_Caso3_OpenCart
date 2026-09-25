@@ -1,0 +1,127 @@
+- navigation:
+  - list:
+    - link "$ ":
+      - /url: "#"
+      - strong: $
+      - generic: 
+  - list:
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=information/contact
+      - generic: 
+    - link " ":
+      - /url: ""
+      - generic: 
+      - generic: 
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=account/wishlist
+      - generic: 
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/cart
+      - generic: 
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/checkout
+      - generic: 
+- banner:
+  - link "Your Store":
+    - /url: https://demo.opencart.com/en-gb?route=common/home
+    - img "Your Store"
+  - textbox "Search"
+  - button "":
+    - generic: 
+  - button " 0 item(s) - $0.00":
+    - generic: 
+    - text: 0 item(s) - $0.00
+- main:
+  - navigation:
+    - generic: Categories
+    - button "":
+      - generic: 
+  - list:
+    - link "":
+      - /url: https://demo.opencart.com/en-gb?route=common/home
+      - generic: 
+    - link "Desktops":
+      - /url: https://demo.opencart.com/en-gb/catalog/desktops
+    - link "Product 8":
+      - /url: https://demo.opencart.com/en-gb/product/desktops/product-8
+  - heading "Product 8" [level=1]
+  - list:
+    - listitem: "Product Code: Product 8"
+    - listitem: "Availability: In Stock"
+  - list:
+    - heading "$122.00" [level=2]
+    - listitem: "Ex Tax: $100.00"
+  - button "":
+    - generic: 
+  - button "":
+    - generic: 
+  - separator
+  - heading "Available Options" [level=3]
+  - generic: "* Size"
+  - combobox "* Size":
+    - option "--- Please Select ---" [selected]
+  - generic: Qty
+  - textbox "Qty": "1"
+  - button "Add to Cart"
+  - paragraph:
+    - generic: 
+    - generic: 
+    - generic: 
+    - generic: 
+    - generic: 
+    - link "0 reviews":
+      - /url: ""
+    - text: /
+    - link "Write a review":
+      - /url: ""
+  - tablist:
+    - tab "Description" [selected]
+    - tab "Reviews (0)"
+  - tabpanel:
+    - paragraph: Product 8
+  - text: "* * *"
+- contentinfo:
+  - heading "Information" [level=5]
+  - list:
+    - link "Terms & Conditions":
+      - /url: https://demo.opencart.com/en-gb/information/terms
+    - link "Delivery Information":
+      - /url: https://demo.opencart.com/en-gb/information/delivery
+    - link "About Us":
+      - /url: https://demo.opencart.com/en-gb/information/about-us
+    - link "Privacy Policy":
+      - /url: https://demo.opencart.com/en-gb/information/privacy
+  - heading "Customer Service" [level=5]
+  - list:
+    - link "Contact Us":
+      - /url: https://demo.opencart.com/en-gb?route=information/contact
+    - link "Returns":
+      - /url: https://demo.opencart.com/en-gb?route=account/returns.add
+    - link "Site Map":
+      - /url: https://demo.opencart.com/en-gb?route=information/sitemap
+  - heading "Extras" [level=5]
+  - list:
+    - link "Brands":
+      - /url: https://demo.opencart.com/en-gb/brands
+    - link "Gift Certificates":
+      - /url: https://demo.opencart.com/en-gb?route=checkout/voucher
+    - link "Affiliate":
+      - /url: https://demo.opencart.com/en-gb?route=account/affiliate
+    - link "Specials":
+      - /url: https://demo.opencart.com/en-gb?route=product/special
+  - heading "My Account" [level=5]
+  - list:
+    - link "My Account":
+      - /url: https://demo.opencart.com/en-gb?route=account/account
+    - link "Order History":
+      - /url: https://demo.opencart.com/en-gb?route=account/order
+    - link "Wish List":
+      - /url: https://demo.opencart.com/en-gb?route=account/wishlist
+    - link "Newsletter":
+      - /url: https://demo.opencart.com/en-gb?route=account/newsletter
+  - separator
+  - paragraph:
+    - text: Powered By
+    - link "OpenCart":
+      - /url: https://www.opencart.com
+    - text: Your Store © 2026

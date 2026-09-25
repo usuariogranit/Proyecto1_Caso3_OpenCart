@@ -1,0 +1,178 @@
+- banner:
+  - link "OpenCart":
+    - /url: https://demo.opencart.com/TlbeVW/index.php?route=common/dashboard&user_token=REDACTADO
+    - img "OpenCart"
+  - text: 
+  - list:
+    - link "":
+      - /url: "#"
+      - generic: 
+    - link "English":
+      - /url: en-gb
+      - img "English"
+    - link "demo demo demo demo ":
+      - /url: "#"
+      - img "demo demo"
+      - text: demo demo
+      - generic: 
+    - text:    
+    - link " Logout":
+      - /url: https://demo.opencart.com/TlbeVW/index.php?route=common/logout&user_token=REDACTADO
+      - generic: 
+      - text: Logout
+- navigation:
+  - generic: 
+  - text: Navigation
+  - list:
+    - link " Dashboard":
+      - /url: https://demo.opencart.com/TlbeVW/index.php?route=common/dashboard&user_token=REDACTADO
+      - generic: 
+      - text: Dashboard
+    - link " Catalog ":
+      - /url: "#collapse-1"
+      - generic: 
+      - text: Catalog 
+    - text:             
+    - link " Extensions ":
+      - /url: "#collapse-2"
+      - generic: 
+      - text: Extensions 
+    - text:      
+    - link " Design ":
+      - /url: "#collapse-3"
+      - generic: 
+      - text: Design 
+    - text:     
+    - link " Sales ":
+      - /url: "#collapse-4"
+      - generic: 
+      - text: Sales 
+    - text:       
+    - link " Customers ":
+      - /url: "#collapse-5"
+      - generic: 
+      - text: Customers 
+    - text:     
+    - link " Marketing ":
+      - /url: "#collapse-6"
+      - generic: 
+      - text: Marketing 
+    - list:
+      - link "Affiliate":
+        - /url: https://demo.opencart.com/TlbeVW/index.php?route=marketing/affiliate&user_token=REDACTADO
+      - link "Marketing":
+        - /url: https://demo.opencart.com/TlbeVW/index.php?route=marketing/marketing&user_token=REDACTADO
+      - link "Coupons":
+        - /url: https://demo.opencart.com/TlbeVW/index.php?route=marketing/coupon&user_token=REDACTADO
+      - link "Mail":
+        - /url: https://demo.opencart.com/TlbeVW/index.php?route=marketing/contact&user_token=REDACTADO
+    - link " System ":
+      - /url: "#collapse-7"
+      - generic: 
+      - text: System 
+    - text:                                   
+    - link " Reports ":
+      - /url: "#collapse-8"
+      - generic: 
+      - text: Reports 
+    - text:   
+  - list:
+    - text: Orders Completed
+    - generic: 0%
+    - progressbar:
+      - generic: 0%
+    - text: Orders Processing
+    - generic: 100%
+    - progressbar:
+      - generic: 100%
+    - text: Other Statuses
+    - generic: 0%
+    - progressbar:
+      - generic: 0%
+- link "+":
+  - /url: https://demo.opencart.com/TlbeVW/index.php?route=marketing/coupon.form&user_token=REDACTADO
+  - generic: +
+- button "":
+  - generic: 
+- heading "Coupons" [level=1]
+- list:
+  - link "Home":
+    - /url: https://demo.opencart.com/TlbeVW/index.php?route=common/dashboard&user_token=REDACTADO
+  - text: 
+  - link "Coupons":
+    - /url: https://demo.opencart.com/TlbeVW/index.php?route=marketing/coupon&user_token=REDACTADO
+- generic: 
+- text: Coupon List
+- table:
+  - rowgroup:
+    - row "Coupon Name  Code Discount Date Start Date End Action":
+      - cell:
+        - checkbox
+      - cell "Coupon Name ":
+        - link "Coupon Name ":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=marketing/coupon.list&user_token=REDACTADO&sort=name&order=DESC
+      - cell "Code":
+        - link "Code":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=marketing/coupon.list&user_token=REDACTADO&sort=code&order=DESC
+      - cell "Discount":
+        - link "Discount":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=marketing/coupon.list&user_token=REDACTADO&sort=discount&order=DESC
+      - cell "Date Start":
+        - link "Date Start":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=marketing/coupon.list&user_token=REDACTADO&sort=date_start&order=DESC
+      - cell "Date End":
+        - link "Date End":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=marketing/coupon.list&user_token=REDACTADO&sort=date_end&order=DESC
+      - cell "Action"
+  - rowgroup:
+    - row "-10% Discount Disabled 2222 10.0000 01/01/2014 01/01/2020 0 ":
+      - cell:
+        - checkbox
+      - cell "-10% Discount Disabled":
+        - text: "-10% Discount"
+        - text: Disabled
+      - cell "2222"
+      - cell "10.0000"
+      - cell "01/01/2014"
+      - cell "01/01/2020"
+      - cell "0"
+      - cell "":
+        - link "":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=marketing/coupon.form&user_token=REDACTADO&coupon_id=4
+          - generic: 
+    - row "-10.00 Discount Disabled 1111 10.0000 01/01/2014 01/01/2020 0 ":
+      - cell:
+        - checkbox
+      - cell "-10.00 Discount Disabled":
+        - text: "-10.00 Discount"
+        - text: Disabled
+      - cell "1111"
+      - cell "10.0000"
+      - cell "01/01/2014"
+      - cell "01/01/2020"
+      - cell "0"
+      - cell "":
+        - link "":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=marketing/coupon.form&user_token=REDACTADO&coupon_id=6
+          - generic: 
+    - row "Free Shipping Disabled 3333 0.0000 01/01/2014 01/02/2014 0 ":
+      - cell:
+        - checkbox
+      - cell "Free Shipping Disabled":
+        - text: Free Shipping
+        - text: Disabled
+      - cell "3333"
+      - cell "0.0000"
+      - cell "01/01/2014"
+      - cell "01/02/2014"
+      - cell "0"
+      - cell "":
+        - link "":
+          - /url: https://demo.opencart.com/TlbeVW/index.php?route=marketing/coupon.form&user_token=REDACTADO&coupon_id=5
+          - generic: 
+- generic: Showing 1 to 3 of 3 (1 Pages)
+- contentinfo:
+  - link "OpenCart":
+    - /url: https://www.opencart.com
+  - text: © 2009-2026 All Rights Reserved.
+  - text: Version 4.0.2.3

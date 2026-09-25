@@ -1,0 +1,993 @@
+{
+  "requisitos": [
+    [
+      "E-RF01",
+      "FUN-01",
+      "Ordenar el listado por nombre y precio correctamente."
+    ],
+    [
+      "E-RF02",
+      "FUN-02",
+      "Exigir las opciones del producto antes de agregarlo al carrito."
+    ],
+    [
+      "E-RF03",
+      "FUN-03",
+      "Recalcular correctamente el total al cambiar cantidades."
+    ],
+    [
+      "E-RF04",
+      "FUN-04",
+      "Validar el cupón, aplicar el descuento correcto y mostrar error para código inválido."
+    ],
+    [
+      "E-RF05",
+      "FUN-05",
+      "Completar checkout como invitado sin obligar a registrar cuenta."
+    ],
+    [
+      "E-RF06",
+      "FUN-06",
+      "Generar número de orden y resumen correcto al confirmar."
+    ],
+    [
+      "E-RF07",
+      "FUN-08",
+      "Reflejar el pedido del sitio público en la lista administrativa."
+    ],
+    [
+      "E-RF08",
+      "FUN-07",
+      "Reflejar públicamente el producto marcado agotado desde administración; por ejemplo, aviso o impedimento de compra."
+    ],
+    [
+      "E-RNF01",
+      "RNF-01",
+      "Reflejar cambios del sitio público en administración en tiempo razonable, sin reinicios."
+    ],
+    [
+      "E-RNF02",
+      "RNF-02",
+      "Funcionar correctamente en los navegadores más usados."
+    ],
+    [
+      "E-RNF03",
+      "RNF-03",
+      "Tiempo de respuesta del catálogo estrictamente menor que dos segundos."
+    ]
+  ],
+  "riesgos": [
+    [
+      "R01",
+      "Inventario divergente entre ficha, carrito y panel",
+      3,
+      3,
+      "Franco / Granit",
+      "CP-CAR-02; CP-ADM-01",
+      "Verificar S y S+1; contrastar estado guardado con sitio público."
+    ],
+    [
+      "R02",
+      "Cupón válido rechazado o descuento incorrecto",
+      3,
+      3,
+      "Franco",
+      "CP-CUP-01; CP-CUP-02",
+      "Confirmar vigencia, estado, elegibilidad, base y tipo de descuento antes de probar."
+    ],
+    [
+      "R03",
+      "Importes de línea, impuestos o total inconsistentes",
+      3,
+      3,
+      "Franco / Granit",
+      "CP-CAR-01; CP-PRO-02; CP-CON-01",
+      "Comparar magnitudes con igual tratamiento fiscal y recalcular a dos decimales."
+    ],
+    [
+      "R04",
+      "Compra con opción obligatoria ausente o distinta",
+      2,
+      3,
+      "Franco",
+      "CP-PRO-01; CP-PRO-02",
+      "Omitir campo aislado; comparar opción elegida y conservada en carrito."
+    ],
+    [
+      "R05",
+      "Venta por encima de stock real",
+      3,
+      3,
+      "Franco / Granit",
+      "CP-CAR-02; CP-ADM-01",
+      "Leer stock actual y política; no equiparar botón activo a venta completada."
+    ],
+    [
+      "R06",
+      "Acumulación indebida o permanencia de descuentos",
+      2,
+      3,
+      "Franco",
+      "CP-CUP-02",
+      "Reaplicar código y cambiar elegibilidad; exigir una sola aplicación."
+    ],
+    [
+      "R07",
+      "Checkout invitado no completado",
+      3,
+      3,
+      "Granit",
+      "CP-CHK-01; CP-CON-01",
+      "Validar campos, pago disponible y confirmación sin cuenta."
+    ],
+    [
+      "R08",
+      "Pedido perdido o duplicado en administración",
+      2,
+      3,
+      "Granit",
+      "CP-CON-02; CP-PED-01; CP-RNF-01",
+      "Usar orden propia, contar coincidencias y medir público a panel."
+    ],
+    [
+      "R09",
+      "Catálogo lento o precio ordenado incorrectamente",
+      2,
+      3,
+      "Franco / Granit",
+      "CP-CAT-02; CP-RNF-03",
+      "Secuencia de precios de venta y medición instrumentada del catálogo."
+    ],
+    [
+      "R10",
+      "Incompatibilidad en navegador seleccionado",
+      2,
+      2,
+      "Granit",
+      "CP-RNF-02",
+      "Diseño común en Chrome, Edge y Firefox; no generalizar un motor a los demás."
+    ],
+    [
+      "R11",
+      "Orden por nombre o filtros confusos",
+      2,
+      2,
+      "Franco",
+      "CP-CAT-01; CP-CAT-03",
+      "Comparar conjuntos y orden; vacíos y filtros sin resultados."
+    ],
+    [
+      "R12",
+      "Certificado de regalo aceptado indebidamente",
+      1,
+      3,
+      "Franco",
+      "CP-VAL-01",
+      "Verificar saldo y vigencia; no probar certificados ajenos."
+    ]
+  ],
+  "condiciones": [
+    [
+      "CT-CAT-01",
+      "E-RF01",
+      "Directa",
+      "Orden correcto por nombre en ambos sentidos.",
+      "Media",
+      "R11",
+      "CP-CAT-01",
+      "Afecta localización; impacto monetario indirecto."
+    ],
+    [
+      "CT-CAT-02",
+      "E-RF01",
+      "Directa",
+      "Precios de venta monótonos, mismos productos, ascendente y descendente.",
+      "Alta",
+      "R09",
+      "CP-CAT-02",
+      "Un orden incorrecto distorsiona la comparación económica de productos."
+    ],
+    [
+      "CT-CAT-03",
+      "Alcance p.4",
+      "Derivada",
+      "Categoría/filtro limita el conjunto y comunica resultado vacío.",
+      "Media",
+      "R11",
+      "CP-CAT-03",
+      "Cobertura complementaria del catálogo."
+    ],
+    [
+      "CT-PRO-01",
+      "E-RF02",
+      "Directa",
+      "Omisión aislada de opción requerida impide añadir y señala el campo.",
+      "Alta",
+      "R04",
+      "CP-PRO-01",
+      "Evita pedidos de variantes incompletas o imposibles de preparar."
+    ],
+    [
+      "CT-PRO-02",
+      "E-RF02",
+      "Derivada",
+      "Selección válida se conserva y se añade una sola línea correcta.",
+      "Alta",
+      "R04",
+      "CP-PRO-02",
+      "La variante comprada determina qué se entrega."
+    ],
+    [
+      "CT-PRO-03",
+      "E-RF02 / E-RF03",
+      "Derivada",
+      "El ajuste de precio de opción coincide con configuración y política fiscal.",
+      "Alta",
+      "R03",
+      "CP-PRO-02",
+      "El error altera el importe cobrado."
+    ],
+    [
+      "CT-CAR-01",
+      "E-RF03",
+      "Directa",
+      "Cantidad válida actualiza línea, subtotal, impuestos y total coherentemente.",
+      "Alta",
+      "R03",
+      "CP-CAR-01",
+      "Discrepancias monetarias afectan directamente al cliente."
+    ],
+    [
+      "CT-CAR-02",
+      "E-RF03",
+      "Derivada",
+      "Cero, negativo, decimal, texto y vacío no dejan cantidades inválidas comprables.",
+      "Alta",
+      "R03",
+      "CP-CAR-02",
+      "Evita totales o unidades imposibles; normalizaciones se registran aparte."
+    ],
+    [
+      "CT-CAR-03",
+      "E-RF08 / riesgo p.5",
+      "Derivada",
+      "S es admisible y S+1 señala insuficiencia; bloqueo según política de stock.",
+      "Alta",
+      "R05",
+      "CP-CAR-02",
+      "La sobreventa es una queja central del caso."
+    ],
+    [
+      "CT-CUP-01",
+      "E-RF04",
+      "Directa",
+      "Código vigente y elegible aplica el descuento correcto una vez.",
+      "Alta",
+      "R02",
+      "CP-CUP-01",
+      "Protege el margen comercial y el importe final."
+    ],
+    [
+      "CT-CUP-02",
+      "E-RF04",
+      "Directa",
+      "Código inexistente, vencido o deshabilitado muestra error sin descuento nuevo.",
+      "Alta",
+      "R02",
+      "CP-CUP-02",
+      "Una aceptación indebida reduce el ingreso sin autorización comercial."
+    ],
+    [
+      "CT-CUP-03",
+      "E-RF04",
+      "Derivada",
+      "Cupón vigente pero no elegible se rechaza sin descuento.",
+      "Alta",
+      "R02",
+      "CP-CUP-02",
+      "Impide extender promociones a productos no cubiertos."
+    ],
+    [
+      "CT-CUP-04",
+      "Riesgo p.5",
+      "Derivada",
+      "Reaplicar el mismo cupón no acumula el descuento.",
+      "Alta",
+      "R06",
+      "CP-CUP-02",
+      "La duplicación de descuentos es riesgo expreso del caso."
+    ],
+    [
+      "CT-CUP-05",
+      "E-RF04",
+      "Derivada",
+      "Cambiar cantidad/productos revalida mínimo y elegibilidad.",
+      "Alta",
+      "R06",
+      "CP-CUP-02",
+      "Evita conservar beneficios cuando desaparece su precondición."
+    ],
+    [
+      "CT-CUP-06",
+      "Alcance p.4",
+      "Derivada",
+      "Certificado válido respeta saldo y certificado inválido no descuenta.",
+      "Media",
+      "R12",
+      "CP-VAL-01",
+      "Complemento de alcance; sin evidencia de exposición alta en esta corrida."
+    ],
+    [
+      "CT-CHK-01",
+      "E-RF05",
+      "Directa",
+      "Invitado avanza sin crear cuenta ni imponer contraseña.",
+      "Alta",
+      "R07",
+      "CP-CHK-01; CP-CON-01",
+      "Es el recorrido de compra exigido por el caso."
+    ],
+    [
+      "CT-CHK-02",
+      "E-RF05",
+      "Derivada",
+      "Apellido obligatorio vacío se identifica; datos válidos se guardan.",
+      "Alta",
+      "R07",
+      "CP-CHK-01",
+      "Datos incompletos comprometen el procesamiento del pedido."
+    ],
+    [
+      "CT-CHK-03",
+      "E-RF05",
+      "Derivada",
+      "Hay método de pago aplicable antes de confirmar.",
+      "Alta",
+      "R07",
+      "CP-CHK-01",
+      "Su ausencia interrumpe el flujo crítico."
+    ],
+    [
+      "CT-CON-01",
+      "E-RF06",
+      "Directa",
+      "Confirmación genera un identificador de orden no vacío.",
+      "Alta",
+      "R08",
+      "CP-CON-01",
+      "Sin identificador no hay seguimiento confiable."
+    ],
+    [
+      "CT-CON-02",
+      "E-RF06",
+      "Directa",
+      "Resumen confirmado conserva productos, opciones, cantidades e importes.",
+      "Alta",
+      "R03",
+      "CP-CON-01",
+      "Evita divergencias entre intención de compra y pedido."
+    ],
+    [
+      "CT-CON-03",
+      "E-RF06",
+      "Derivada",
+      "Doble clic, recarga y retorno no crean pedidos adicionales.",
+      "Alta",
+      "R08",
+      "CP-CON-02",
+      "Evita cobro y preparación duplicados."
+    ],
+    [
+      "CT-PED-01",
+      "E-RF07",
+      "Directa",
+      "Orden propia aparece en panel con igual ID y detalle.",
+      "Alta",
+      "R08",
+      "CP-PED-01",
+      "Una orden invisible impide su atención operativa."
+    ],
+    [
+      "CT-ADM-01",
+      "E-RF08",
+      "Directa",
+      "Stock cero guardado y estado agotado se reflejan en interfaz pública.",
+      "Alta",
+      "R01 / R05",
+      "CP-ADM-01",
+      "Evita anunciar disponibilidad contradictoria al inventario confirmado."
+    ],
+    [
+      "CT-RNF-01",
+      "E-RNF01",
+      "Operacionalizada",
+      "Orden pública se refleja en panel sin reinicio; medir contra referencia interna de 60 s.",
+      "Alta",
+      "R08",
+      "CP-RNF-01",
+      "La demora puede causar pérdida de atención o reintentos."
+    ],
+    [
+      "CT-RNF-02",
+      "E-RNF02",
+      "Operacionalizada",
+      "Mismo recorrido funciona en Chrome, Edge y Firefox seleccionados.",
+      "Media",
+      "R10",
+      "CP-RNF-02",
+      "Se prioriza después de los riesgos transaccionales comunes."
+    ],
+    [
+      "CT-RNF-03",
+      "E-RNF03",
+      "Operacionalizada",
+      "Carga completa de catálogo inferior a 2000 ms bajo protocolo declarado.",
+      "Alta",
+      "R09",
+      "CP-RNF-03",
+      "La lentitud afecta la operación de entrada al flujo de compra."
+    ]
+  ],
+  "casos": [
+    {
+      "id": "CP-CAT-01",
+      "title": "Ordenamiento por nombre",
+      "owner": "Franco",
+      "priority": "Media",
+      "conditions": "CT-CAT-01",
+      "req": "E-RF01",
+      "tech": "Partición de equivalencia",
+      "why": "Se comparan las clases A-Z y Z-A, incluyendo empate sin exigir un desempate no especificado.",
+      "pre": "Categoría accesible con al menos dos nombres distintos; idioma inglés; registrar listado completo y número de páginas.",
+      "data": "Desktops; mostrar25 (12 productos observados como referencia, recapturar en nueva corrida).",
+      "steps": [
+        "Abrir categoría y guardar conjunto inicial de nombres.",
+        "Seleccionar Name (A - Z); leer todas las páginas o mostrar todos.",
+        "Comparar nombres consecutivos; registrar empates.",
+        "Seleccionar Name (Z - A) y repetir; comparar conjunto final con inicial."
+      ],
+      "expected": "Orden lexicográfico correcto en ambos sentidos para nombres de la muestra; sin pérdidas ni duplicados. No ejecutado por prioridad Media."
+    },
+    {
+      "id": "CP-CAT-02",
+      "title": "Ordenamiento por precio",
+      "owner": "Franco",
+      "priority": "Alta",
+      "conditions": "CT-CAT-02",
+      "req": "E-RF01",
+      "tech": "Partición de equivalencia",
+      "why": "Ascendente y descendente son clases del criterio; se incluyen precios iguales y promociones.",
+      "pre": "Catálogo disponible, misma moneda USD y al menos dos precios distintos. Usar precio vigente, no precio tachado.",
+      "data": "Desktops; Show25; 12 productos. Referencias: Canon98, Apple110, HP122, HTC122, iPodClassic122, Product8 122, iPhone123.20, Samsung242, Palm337.99, MacBook602, MacBookAir1202, Sony1202.",
+      "steps": [
+        "Abrir Desktops, seleccionar Show25 y anotar productos/precios.",
+        "Seleccionar Price (Low > High); comparar cada precio con el siguiente.",
+        "Capturar lista y criterio.",
+        "Seleccionar Price (High > Low); repetir y comprobar igualdad del conjunto."
+      ],
+      "expected": "Ascendente no decrece; descendente no crece; los12 productos se conservan. Empates permitidos. Precio especial98 de Canon se ordena por98, no por122."
+    },
+    {
+      "id": "CP-PRO-01",
+      "title": "Omisión de opción obligatoria",
+      "owner": "Franco",
+      "priority": "Alta",
+      "conditions": "CT-PRO-01",
+      "req": "E-RF02",
+      "tech": "Partición de equivalencia",
+      "why": "Una opción requerida ausente representa la clase inválida; se aísla de otros campos.",
+      "pre": "Carrito vacío; producto con una opción obligatoria identificada; resto de datos válido. Registrar si carece de alternativas válidas, sin confundirlo con la validación de ausencia.",
+      "data": "Canon EOS5D, Select sin elegir, cantidad1. El25/09 sólo se ofreció el placeholder.",
+      "steps": [
+        "Abrir ficha; identificar campo requerido y contador del carrito.",
+        "Dejar Select sin seleccionar, cantidad1 y pulsar Add to Cart una vez.",
+        "Esperar respuesta, registrar mensaje y verificar que el carrito permanece vacío."
+      ],
+      "expected": "No se añade el producto y el mensaje identifica Select. No demuestra que existan opciones válidas ni valida su precio."
+    },
+    {
+      "id": "CP-PRO-02",
+      "title": "Opciones válidas y variación de precio",
+      "owner": "Franco",
+      "priority": "Alta",
+      "conditions": "CT-PRO-02; CT-PRO-03",
+      "req": "E-RF02 / E-RF03 derivados",
+      "tech": "Partición de equivalencia",
+      "why": "Comparar opción sin recargo y con recargo manteniendo constantes producto, cantidad e impuestos.",
+      "pre": "Producto con todas las opciones requeridas seleccionables, stock suficiente y ajuste fiscalmente interpretable; carrito limpio. Registrar precio base, ajuste y si incluye impuestos antes de ejecutar.",
+      "data": "Candidato Apple Cinema30: Select Blue +5.60, Green +3.20 y Checkbox3 +38 mostrados; faltan alternativas Radio. Alternativos Canon y Product8 tampoco tienen opciones seleccionables. Datos válidos completos pendientes de provisión.",
+      "steps": [
+        "Verificar todas las alternativas requeridas; si alguna falta, registrar bloqueo sin inventar selección.",
+        "En ambiente habilitado, completar opciones válidas y añadir una unidad o el mínimo del producto.",
+        "Comparar opciones y precio en carrito contra base más ajustes con igual criterio fiscal.",
+        "Vaciar, cambiar sólo una opción de recargo conocido y repetir."
+      ],
+      "expected": "Cada configuración agrega exactamente lo solicitado; diferencia de precio corresponde al ajuste configurado e impuestos aplicables. Sin alternativas o regla fiscal verificable: Bloqueado."
+    },
+    {
+      "id": "CP-CAR-01",
+      "title": "Actualización de cantidad válida",
+      "owner": "Franco",
+      "priority": "Alta",
+      "conditions": "CT-CAR-01",
+      "req": "E-RF03",
+      "tech": "Partición de equivalencia",
+      "why": "Se verifica una cantidad válida antes y después del cambio; se separa importe neto del gravado.",
+      "pre": "Carrito limpio, iPodNano disponible sin opciones, sin cupón ni envío aplicado; cantidad2 dentro de stock.",
+      "data": "USD; iPodNano1 y2. Referencia: base100, precio mostrado122, EcoTax2/unidad, VAT20/unidad.",
+      "steps": [
+        "Añadir1 iPodNano y guardar unitario, línea, subtotal, impuestos y total.",
+        "Cambiar cantidad a2 y pulsar actualizar; esperar respuesta.",
+        "Recalcular línea usando unitario mostrado por cantidad cuando ambos representan la misma base fiscal.",
+        "Comparar subtotal200, EcoTax4, VAT40 y total244; registrar cualquier discrepancia de línea."
+      ],
+      "expected": "Para los datos observados:1 unidad línea122 total122;2 unidades línea244 total244, neto200 y tributos44. Si la interfaz usa otra base fiscal debe explicitarla; no comparar línea gravada con subtotal neto."
+    },
+    {
+      "id": "CP-CAR-02",
+      "title": "Cantidad inválida o superior al stock",
+      "owner": "Franco",
+      "priority": "Alta",
+      "conditions": "CT-CAR-02; CT-CAR-03",
+      "req": "E-RF03 / E-RF08 derivados",
+      "tech": "Partición de equivalencia y valores límite",
+      "why": "Clases inválidas y frontera real del inventario:0,1 y S,S+1. Los tiempos1999/2000/2001 no se presentan como datos ejecutados.",
+      "pre": "Stock S leído en panel; producto sin opciones; carrito de prueba; anotar política de venta sin stock si es accesible. Restablecer una unidad entre variantes destructivas; verificar que S no cambió por terceros.",
+      "data": "iPod Nano: stock S = 147 observado el 25/09; variantes 0, -1, 1.5, abc, vacío, 147 y 148.",
+      "steps": [
+        "Con1 unidad, probar por separado0,-1,1.5,abc y vacío; actualizar y registrar cantidad persistida, avisos y total. Reponer1 antes de cada variante.",
+        "Fijar147; comprobar ausencia de marca de insuficiencia.",
+        "Fijar148; comprobar advertencia y pulsar Checkout.",
+        "Registrar si el sistema impide la compra; no generar pedidos con unidades inválidas. Limpiar carrito."
+      ],
+      "expected": "Ninguna cantidad negativa, fraccionaria o no numérica queda comprable. Cero puede retirar línea. Normalización silenciosa se informa como observación. Con política restrictiva S+1 debe bloquear checkout y S no debe marcar insuficiencia. La aritmética monetaria se juzga en CP-CAR-01; no se declara compra de147 completada."
+    },
+    {
+      "id": "CP-CUP-01",
+      "title": "Aplicación de cupón válido",
+      "owner": "Franco",
+      "priority": "Alta",
+      "conditions": "CT-CUP-01",
+      "req": "E-RF04",
+      "tech": "Partición de equivalencia",
+      "why": "Representante de código vigente, activo y elegible; oráculo calculado antes de aplicar.",
+      "pre": "Cupón activo, fechas vigentes, usos disponibles, condiciones de login/mínimo y productos verificadas; carrito elegible. Registrar tipo, valor y base antes de probar.",
+      "data": "Candidato 2222, descuento de 10 por ciento según el panel: el 25/09 estaba deshabilitado y vencido desde el 01/01/2020. Para ejecutar el caso se requiere un cupón activo, vigente y con condiciones conocidas.",
+      "steps": [
+        "Leer configuración vigente y registrar elegibilidad. Si no hay cupón válido, documentar bloqueo.",
+        "Con fixture válido, registrar subtotal e impuestos iniciales.",
+        "Aplicar código una vez y registrar línea de descuento y total.",
+        "Calcular descuento sobre base elegible; si base100 y10%, descuento neto10; recalcular impuestos según configuración verificada."
+      ],
+      "expected": "Una aplicación, descuento exacto según tipo/valor y base; total nunca negativo y tributos coherentes. No fijar total final usando una política fiscal desconocida."
+    },
+    {
+      "id": "CP-CUP-02",
+      "title": "Cupón inválido, no aplicable o duplicado",
+      "owner": "Franco",
+      "priority": "Alta",
+      "conditions": "CT-CUP-02; CT-CUP-03; CT-CUP-04; CT-CUP-05",
+      "req": "E-RF04 y riesgo de duplicación",
+      "tech": "Tabla de decisión y transición de estados",
+      "why": "Cruza validez/elegibilidad y modela sin cupón -> aplicado -> reaplicado -> carrito cambiado.",
+      "pre": "Carrito iPodNano1 sin descuento. Para variantesC-D-E, cupón válido de CP-CUP-01, restricciones y mínimo conocidos. Reiniciar estado entre variantes independientes.",
+      "data": "A:QA-NO-EXISTE-20260924; B:2222 vencido/deshabilitado; C:cupón vigente limitado a otro producto; D:mismo cupón dos veces; E:retirar producto elegible o bajar del mínimo.",
+      "steps": [
+        "A:aplicar código inexistente; guardar error y total.",
+        "B:aplicar2222 y contrastar con estado leído en panel.",
+        "C:con cupón válido, usar carrito no elegible y aplicar.",
+        "D:restablecer carrito elegible, aplicar una vez y reaplicar; comparar descuento.",
+        "E:cambiar elegibilidad y actualizar; verificar retiro/recalculo del beneficio."
+      ],
+      "expected": "A/B/C:error y ningún descuento nuevo. D:descuento único no acumulado. E:descuento revalidado. Si C-D-E carecen de cupón válido, registrar variantes Bloqueadas y no aprobar todo el caso."
+    },
+    {
+      "id": "CP-CHK-01",
+      "title": "Checkout invitado hasta pago",
+      "owner": "Granit",
+      "priority": "Alta",
+      "conditions": "CT-CHK-01; CT-CHK-02; CT-CHK-03",
+      "req": "E-RF05",
+      "tech": "Partición de equivalencia",
+      "why": "Campo vacío y completo; identidad invitada válida sin contraseña.",
+      "pre": "Carrito con iPodNano disponible; sin sesión de cliente; dirección ficticia; no suscribirse al boletín.",
+      "data": "Test / QA CS5383 / qa.cs5383.test@example.com; Av.Prueba123, London, SW1A1AA, UnitedKingdom, GreaterLondon.1 unidad en corrida25/09;2 en historial24/09.",
+      "steps": [
+        "Abrir Checkout y seleccionar Guest Checkout.",
+        "Completar todo excepto apellido y pulsar Continue; registrar validación.",
+        "Completar apellido y continuar; verificar datos guardados sin registro.",
+        "Pulsar Choose en Payment Method; registrar opciones o error.",
+        "Si hay pago aplicable, dejar preparado para CP-CON-01; no declarar orden confirmada en este caso."
+      ],
+      "expected": "Apellido vacío produce error específico; datos completos se guardan sin cuenta y existe método aplicable para continuar. La confirmación final de E-RF05 se verifica en CP-CON-01. Sin pago aplicable se registra fallo de este recorrido, sin inferir causa raíz ni fallo para todo cliente."
+    },
+    {
+      "id": "CP-CON-01",
+      "title": "Número y resumen del pedido",
+      "owner": "Granit",
+      "priority": "Alta",
+      "conditions": "CT-CON-01; CT-CON-02; CT-CHK-01",
+      "req": "E-RF06 / E-RF05",
+      "tech": "Prueba de caso de uso",
+      "why": "Verificación de extremo a extremo desde intención de compra hasta orden confirmada.",
+      "pre": "CP-CHK-01 llega a pago y envío aplicables; sin advertencias; entorno de demostración y datos ficticios. Si falta pago, Bloqueado.",
+      "data": "Pedido propio; capturar producto, opciones, cantidad y desglose actual. No fijar244 si hay envío u otro impuesto. Para2 Nano sin envío, referencia neto200 +eco4 +VAT40 =244.",
+      "steps": [
+        "Capturar resumen previo con todas las líneas e importes.",
+        "Verificar suma neto+impuestos+envío-descuentos y coherencia de cada línea.",
+        "Confirmar una vez; registrar número de orden y mensaje.",
+        "Comparar productos, opciones, cantidades y total antes/después; comprobar que siguió siendo invitado."
+      ],
+      "expected": "Identificador no vacío; resumen confirmado idéntico a intención válida; importe de línea se compara con unitario de igual base fiscal, nunca con neto200 de forma automática. E-RF05 completo sólo si la orden final existe."
+    },
+    {
+      "id": "CP-CON-02",
+      "title": "Prevención de pedidos duplicados",
+      "owner": "Granit",
+      "priority": "Alta",
+      "conditions": "CT-CON-03",
+      "req": "E-RF06 derivado",
+      "tech": "Transición de estados",
+      "why": "Modela carrito preparado -> orden creada -> reintento sin nueva orden.",
+      "pre": "Checkout funcional, permiso de lectura de Orders y datos propios identificables. Preparar una compra independiente para cada variante.",
+      "data": "Tres carritos de prueba distinguibles con comentarioQA-G5-A/B/C y correo ficticio; capturar número previo de órdenes de cada intención.",
+      "steps": [
+        "VarianteA:doble clic en Confirm Order y consultar todas las órdenes de esa intención en panel.",
+        "VarianteB:confirmar otra compra una vez, recargar su confirmación y volver a contar órdenes.",
+        "VarianteC:confirmar otra compra, volver atrás e intentar confirmar de nuevo; consultar panel.",
+        "Comparar IDs, cantidades e importes; no usar pedidos de terceros como prueba."
+      ],
+      "expected": "Exactamente una orden por intención en cada variante. Una pantalla con el mismo ID no basta para descartar duplicados en administración."
+    },
+    {
+      "id": "CP-ADM-01",
+      "title": "Agotado en panel reflejado públicamente",
+      "owner": "Granit",
+      "priority": "Alta",
+      "conditions": "CT-ADM-01",
+      "req": "E-RF08",
+      "tech": "Tabla de decisión",
+      "why": "Cruza stock0/positivo y política de compra sin stock, distinguiendo aviso de bloqueo.",
+      "pre": "Permiso de escritura sobre producto de prueba dedicado, lectura de política Stock Checkout y posibilidad de restaurar. No alterar configuración global de un demo compartido sin ambiente reservado.",
+      "data": "Producto dedicado equivalente a HP LP3065; guardar stock, etiqueta y configuración previos. R1:S0/OutOfStock/políticaNo; R2:S0/OutOfStock/políticaSí; R3:S>=cantidad/InStock.",
+      "steps": [
+        "Registrar política efectiva y datos previos.",
+        "Guardar stock0 y etiquetaOutOfStock; verificar persistencia reabriendo. Si permiso denegado, parar y registrar Bloqueado.",
+        "Abrir ficha pública y carrito; comprobar aviso de agotado.",
+        "Intentar checkout conforme a fila aplicable; R1 bloquea, R2 puede admitir con aviso.",
+        "En entorno controlado, repetir otras filas configurables; restaurar datos y verificar."
+      ],
+      "expected": "El estado agotado guardado se refleja públicamente. El requisito original admite aviso o impedimento; no exige siempre deshabilitar Add to Cart. Sin permisos no se declara fallo de propagación ni ejecución de las tres reglas."
+    },
+    {
+      "id": "CP-PED-01",
+      "title": "Pedido público visible en panel",
+      "owner": "Granit",
+      "priority": "Alta",
+      "conditions": "CT-PED-01",
+      "req": "E-RF07",
+      "tech": "Prueba de caso de uso",
+      "why": "La comparación atraviesa las dos interfaces con la misma orden propia.",
+      "pre": "CP-CON-01 produjo ID propio; lectura de Sales>Orders.",
+      "data": "ID y resumen de esa orden; no un ID encontrado al azar en el demo.",
+      "steps": [
+        "Abrir Sales>Orders y filtrar por ID propio.",
+        "Abrir detalle y cotejar cliente ficticio, productos, opciones, cantidades, impuestos y total.",
+        "Guardar captura pública y administrativa y registrar diferencias."
+      ],
+      "expected": "Orden presente con mismoID y detalle; sin orden propia, Bloqueado. Pedidos ajenos no satisfacen la condición."
+    },
+    {
+      "id": "CP-RNF-01",
+      "title": "Tiempo de actualización público a administración",
+      "owner": "Granit",
+      "priority": "Alta",
+      "conditions": "CT-RNF-01",
+      "req": "E-RNF01",
+      "tech": "Transición de estados y medición temporal",
+      "why": "Orden confirmada públicamente -> visible en panel; dirección correcta del enunciado.",
+      "pre": "Orden propia realizable y reloj común; acceso de lectura al panel; referencia interna60s adoptada por este plan, pendiente de validación docente/negocio.",
+      "data": "ID de CP-CON-01; t0 confirmación pública; consultas del panel cada5s hasta60s.",
+      "steps": [
+        "Registrar t0 al confirmarse la orden en sitio público.",
+        "Sin reiniciar servicios, consultar panel cada5s por ID.",
+        "Registrar instante de primera aparición y consulta anterior; reportar intervalo de latencia.",
+        "Comparar contra60s como referencia interna, conservando el dato bruto."
+      ],
+      "expected": "Orden visible sin reinicios; latencia reportada con resolución5s. <=60s cumple referencia interna, no un umbral literal del enunciado. No sustituir por cambio de stock admin->público, cubierto en CP-ADM-01."
+    },
+    {
+      "id": "CP-RNF-02",
+      "title": "Compatibilidad en navegadores",
+      "owner": "Granit",
+      "priority": "Media",
+      "conditions": "CT-RNF-02",
+      "req": "E-RNF02",
+      "tech": "Partición de equivalencia",
+      "why": "Muestra por motor y aplicación:Chrome/Edge(Chromium),Firefox(Gecko). No prueba todos los navegadores populares.",
+      "pre": "Instalaciones disponibles, versiones exactas anotadas, mismas condiciones de red/datos y sesiones limpias.",
+      "data": "Chrome,Edge,Firefox de escritorio; catálogoDesktops, Nano1 y datos invitados del casoCHK.",
+      "steps": [
+        "Anotar versión, sistema y tamaño de ventana en cada navegador.",
+        "Recorrer catálogo, ficha, carrito y checkout sin cambiar datos entre navegadores.",
+        "Comparar renderizado y validaciones; separar fallos comunes del demo de incompatibilidad específica."
+      ],
+      "expected": "Flujo equivalente sin fallos atribuibles al navegador; alcance de muestra explícito. Diseñado, no seleccionado para nueva ejecución por prioridadMedia."
+    },
+    {
+      "id": "CP-RNF-03",
+      "title": "Tiempo de respuesta del catálogo",
+      "owner": "Granit / Franco",
+      "priority": "Alta",
+      "conditions": "CT-RNF-03",
+      "req": "E-RNF03",
+      "tech": "Medición de rendimiento con umbral",
+      "why": "No se considera análisis de valores límite ejecutado: no se controlaron tiempos1999/2000/2001 como entradas.",
+      "pre": "Instrumentación NavigationTiming/DevTools, registro exportable, red y equipo documentados, caché controlada. Sin instrumento verificable, Bloqueado.",
+      "data": "Cameras,Desktops,Laptops&Notebooks; para cada una3 navegaciones frías y3 cálidas,18 muestras. Umbral<2000ms; métrica operacional loadEventEnd-startTime enms.",
+      "steps": [
+        "Anotar equipo, versión, red, URL, hora y caché.",
+        "Ejecutar secuencia de muestras con DevTools y conservar datos brutos de cada navegación.",
+        "Registrar loadEventEnd-startTime, TTFB y DOMContentLoaded como apoyo.",
+        "Calcular mínimo,mediana,p95,máximo; juzgar cada muestra contra2000ms. Separar desafíos de seguridad de carga del catálogo."
+      ],
+      "expected": "Todas las muestras válidas del protocolo deben estar debajo de 2000 ms; 2000 ms exactos incumple. Se deben conservar los datos de cada medición y limitar la conclusión al ambiente evaluado."
+    },
+    {
+      "id": "CP-CAT-03",
+      "title": "Categoría y filtros del catálogo",
+      "owner": "Franco",
+      "priority": "Media",
+      "conditions": "CT-CAT-03",
+      "req": "Alcance funcional p.4",
+      "tech": "Partición de equivalencia",
+      "why": "Conjunto con resultados y conjunto vacío.",
+      "pre": "Categorías accesibles; sólo aplicar filtros efectivamente configurados.",
+      "data": "Desktops y subcategoríaPC; registrar conjunto esperado por membresía administrativa cuando sea accesible.",
+      "steps": [
+        "Abrir categoría y verificar pertenencia.",
+        "Aplicar subcategoría o filtro configurado; comparar productos con regla.",
+        "Elegir una combinación conocida sin resultados y comprobar mensaje."
+      ],
+      "expected": "Resultados pertinentes y mensaje de vacío sin error técnico. Falta de filtros configurados se consigna como limitación de datos, no se inventa ejecución."
+    },
+    {
+      "id": "CP-VAL-01",
+      "title": "Certificados de regalo",
+      "owner": "Franco",
+      "priority": "Media",
+      "conditions": "CT-CUP-06",
+      "req": "Alcance funcional p.4",
+      "tech": "Tabla de decisión",
+      "why": "Combina código existente/vigente y saldo suficiente/insuficiente.",
+      "pre": "Certificado de prueba dedicado con saldo conocido; sin fondos reales ni certificados de terceros; total y política fiscal documentados.",
+      "data": "Fixture futuroQA-G5-VALE saldo10 y códigoQA-VALE-INVALIDO; total superior e inferior a10. No creados en este demo.",
+      "steps": [
+        "Registrar saldo y reglas del certificado.",
+        "Aplicar válido y comparar descuento y total no negativo.",
+        "Restablecer y aplicar inválido; comprobar error sin nuevo descuento.",
+        "Evaluar compra con total menor al saldo y documentar remanente según regla configurada."
+      ],
+      "expected": "Sólo vale elegible descuenta; no se supera saldo ni aparece total negativo; saldo restante conforme a configuración. Diseñado, no ejecutado por prioridadMedia."
+    }
+  ],
+  "resultados": [
+    [
+      "CP-CAT-02",
+      "Pasó",
+      "25/09",
+      "12 precios ascienden98..1202 y descienden1202..98; mismo conjunto.",
+      "CP-CAT-02_asc; CP-CAT-02_desc"
+    ],
+    [
+      "CP-PRO-01",
+      "Pasó",
+      "25/09",
+      "Canon muestra Select required! y mantiene carrito vacío.",
+      "CP-PRO-01_resultado"
+    ],
+    [
+      "CP-PRO-02",
+      "Bloqueado",
+      "25/09",
+      "Apple sin alternativasRadio; Canon y Product8 con selectores vacíos. No hay configuración completa para comparar precio.",
+      "PRO-APPLE; CP-PRO-02_bloqueo"
+    ],
+    [
+      "CP-CAR-01",
+      "Falló",
+      "25/09",
+      "1unidad:122/122.2unidades:unit122,línea242,total244. Diferencia2 en línea; DEF-01 reproducido.",
+      "CP-CAR-01_qty1; CP-CAR-01_qty2"
+    ],
+    [
+      "CP-CAR-02",
+      "Pasó",
+      "25/09",
+      "0,-1,abc retiran línea;1.5 y vacío quedan en1.147 sin***;148 con*** y checkout retorna carrito. Observación de normalización silenciosa; no demuestra corrección monetaria ni compra final.",
+      "CP-CAR-02_cero; decimal; negativo; texto; vacio; stock147; stockS; stockSmas1; stock-bloquea-checkout"
+    ],
+    [
+      "CP-CUP-01",
+      "Bloqueado",
+      "25/09",
+      "Los3 cupones del panel están deshabilitados y vencidos.2222 no es dato válido.",
+      "CP-CUP-01_cupones-no-vigentes"
+    ],
+    [
+      "CP-CUP-02",
+      "Bloqueado",
+      "25/09",
+      "A(inexistente) yB(vencido) pasan con aviso y total122. C(no elegible),D(duplicado),E(revalidación) bloqueadas por falta de cupón válido.",
+      "CP-CUP-02_error-visible; CP-CUP-02_vencido-error; CP-CUP-01_admin.txt"
+    ],
+    [
+      "CP-CHK-01",
+      "Falló",
+      "25/09",
+      "Apellido vacío validado; invitado completo guardado; Choose indica No Payment options are available. Confirm Order deshabilitado.",
+      "CP-CHK-01_apellido-vacio; CP-CHK-01_sin-pago"
+    ],
+    [
+      "CP-CON-01",
+      "Bloqueado",
+      "25/09",
+      "No hay pago seleccionable ni confirmación posible; no se generó ID propio.",
+      "CP-CHK-01_sin-pago"
+    ],
+    [
+      "CP-CON-02",
+      "Bloqueado",
+      "25/09",
+      "No existe primera orden de prueba; no se ensayaron reintentos de confirmación.",
+      "CP-CHK-01_sin-pago"
+    ],
+    [
+      "CP-ADM-01",
+      "Bloqueado",
+      "24/09",
+      "El panel denegó el guardado por falta de permisos. La captura demuestra el bloqueo, pero no un cambio persistido.",
+      "H-ADM permiso-modificar-productos"
+    ],
+    [
+      "CP-PED-01",
+      "Bloqueado",
+      "25/09",
+      "No hay orden propia para comparar con Orders.",
+      "CP-CHK-01_sin-pago"
+    ],
+    [
+      "CP-RNF-01",
+      "Bloqueado",
+      "25/09",
+      "Sin evento público de orden confirmada no puede medirse latencia público->panel.",
+      "CP-CHK-01_sin-pago"
+    ],
+    [
+      "CP-RNF-03",
+      "Bloqueado",
+      "25/09",
+      "No se contó con instrumentación de navegación exportable ni con datos brutos verificables para aplicar el protocolo definido.",
+      "Sin evidencia instrumental suficiente"
+    ]
+  ],
+  "hallazgos": [
+    {
+      "id": "DEF-01",
+      "title": "Total de línea inconsistente al aumentar cantidad",
+      "kind": "Defecto observable reproducido; causa raíz no confirmada",
+      "trace": "E-RF03 -> CT-CAR-01 -> CP-CAR-01",
+      "severity": "Alta",
+      "priority": "Alta",
+      "steps": "Añadir iPodNano1; abrir carrito; cambiar a2 y actualizar.",
+      "expected": "122 por2 =244 en la línea, misma semántica fiscal; total general244.",
+      "actual": "Línea242; unitario122; total244; subtotal200, EcoTax4 y VAT40. Reproducido25/09.",
+      "evidence": "CP-CAR-01_qty1 / qty2; H-OC04",
+      "action": "Revisar cálculo/presentación de línea, especialmente tasa fija por cantidad como hipótesis. Reprobar1,2 y frontera de stock tras corrección."
+    },
+    {
+      "id": "DEF-04",
+      "title": "Checkout invitado sin método de pago seleccionable",
+      "kind": "Fallo del recorrido probado; configuración/causa en análisis",
+      "trace": "E-RF05 -> CT-CHK-03 -> CP-CHK-01",
+      "severity": "Crítica para el recorrido ensayado",
+      "priority": "Alta",
+      "steps": "Carrito Nano1; elegirGuest; completar dirección ficticiaUK/London; continuar; Choose enPaymentMethod.",
+      "expected": "Método aplicable seleccionable que permita continuar.",
+      "actual": "No Payment options are available. Please contact us for assistance! Confirm Order deshabilitado. Historial24/09 muestra COD habilitado enAllZones; no demuestra todas las condiciones de aplicabilidad.",
+      "evidence": "CP-CHK-01_sin-pago; H-OC01,H-OC02,H-OC05",
+      "action": "Investigar aplicabilidad, producto/envío/configuración y permisos. No afirmar que ningún cliente puede comprar ni que la causa sea sincronización."
+    },
+    {
+      "id": "OBS-02",
+      "title": "Disponibilidad de ficha no garantiza stock utilizable",
+      "kind": "Observación; reemplaza clasificación automática de DEF-02",
+      "trace": "E-RF08 -> CT-CAR-03 -> CP-CAR-02 (preparación)",
+      "severity": "Alta potencial",
+      "priority": "Alta de investigación",
+      "steps": "AbrirHTC InStock; añadir1; abrir carrito; contrastar inventario administrativo0.",
+      "expected": "Comunicación coherente del stock disponible.",
+      "actual": "FichaInStock, carrito***; panel0. Una etiqueta de agotado configurada comoInStock puede explicar presentación. No hay venta sin stock demostrada.",
+      "evidence": "CAR-precondicion-HTC; historial de configuración",
+      "action": "Revisar etiquetaOutOfStockStatus y regla comercial antes de declarar defecto de código."
+    },
+    {
+      "id": "OBS-03",
+      "title": "Confirmación deshabilitada cuando falta pago",
+      "kind": "Comportamiento observado; no se confirma como defecto",
+      "trace": "E-RF06 -> CT-CON-01 -> CP-CON-01",
+      "severity": "Informativa",
+      "priority": "Baja",
+      "steps": "Llegar al checkout sin método de pago y observar Confirm Order.",
+      "expected": "No confirmar sin pago y comunicar el impedimento.",
+      "actual": "El botón aparece deshabilitado y el aviso de pago es visible.",
+      "evidence": "CP-CHK-01_sin-pago; H-OC05",
+      "action": "Mantener esta validación en la regresión del checkout cuando exista un método de pago aplicable."
+    },
+    {
+      "id": "OBS-F01",
+      "title": "Opciones requeridas sin alternativas seleccionables",
+      "kind": "Impedimento de datos/configuración; defecto de código no confirmado",
+      "trace": "E-RF02 -> CT-PRO-02/03 -> CP-PRO-02",
+      "severity": "Alta en productos afectados",
+      "priority": "Alta",
+      "steps": "AbrirAppleCinema,Canon yProduct8; inspeccionarRadio/Select/Size.",
+      "expected": "Para caso positivo, todas las opciones requeridas deben ser seleccionables.",
+      "actual": "Radio deApple sin valores; Canon yProduct8 sólo placeholder. Se bloquea configuración válida.",
+      "evidence": "PRO-APPLE; CP-PRO-02_bloqueo; CP-PRO-01_resultado",
+      "action": "Provisionar producto de prueba con opciones activas y stock por opción; repetirCP-PRO-02."
+    },
+    {
+      "id": "OBS-F02",
+      "title": "No hay cupón vigente para prueba positiva",
+      "kind": "Impedimento de datos",
+      "trace": "E-RF04 -> CT-CUP-01/03/04/05 -> CP-CUP-01/02",
+      "severity": "Alta para cobertura",
+      "priority": "Alta",
+      "steps": "AdministraciónMarketing>Coupons; revisar los3 registros.",
+      "expected": "Cupón de prueba vigente y elegible disponible.",
+      "actual": "1111,2222,3333 deshabilitados; vencen en2014/2020. No hay representante válido.",
+      "evidence": "CP-CUP-01_cupones-no-vigentes; CP-CUP-01_admin.txt",
+      "action": "Proveedor del ambiente debe habilitar fixture controlado; no convertir2222 en válido por su nombre."
+    },
+    {
+      "id": "OBS-F03",
+      "title": "Cantidades inválidas se normalizan sin aviso específico",
+      "kind": "Observación de usabilidad; no fallo contra oráculo mínimo previo",
+      "trace": "E-RF03 -> CT-CAR-02 -> CP-CAR-02",
+      "severity": "Media",
+      "priority": "Media",
+      "steps": "En Nano1 probar1.5,-1,abc y vacío, restableciendo línea entre variantes.",
+      "expected": "No conservar cantidad inválida comprable; sería preferible error explícito.",
+      "actual": "1.5 y vacío quedan1; -1 yabc retiran línea. No quedan cantidades inválidas comprables, pero cambia intención sin explicación.",
+      "evidence": "CP-CAR-02_decimal; negativo; texto; vacio",
+      "action": "Acordar regla de negocio explícita y mejorar validación; no cambiar retroactivamente el oráculo para fabricar fallo."
+    },
+    {
+      "id": "CONF-F01",
+      "title": "Orden por precio y omisión obligatoria funcionan en la muestra",
+      "kind": "Confirmación relevante",
+      "trace": "E-RF01/E-RF02 -> CT-CAT-02/CT-PRO-01 -> CP-CAT-02/CP-PRO-01",
+      "severity": "Informativa",
+      "priority": "Baja",
+      "steps": "Ordenar12 productos asc/desc; omitirSelect enCanon y añadir.",
+      "expected": "Monotonía y rechazo de omisión.",
+      "actual": "Ambos criterios cumplen en la muestra; no demuestra cobertura de todos los productos.",
+      "evidence": "CP-CAT-02_asc; desc; CP-PRO-01_resultado",
+      "action": "Candidatos a regresión automatizada con conjunto estable."
+    },
+    {
+      "id": "CONF-F02",
+      "title": "Cantidad superior al stock bloquea checkout",
+      "kind": "Confirmación relevante",
+      "trace": "E-RF08 derivado -> CT-CAR-03 -> CP-CAR-02",
+      "severity": "Informativa",
+      "priority": "Baja",
+      "steps": "Leer147 enpanel; actualizar carrito a147 y luego148; intentarCheckout.",
+      "expected": "Sin insuficiencia enS; restricción al excederS.",
+      "actual": "147 sin***;148 con*** y regreso a carrito con advertencia. No se creó orden.",
+      "evidence": "CP-CAR-02_stock147; stockS; stockSmas1; stock-bloquea-checkout",
+      "action": "Automatizar frontera en ambiente donde el stock pueda fijarse y restaurarse."
+    }
+  ]
+}
