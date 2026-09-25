@@ -1,158 +1,274 @@
 # GUION DE EXPOSICIÓN — Granit (Integrante 2)
 Proyecto 1 · CS5383 · Caso 3 OpenCart · Bloque: checkout, pedidos, administración, no funcionales y cierre
 
-Duración objetivo: **10–12 minutos** de exposición + preguntas.
-Las frases marcadas ▶ son de impacto: dilas tal cual, no las parafrasees.
+**Dos audiencias en la misma sala.** Tus compañeros necesitan entender *qué estaba en juego*; la docente necesita
+oír *el rigor con que lo probaste*. Por eso cada bloque tiene dos capas:
+
+> 🗣 **LA HISTORIA** — se cuenta mirando al aula, en lenguaje de negocio, sin siglas.
+> 🎯 **EL RESPALDO** — se dice mirándola a ella, con el término exacto. Es la frase que sostiene lo anterior.
+
+Duración: **12–14 minutos**. Las frases ▶ van literales.
+Regla de oro del ritmo: **nunca sueltes una sigla sin haber contado antes para qué sirve.**
 
 ---
 
-## ANTES DE EMPEZAR — checklist de 2 minutos
-- [ ] PDF abierto en la página del **resumen ejecutivo**, no en la portada.
-- [ ] Ten a un clic: §8.1 criterios de salida · §8.3 tablero · §7.5 DEF-04 · §4.3 diagrama de trazabilidad.
-- [ ] Qase abierto en otra pestaña con los 8 casos y el Test Run cargado.
-- [ ] Repo de GitHub abierto: es tu Gestión de la Configuración, no un adorno.
-- [ ] Ten memorizados tres números: **25 % ejecución · 50 % aprobación · 62.5 % bloqueo**.
-- [ ] Ten memorizada una frase: *el sitio público no ofrece método de pago aunque el panel lo tiene habilitado*.
+## BLOQUE 0 · El gancho (40 s) — *mira al aula, no a la pantalla*
 
----
+🗣 "Imaginen que administran una tienda en línea. Es lunes, va a empezar la campaña más fuerte del año, y llegan
+dos quejas de clientes: una persona compró un producto que en realidad ya no tenían en almacén, y otra aplicó un
+cupón de descuento que nunca se descontó. Ustedes no saben si son dos casos aislados o la punta de algo peor."
 
-## BLOQUE 1 · Apertura (30 s)
+"Esa tienda existe, corre sobre OpenCart, y fue el sistema que nos tocó. Nosotros entramos como el equipo de
+pruebas, antes de la campaña, para responder una sola pregunta: **¿esta tienda puede vender sin fallar?**"
 
 ▶ **"Profesora, estructuramos nuestro plan evaluando primero cuáles son los flujos transaccionales donde el negocio no puede permitirse fallar."**
 
-"En el Caso 3, ese flujo es la cadena **pago → confirmación del pedido → visibilidad en el panel de operaciones**. Ahí se concentra el dinero y ahí concentré mi bloque como Integrante 2. Franco cubre catálogo, ficha de producto, carrito y cupones."
+"Y la respuesta corta, que voy a sustentar en los próximos diez minutos, es que encontramos algo bastante peor que
+las dos quejas originales."
 
-*No leas la portada. No presentes al equipo. Entra por el riesgo de negocio.*
-
----
-
-## BLOQUE 2 · Alcance y base de pruebas (1 min)
-**Muestra:** §1.2 y la tabla de elementos de prueba.
-
-"La base de pruebas son los 48 requisitos verificables del primer avance. De los 24 que corresponden a mi bloque —RF CHK, RF CON, RF ADM, RF PED y los tres RNF— derivé **33 condiciones de prueba**, y de las de mayor riesgo, **8 casos**."
-
-"Una condición de prueba dice **qué** comprobar; el caso dice **cómo**, con qué datos y contra qué resultado esperado. Por eso ninguna fila de mi análisis contiene pasos: si los tuviera, ya no sería análisis, sería diseño."
-
-*Esto le demuestra que no confundes las actividades del proceso ISTQB.*
+*No adelantes cuál. Que se queden con la pregunta.*
 
 ---
 
-## BLOQUE 3 · Riesgos: producto frente a proceso (1 min)
-**Muestra:** §3.1 la matriz Probabilidad × Impacto, y las filas MATERIALIZADO.
+## BLOQUE 1 · Quién hace qué, y por dónde entramos (1 min)
 
-"Separé **riesgo de producto** —que el sistema falle y dañe al negocio— de **riesgo de proyecto o proceso** —que nosotros no podamos ejecutar la prueba prevista—. El segundo no dice nada sobre la calidad del sistema, pero determina cuánta evidencia podemos obtener."
+🗣 "Una tienda tiene dos caras. La que ve el cliente —el catálogo, el carrito, el pago— y la que ve el equipo de
+operaciones: un panel interno donde se cargan productos, se ajusta el stock y se revisan los pedidos. Las dos
+tienen que contar la misma verdad. Cuando no coinciden, el cliente compra humo."
 
-"Tres riesgos de proceso **se materializaron** y están registrados con fecha y texto literal del sistema: el usuario administrativo sin permisos de escritura, la indisponibilidad del host por bloqueo de Cloudflare con sus Ray IDs, y la imposibilidad de generar un pedido."
+"Franco se encargó de la cara del cliente antes de pagar: catálogo, ficha de producto, carrito y cupones. Yo tomé
+**desde el momento en que el cliente decide pagar hacia adelante**: el pago, la confirmación del pedido, el panel
+de administración y la consistencia entre ambas caras."
 
-*Si pregunta por los Ray IDs: son el identificador que Cloudflare emite por cada bloqueo; permiten que un tercero verifique el evento.*
+🎯 "En términos del caso: mi bloque cubre FUN-05 checkout, FUN-06 confirmación, FUN-07 productos y stock
+administrativo, FUN-08 gestión de pedidos, y los no funcionales RNF-01 a RNF-03."
 
----
-
-## BLOQUE 4 · Trazabilidad (1 min)
-**Muestra:** §4.3, Figura 1 — el diagrama de los cuatro eslabones.
-
-"La trazabilidad tiene cuatro eslabones: **requisito ↔ caso ↔ ejecución ↔ defecto**, y la condición de prueba queda como paso intermedio del análisis. La cadena real de mi hallazgo principal es: **RF CHK 04 → CT-CHK-04 → CP-CHK-01 → ejecución del 24 de septiembre → DEF-04**."
-
-"Es recorrible en ambos sentidos. Ningún defecto queda flotando y ningún requisito queda sin cobertura o sin una justificación explícita de por qué no se cubrió en esta iteración: son 10 condiciones marcadas como no cubiertas, con su motivo."
-
-*Decir en voz alta que hay huecos, y que están declarados, vale más que fingir 100 % de cobertura.*
+▶ "Ahí se concentra el dinero: pago → confirmación → visibilidad en operaciones."
 
 ---
 
-## BLOQUE 5 · Diseño y técnicas (1.5 min)
-**Muestra:** §5.12, tabla de técnicas.
+## BLOQUE 2 · De qué partimos (1 min)
 
-"Apliqué cinco técnicas de caja negra y cada una responde a la naturaleza del problema, no a un checklist:"
+🗣 "No se prueba lo que a uno se le ocurre. Se parte de lo que el sistema **promete hacer**. Nosotros escribimos
+esas promesas como requisitos verificables: frases que se pueden comprobar con un sí o un no, no opiniones."
 
-- **Partición de equivalencia** en CP-CHK-01: los campos del checkout admiten infinitos valores, así que los agrupo en clases que el sistema debe tratar igual.
-- **Valores límite** en CP-RNF-03: el riesgo del umbral de dos segundos está en el borde, no en el centro; examiné 1999, 2000 y 2001 ms.
-- **Tabla de decisión** en CP-ADM-01: el comportamiento depende de tres variables combinadas —cantidad, estado publicado y política de venta sin inventario—, cuatro reglas.
-- **Transición de estados** en CP-CON-02: el pedido duplicado es un defecto de transición, carrito → pedido creado → reintento.
-- **Basadas en casos de uso** en CP-CON-01 y CP-PED-01: recorridos de extremo a extremo donde afloran las discrepancias entre etapas.
+🎯 "Esa es la **base de pruebas**: los 48 requisitos verificables del primer avance. De los 24 que corresponden a
+mi bloque derivé **33 condiciones de prueba** y, de las de mayor riesgo, **8 casos**."
 
-*Si te pregunta "¿y por qué no otra técnica?", responde por el problema, nunca por la teoría.*
-
----
-
-## BLOQUE 6 · Ejecución y la distinción que sostiene todo (2 min)
-**Muestra:** §8.5, tabla global con los badges de veredicto.
-
-"De 8 casos planificados: **1 pasó, 1 falló, 5 bloqueados y 1 con ejecución parcial**."
-
-▶ **"Un caso bloqueado no es un caso fallido. Fallido significa que el sistema se comportó distinto de lo esperado; bloqueado significa que un impedimento externo impidió ejecutarlo. Por eso el bloqueado nunca entra en el denominador de la tasa de aprobación: no llegó a ejecutarse."**
-
-"Y de los 5 bloqueados, la causa no es la misma: **3 están bloqueados por un defecto del producto** —DEF-04— y **2 por una restricción de permisos del ambiente**. La primera causa es responsabilidad del equipo de desarrollo; la segunda, de la disponibilidad del ambiente de prueba. Mezclarlas ocultaría quién tiene que actuar."
+🗣 "La diferencia entre las dos cosas es simple: la condición dice **qué** hay que comprobar; el caso dice **cómo**,
+con qué datos y contra qué resultado. Por eso en mi análisis no hay ni un solo paso escrito: si lo tuviera, ya no
+sería análisis."
 
 ---
 
-## BLOQUE 7 · El hallazgo principal (2 min) — *el corazón de tu exposición*
-**Muestra:** §7.5, DEF-04.
+## BLOQUE 3 · Qué puede salir mal, y a quién le duele (1.5 min)
 
-"El defecto crítico se titula así:"
+🗣 "Antes de probar, uno se pregunta qué es lo que más duele si falla. Y hay dos familias distintas de problema."
 
-▶ **"[Checkout / Sincronización sitio–panel] El sitio público no ofrece ningún método de pago pese a que el panel administrativo tiene Cash On Delivery habilitado para todas las zonas geográficas."**
+"La primera: **que el sistema falle y el negocio pierda**. Vender algo que no existe, cobrar dos veces, aplicar mal
+un descuento. La segunda, que casi nadie menciona: **que nosotros no podamos probar**. Que el sitio se caiga, que
+no nos den permisos, que los datos cambien mientras trabajamos."
 
-"Módulo, qué falla, bajo qué condición. Un desarrollador que lo lea un lunes a las ocho de la mañana, sin haber estado en mi sesión, puede reproducirlo solo con el informe."
+🎯 "La primera es **riesgo de producto**; la segunda, **riesgo de proyecto o de proceso**. El segundo no dice nada
+sobre la calidad del sistema, pero determina cuánta evidencia podemos obtener. Los evalué con una matriz
+probabilidad × impacto declarada antes de las tablas."
 
-"Lo importante es **cómo llegué**. En el sitio público el checkout se detiene con el mensaje literal *'No Payment options are available. Please contact us for assistance!'*. Mi primera lectura fue que el demo no tenía pasarelas configuradas, o sea una **limitación del ambiente**. Entré al panel administrativo a verificarlo y encontré lo contrario: Cash On Delivery habilitado con Geo Zone en *All Zones*, Flat Rate habilitado con la misma cobertura, y pedidos recientes en Sales > Orders, el más nuevo del 23 de septiembre."
+🗣 "Y les cuento algo que no estaba en el plan: **tres de esos riesgos se nos materializaron el mismo día**."
 
-▶ **"Es decir: los métodos existen, están habilitados, sin restricción geográfica, y el flujo operó antes. Lo que el cliente ve contradice lo que el panel administra. Eso no es una carencia del ambiente: es un defecto del producto, de severidad crítica."**
+"El sitio nos bloqueó el acceso desde una red y tuvimos que cambiar de origen. El usuario administrativo que
+publica el propio OpenCart resultó ser de solo lectura. Y no logramos generar ni un pedido de prueba."
 
-"Reclasifiqué mi propia observación OBS-01 como DEF-04, y eso cambió la evaluación de CS3 de cumplido a incumplido. Dejé registrado el cambio en el informe, en §8.4, porque afecta la conclusión."
-
-*Si dice "¿por qué dejaste el error escrito?": porque revisar una clasificación cuando aparece evidencia nueva es parte del análisis; lo inadmisible sería sostener la primera lectura habiendo visto el panel.*
-
-**Los otros tres defectos, en 20 segundos cada uno:**
-- **DEF-01** — el carrito muestra un total de línea de **$242.00** mientras cobra **$244.00**: omite el Eco Tax por unidad. Dos cifras distintas para la misma compra, en la misma pantalla, arrastradas hasta el resumen del pedido.
-- **DEF-02** — HTC Touch HD se publica como *In Stock* con **cantidad 0 en el panel**; el rechazo ocurre recién en el carrito. Es exactamente la queja de negocio que originó el caso.
-- **DEF-03** — el botón *Confirm Order* no entrega retroalimentación cuando no hay método de pago. Severidad Media: afecta la experiencia, no el dinero.
-
----
-
-## BLOQUE 8 · Criterios de salida, y RECIÉN DESPUÉS las métricas (2 min)
-**Muestra primero §8.1, después §8.3. Nunca al revés.**
-
-▶ **"Antes de mostrar cualquier número quiero declarar contra qué se mide, porque los criterios de salida del plan son las métricas con las que se decide."**
-
-"CS1: cien por ciento de los casos de alta prioridad ejecutados. CS2: aprobación mayor o igual al noventa por ciento de los ejecutados. CS3: cero defectos críticos abiertos. CS4: máximo dos defectos altos abiertos."
-
-*Ahora sí, cambia de lámina al tablero.*
-
-"Tasa de ejecución **25 %**, dos de ocho planificados. Tasa de aprobación **50 %**, uno aprobado de dos ejecutados. Tasa de bloqueo **62.5 %**, cinco de ocho planificados."
-
-"Los denominadores no se mezclan: **bloqueo sobre planificados, aprobación sobre ejecutados**."
-
-▶ **"Definimos previamente nuestros criterios de salida. No se cumplen CS1, CS2 ni CS3: solo dos de siete casos de alta prioridad pudieron ejecutarse, la aprobación es del 50 % frente a un umbral del 90 %, y hay un defecto crítico abierto en el flujo transaccional. CS4 se cumple, pero en el límite exacto. Con tres de los cuatro criterios incumplidos, el release no está listo."**
-
-▶ **"Y quiero señalar la lectura correcta de estas cifras: presentar 'una de dos pruebas aprobadas' como resultado positivo sería una métrica engañosa. El dato que gobierna la decisión es que el 62.5 % del alcance planificado nunca pudo entrar a ejecución, y que ese porcentaje está concentrado justo en la cadena de pago."**
+🎯 "Los tres están registrados en la bitácora con fecha, hora, origen de acceso, el texto literal que devolvió el
+sistema y los identificadores del bloqueo. Un riesgo materializado sin evidencia fechada es una excusa; con
+evidencia es un resultado de prueba."
 
 ---
 
-## BLOQUE 9 · Automatización para el Proyecto 2 (1 min)
-**Muestra:** §9.
+## BLOQUE 4 · Cómo se sigue el rastro (1 min)
+**Muestra:** §4.3, Figura 1.
 
-"Mi recomendación sale de lo observado, no de la teoría general:"
+🗣 "Cuando reportas un problema, lo primero que te preguntan es: ¿de dónde salió esto? Si no puedes responder,
+tu hallazgo es una anécdota."
 
-"**Sí automatizaría** la medición del tiempo de respuesta del catálogo: criterio numérico, ejecución idéntica en cada corrida, y un margen observado de apenas 68 milisegundos bajo el umbral, así que repetirla tiene valor real. También la verificación de consistencia entre el inventario del panel y la disponibilidad publicada: es una comparación de datos entre dos fuentes, sin interacción compleja, y repetida sobre todo el catálogo. Y los pasos previos del checkout de invitado, que se comportaron de forma estable y determinista con dos países distintos."
+🎯 "Por eso la trazabilidad tiene cuatro eslabones: **requisito ↔ caso ↔ ejecución ↔ defecto**, y la condición de
+prueba queda como paso intermedio del análisis. La cadena real de mi hallazgo principal es
+**RF CHK 04 → CT-CHK-04 → CP-CHK-01 → ejecución del 24 de septiembre → DEF-04**, y se recorre en los dos sentidos."
 
-"**No automatizaría todavía** la confirmación de pedidos ni la prevención de duplicados: no se pueden completar ni una sola vez de forma manual. Automatizar un flujo que nadie ha logrado ejecutar es escribir código contra un comportamiento que no se ha observado."
+🗣 "En cristiano: puedo tomar cualquier defecto y llegar hasta la promesa del sistema que rompe, o al revés."
 
-▶ **"La automatización rinde sobre flujos estables. Hoy el flujo de compra de este sistema no es estable, y automatizarlo ahora produciría pruebas frágiles que fallarían por el defecto conocido en lugar de detectar defectos nuevos."**
+🎯 "Y donde no hubo cobertura lo digo: 10 condiciones quedaron declaradas como no cubiertas en esta iteración, con
+su motivo. No las escondí en el total."
 
 ---
 
-## BLOQUE 10 · Cierre (40 s)
+## BLOQUE 5 · Cómo se eligen las pruebas (1.5 min)
 
-"Tres lecciones aprendidas:"
+🗣 "No se puede probar todo. Un formulario de pago admite infinitas combinaciones: probarlas todas tomaría años.
+Las técnicas de prueba son formas de elegir **pocos casos que representen muchos**."
 
-1. "El ambiente es parte del alcance de pruebas, no un supuesto. Verificarlo debe ser la primera actividad."
-2. "Distinguir bloqueo por ambiente de bloqueo por defecto cambia la conclusión del informe: nos pasó, y quedó documentado."
-3. "Contrastar el sitio público contra el panel administrativo reveló la causa raíz que la sola exploración del front no explicaba."
+"Se los traduzco con las que usé:"
+
+- 🗣 "Si un campo acepta infinitos valores, los agrupo en familias que el sistema debería tratar igual y pruebo una
+  de cada familia." 🎯 **Partición de equivalencia**, en CP-CHK-01.
+- 🗣 "Si el requisito dice 'menos de dos segundos', el riesgo no está en un segundo: está pegado al borde. Pruebo
+  justo antes, justo en, y justo después." 🎯 **Análisis de valores límite**, en CP-RNF-03: 1999, 2000 y 2001 ms.
+- 🗣 "Si el comportamiento depende de varias condiciones combinadas, armo una tabla con todas las combinaciones
+  posibles para que ninguna quede sin respuesta." 🎯 **Tabla de decisión**, en CP-ADM-01: cantidad, estado
+  publicado y política de venta sin inventario, cuatro reglas.
+- 🗣 "Si el error aparece al repetir una acción —el famoso doble clic en Comprar— lo que hay que modelar son los
+  estados por los que pasa el pedido." 🎯 **Transición de estados**, en CP-CON-02.
+- 🗣 "Y cuando el problema solo aparece al recorrer todo de punta a punta, se prueba el recorrido completo."
+  🎯 **Basadas en casos de uso**, en CP-CON-01 y CP-PED-01.
+
+---
+
+## BLOQUE 6 · La investigación: tres pistas (2.5 min) — *el tramo que engancha a la sala*
+
+🗣 "Ahora sí, lo que encontramos. Les voy a contar tres pistas, en el orden en que aparecieron."
+
+### Pista 1 — La cuenta que no cuadra
+🗣 "Pongo dos unidades de un producto de 122 dólares en el carrito. La pantalla me dice, en la línea del producto,
+que eso cuesta **242 dólares**. Y tres centímetros más abajo, en el total a pagar, dice **244**. Dos números
+distintos para la misma compra, en la misma pantalla."
+
+"La diferencia son dos dólares de un impuesto ecológico que se cobra por unidad, pero en la línea se sumó una sola
+vez. Y ese número equivocado viaja hasta el resumen final del pedido."
+
+🎯 "Es DEF-01, severidad Alta: afecta la confianza en el monto a pagar y el margen del negocio."
+
+### Pista 2 — El producto fantasma
+🗣 "Abro un teléfono que la tienda anuncia como **disponible**. Lo agrego al carrito. Y el carrito me lo marca con
+tres asteriscos y me dice que no hay stock. ¿Entonces por qué lo anunciaste como disponible?"
+
+"Entré al panel de administración a ver el inventario real de ese producto: **cero unidades**. La tienda estaba
+publicando disponibilidad de algo que no existía, y solo lo admitía cuando el cliente ya había decidido comprarlo."
+
+🎯 "Es DEF-02. Y es exactamente la queja de negocio que originó el caso: clientes que compran productos sin stock
+real."
+
+### Pista 3 — El pago que desaparece
+🗣 "Llego al último paso, el momento de pagar. Y el sitio me dice que **no hay ningún método de pago disponible**."
+
+*Pausa. Deja que caiga.*
+
+"Mi primera conclusión fue la cómoda: 'este es un sitio de demostración, seguro no le configuraron ninguna forma
+de pago'. Es decir, culpa del ambiente, no del sistema. Con eso podía cerrar el informe."
+
+▶ **"Pero antes de escribirlo, entré al panel administrativo a verificarlo. Y encontré lo contrario."**
+
+🗣 "Pago contra entrega: **habilitado**, para todas las zonas geográficas. Envío con tarifa plana: **habilitado**,
+misma cobertura. Y en la lista de pedidos había ventas reales, la más reciente del día anterior, por 740 dólares.
+O sea: los métodos existen, están encendidos, y el flujo funcionó antes."
+
+▶ **"Lo que el cliente ve contradice lo que el panel administra. Eso no es una carencia del ambiente: es un defecto del producto, de severidad crítica."**
+
+🗣 "Traducido al negocio: **si esta tienda abriera mañana, ningún cliente podría pagar**. No es que se venda poco.
+Es que no se vende."
+
+🎯 "Es DEF-04, y el título lo dice completo: *[Checkout / Sincronización sitio–panel] El sitio público no ofrece
+ningún método de pago pese a que el panel administrativo tiene Cash On Delivery habilitado para todas las zonas
+geográficas*. Módulo, qué falla, bajo qué condición."
+
+▶ **"Un desarrollador que lo lea un lunes a las ocho de la mañana, sin haber estado en mi sesión, puede reproducirlo con mi informe y nada más."**
+
+🎯 "Y corregí mi propia clasificación: lo que había registrado como limitación del ambiente pasó a ser el defecto
+DEF-04. Ese cambio está escrito en el informe, en §8.4, porque cambia la conclusión."
+
+---
+
+## BLOQUE 7 · Por qué casi no pudimos ejecutar (1.5 min)
+
+🗣 "Aquí viene la parte incómoda. De ocho pruebas que diseñé, **una pasó, una falló y cinco ni siquiera pude
+ejecutarlas**."
+
+"Y quiero ser preciso con las palabras, porque no son lo mismo."
+
+▶ **"Un caso bloqueado no es un caso fallido. Fallido significa que el sistema se comportó distinto de lo esperado. Bloqueado significa que un impedimento externo impidió ejecutarlo. Por eso el bloqueado nunca entra en el denominador de la tasa de aprobación: no llegó a ejecutarse."**
+
+🗣 "Y las cinco bloqueadas no lo están por la misma razón. **Tres** están bloqueadas por el defecto que acabo de
+contarles: sin poder pagar, no hay pedido que confirmar, ni pedido duplicado que prevenir, ni pedido que buscar en
+el panel. Las otras **dos** están bloqueadas porque el usuario administrativo del sitio es de solo lectura: intenté
+poner un producto en stock cero y el sistema me respondió que no tengo permiso."
+
+🎯 "La distinción importa porque asigna responsables distintos: la primera causa es del equipo de desarrollo; la
+segunda, de la disponibilidad del ambiente de prueba. Mezclarlas ocultaría quién tiene que actuar."
+
+---
+
+## BLOQUE 8 · La decisión: primero la regla, después el número (2 min)
+**Muestra §8.1 y solo después §8.3. Nunca al revés.**
+
+🗣 "Ahora, la pregunta que le importa al dueño de la tienda: **¿se lanza o no se lanza?**"
+
+"Y aquí hay una trampa clásica. Si yo les digo 'de las pruebas que ejecuté, la mitad pasó', ustedes no pueden
+decidir nada, porque no saben **cuáles** ejecuté ni **qué** quedó sin probar."
+
+▶ **"Por eso, antes de mostrar cualquier número, quiero declarar contra qué se mide: los criterios de salida del plan son las métricas con las que se decide."**
+
+🎯 "CS1: cien por ciento de los casos de alta prioridad ejecutados. CS2: aprobación mayor o igual al noventa por
+ciento de los ejecutados. CS3: cero defectos críticos abiertos. CS4: máximo dos defectos altos abiertos."
+
+*Recién ahora cambias al tablero.*
+
+🎯 "Tasa de ejecución **25 %**. Tasa de aprobación **50 %**. Tasa de bloqueo **62.5 %**. Y los denominadores no se
+mezclan: **bloqueo sobre planificados, aprobación sobre ejecutados**."
+
+🗣 "Por qué esa diferencia, en criollo: el bloqueo mide cuánto del trabajo total nunca arrancó, así que se compara
+contra todo lo planificado. La aprobación mide qué tan bien salió lo que sí se probó, así que se compara solo
+contra eso. Son dos preguntas distintas y responderlas con el mismo denominador engaña."
+
+▶ **"No se cumplen CS1, CS2 ni CS3: solo dos de siete casos de alta prioridad pudieron ejecutarse, la aprobación es del 50 % frente a un umbral del 90 %, y hay un defecto crítico abierto en el flujo transaccional. CS4 se cumple, pero en el límite exacto. Con tres de los cuatro criterios incumplidos, el release no está listo."**
+
+▶ **"Y señalo la lectura correcta de estas cifras: presentar 'una de dos pruebas aprobadas' como resultado positivo sería una métrica engañosa. El dato que gobierna la decisión es que el 62.5 % del alcance nunca pudo entrar a ejecución, y que está concentrado justo en la cadena de pago."**
+
+---
+
+## BLOQUE 9 · Qué automatizar el próximo ciclo (1 min)
+
+🗣 "Nos toca recomendar qué de todo esto conviene automatizar. Y la respuesta no es 'todo'."
+
+"**Sí automatizaría** la medición de velocidad del catálogo: es un número contra un umbral, se repite igual siempre,
+y el margen que medimos fue de 68 milisegundos. Está tan al borde que conviene vigilarlo seguido. También la
+comparación entre el stock del panel y lo que publica la tienda: es cotejar dos listas, algo que una máquina hace
+mejor que una persona sobre todo el catálogo. Y el llenado del formulario de compra, que se comportó igual las dos
+veces que lo corrí."
+
+"**No automatizaría todavía** la confirmación de pedidos ni la prevención de duplicados."
+
+▶ **"Automatizar un flujo que nadie ha logrado completar ni una sola vez a mano es escribir código contra un comportamiento que no se ha observado. La automatización rinde sobre flujos estables; hoy este no lo es, y las pruebas fallarían por el defecto conocido en lugar de detectar defectos nuevos."**
+
+---
+
+## BLOQUE 10 · Cierre (50 s) — *mira al aula*
+
+🗣 "Cierro con lo que me llevo, que no es una lista de errores ajenos."
+
+1. 🗣 "El ambiente donde pruebas es parte del trabajo, no un supuesto. Perdimos horas diseñando ejecución sobre un
+   sitio que primero no nos dejaba entrar y después no nos dejaba escribir. Eso se verifica el primer día."
+2. 🗣 "La diferencia entre 'no se pudo probar por el ambiente' y 'no se pudo probar por un defecto' cambia la
+   conclusión del informe. A nosotros nos cambió: lo que clasificamos como problema del ambiente resultó ser el
+   defecto crítico. Lo dejamos escrito."
+3. 🗣 "Y la más importante: la respuesta apareció **comparando las dos caras del sistema**. Mirando solo la tienda
+   nunca habríamos sabido que el panel decía lo contrario."
 
 ▶ **"El resultado de mi bloque no es que las pruebas salieran bien o mal: es que la mayor parte del alcance no pudo ejecutarse, sabemos exactamente por qué, y está sustentado con el texto literal del sistema y su fecha. Un bloqueo bien documentado y trazable vale más que un caso aprobado sin evidencia."**
 
 ---
 
+# CÓMO MANEJAR LAS DOS AUDIENCIAS
+
+| Situación | Qué hacer |
+|---|---|
+| Vas a soltar una sigla (RF, CT, CP, CS, RNF) | Di primero qué es en una frase, después la sigla. Nunca al revés. |
+| Estás contando una pista | Mira al aula. Es narración, no defensa. |
+| Estás dando una cifra o un criterio | Mírala a ella. Es sustento, no relato. |
+| La sala se pierde | Vuelve a la tienda: "en plata, esto significa que…" |
+| Ella interrumpe con una pregunta | Responde con el término exacto primero, y recién después la analogía. |
+| Te quedas sin tiempo | Sacrifica el Bloque 5 (técnicas), nunca el 6 (pistas) ni el 8 (criterios). |
+
+**Tres anclas por si te pierdes:** contra qué medimos · qué encontramos · qué decidimos.
+
+---
 # BANCO DE RESPUESTAS
 
 ### 1. "El tablero dice 95 % de casos aprobados. ¿Pasa a producción?" *(su pregunta trampa)*
