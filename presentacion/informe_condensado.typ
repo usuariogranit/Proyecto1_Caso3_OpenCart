@@ -317,30 +317,38 @@ Primero los 14 de prioridad Alta.
 #v(7pt)
 
 == Caso A · CP-CAR-01 — de un requisito a un defecto abierto
-#etapa(1)[Requisito de origen][*E-RF03* — el carrito debe recalcular los importes al cambiar la cantidad. Base de pruebas derivada del enunciado del Caso 3.]
-#etapa(2)[Riesgo asociado][*R03 · riesgo monetario.* Probabilidad 3 × Impacto 3 = *9* → prioridad *Alta*. El riesgo fija la profundidad: es el requisito con más casos del proyecto, tres.]
-#etapa(3)[Condición de prueba][*CT-CAR-01* — una cantidad válida recalcula línea, subtotal, impuestos y total de forma coherente. Describe *qué* comprobar, no cómo.]
-#etapa(4)[Técnica elegida y por qué][*Partición de equivalencia* — Clase 5, guía G5. El campo cantidad admite infinitos valores; se agrupan en clases que el sistema debe tratar igual y se prueba un representante de la clase válida. No se eligió tabla de decisión porque no hay variables combinadas, ni transición de estados porque no hay cambio de estado del pedido.]
-#etapa(5)[Diseño del caso][*CP-CAR-01*, prioridad Alta, responsable Franco. Resultado esperado: el total de línea debe ser igual al precio unitario multiplicado por la cantidad, bajo la misma base fiscal.]
-#etapa(6)[Datos y precondiciones][Producto apto sin opciones obligatorias: *iPod Nano* (product_id 36). Carrito limpio. Cantidades *1* y *2*. Precio unitario mostrado 122.00 USD. Importes de referencia registrados antes de actualizar.]
-#etapa(7)[Ejecución y veredicto][25/09/2026. Con 1 unidad: precio y línea coinciden en 122.00. Con 2 unidades: unitario 122.00, *línea 242.00*, *total general 244.00*. Desglose: Sub-Total 200.00 + Eco Tax 4.00 + VAT 40.00 = 244.00. → *Falló*.]
-#etapa(8)[Evidencia][#raw("CP-CAR-01_qty1_20260925.png") y #raw("CP-CAR-01_qty2_20260925.png"). Hora y URL en #raw("registro.json"); integridad por SHA-256 en #raw("manifest_integrado.json").]
-#etapa(9)[Hallazgo derivado][*DEF-01* — «\[Carrito\] El total de línea no coincide con el total a pagar al aumentar la cantidad de una a dos unidades». Severidad Alta / Prioridad propuesta Alta. La causa raíz *no* se afirma: el Eco Tax es hipótesis, no se inspeccionó código.]
-#etapa(10, ultimo: true)[Estado actual][*Abierto · reproducido el 25/09/2026.* Al existir corrección pasará a «Listo para reprueba»: se repetirá CP-CAR-01 como *prueba de confirmación* y se aplicarán *pruebas de regresión* sobre carrito y checkout, que comparten precondiciones.]
+#table(columns: (0.8cm, 3.5cm, 1fr), stroke: 0.4pt + rgb("#BFCAD1"), inset: 4pt, align: left + top,
+  fill: (_, y) => if y == 0 { rgb("#1F4E79") } else if calc.odd(y) { rgb("#F4F7F9") } else { white },
+  table.header(text(size: 8pt, weight: "bold", fill: white)[\#], text(size: 8pt, weight: "bold", fill: white)[Etapa], text(size: 8pt, weight: "bold", fill: white)[Detalle]),
+  text(size: 8pt, weight: "bold", fill: CYAN)[1], text(size: 8pt, weight: "bold")[Requisito de origen], text(size: 8pt)[*E-RF03* — el carrito debe recalcular los importes al cambiar la cantidad. Base de pruebas derivada del enunciado del Caso 3.],
+  text(size: 8pt, weight: "bold", fill: CYAN)[2], text(size: 8pt, weight: "bold")[Riesgo asociado], text(size: 8pt)[*R03 · riesgo monetario.* Probabilidad 3 × Impacto 3 = *9* → prioridad *Alta*. El riesgo fija la profundidad: es el requisito con más casos del proyecto, tres.],
+  text(size: 8pt, weight: "bold", fill: CYAN)[3], text(size: 8pt, weight: "bold")[Condición de prueba], text(size: 8pt)[*CT-CAR-01* — una cantidad válida recalcula línea, subtotal, impuestos y total de forma coherente. Describe *qué* comprobar, no cómo.],
+  text(size: 8pt, weight: "bold", fill: CYAN)[4], text(size: 8pt, weight: "bold")[Técnica elegida y por qué], text(size: 8pt)[*Partición de equivalencia* — Clase 5, guía G5. El campo cantidad admite infinitos valores; se agrupan en clases que el sistema debe tratar igual y se prueba un representante de la clase válida. No se eligió tabla de decisión porque no hay variables combinadas, ni transición de estados porque no hay cambio de estado del pedido.],
+  text(size: 8pt, weight: "bold", fill: CYAN)[5], text(size: 8pt, weight: "bold")[Diseño del caso], text(size: 8pt)[*CP-CAR-01*, prioridad Alta, responsable Franco. Resultado esperado: el total de línea debe ser igual al precio unitario multiplicado por la cantidad, bajo la misma base fiscal.],
+  text(size: 8pt, weight: "bold", fill: CYAN)[6], text(size: 8pt, weight: "bold")[Datos y precondiciones], text(size: 8pt)[Producto apto sin opciones obligatorias: *iPod Nano* (product_id 36). Carrito limpio. Cantidades *1* y *2*. Precio unitario mostrado 122.00 USD. Importes de referencia registrados antes de actualizar.],
+  text(size: 8pt, weight: "bold", fill: CYAN)[7], text(size: 8pt, weight: "bold")[Ejecución y veredicto], text(size: 8pt)[25/09/2026. Con 1 unidad: precio y línea coinciden en 122.00. Con 2 unidades: unitario 122.00, *línea 242.00*, *total general 244.00*. Desglose: Sub-Total 200.00 + Eco Tax 4.00 + VAT 40.00 = 244.00. → *Falló*.],
+  text(size: 8pt, weight: "bold", fill: CYAN)[8], text(size: 8pt, weight: "bold")[Evidencia], text(size: 8pt)[#raw("CP-CAR-01_qty1_20260925.png") y #raw("CP-CAR-01_qty2_20260925.png"). Hora y URL en #raw("registro.json"); integridad por SHA-256 en #raw("manifest_integrado.json").],
+  text(size: 8pt, weight: "bold", fill: CYAN)[9], text(size: 8pt, weight: "bold")[Hallazgo derivado], text(size: 8pt)[*DEF-01* — «\[Carrito\] El total de línea no coincide con el total a pagar al aumentar la cantidad de una a dos unidades». Severidad Alta / Prioridad propuesta Alta. La causa raíz *no* se afirma: el Eco Tax es hipótesis, no se inspeccionó código.],
+  text(size: 8pt, weight: "bold", fill: CYAN)[10], text(size: 8pt, weight: "bold")[Estado actual], text(size: 8pt)[*Abierto · reproducido el 25/09/2026.* Al existir corrección pasará a «Listo para reprueba»: se repetirá CP-CAR-01 como *prueba de confirmación* y se aplicarán *pruebas de regresión* sobre carrito y checkout, que comparten precondiciones.],
+)
 
 #v(9pt)
 == Caso B · CP-ADM-01 — de un requisito a un bloqueo justificado
 #v(5pt)
-#etapa(1, color: AMBAR)[Requisito de origen][*E-RF08* — al marcar un producto como agotado en el panel, el sitio público debe reflejar esa condición.]
-#etapa(2, color: AMBAR)[Riesgo asociado][*R01 venta sin inventario real* y *R05 inconsistencia sitio–panel*, ambos de nivel *Alto*. Es la queja de negocio que originó el Caso 3.]
-#etapa(3, color: AMBAR)[Condición de prueba][*CT-ADM-01* — el stock cero guardado y el estado agotado se reflejan en la interfaz pública.]
-#etapa(4, color: AMBAR)[Técnica elegida y por qué][*Tabla de decisión* — Clase 5, guía G2. El comportamiento depende de tres variables combinadas —cantidad, estado publicado y política de venta sin inventario (#raw("Stock Checkout"))—, y sólo una tabla obliga a enunciar la acción esperada de cada combinación. Se definieron cuatro reglas, R1 a R4.]
-#etapa(5, color: AMBAR)[Diseño del caso][*CP-ADM-01*, prioridad Alta, responsable Granit. Precondición explícita: sesión autenticada *con permiso de escritura* en Catalog > Products.]
-#etapa(6, color: AMBAR)[Datos y precondiciones][*HP LP3065* (product_id 47). Estado previo verificado: #raw("Quantity = 1000"), #raw("Out Of Stock Status = Out Of Stock"), #raw("Subtract Stock") activo. Cambio previsto: cantidad a 0.]
-#etapa(7, color: AMBAR)[Ejecución y veredicto][24/09/2026, 02:45. Al guardar, el panel responde: *«Warning: You do not have permission to modify products!»*. El valor no se persiste. → *Bloqueado*, nunca *Fallido*: el sistema no llegó a comportarse frente al requisito.]
-#etapa(8, color: AMBAR)[Evidencia][#raw("CP-ADM-01_paso03_warning-permiso-modificar-productos_20260924.png"), con hora y hash SHA-256. El ambiente no fue alterado; no se requirió restaurar datos.]
-#etapa(9, color: AMBAR)[Hallazgo derivado][*Ninguno.* La restricción es del ambiente público de prueba, no del producto, y convertirla en defecto inflaría el conteo. Se registra en la bitácora de ambiente, no en el reporte de defectos.]
-#etapa(10, ultimo: true, color: AMBAR)[Estado actual][*Bloqueado por impedimento externo.* Se reejecutará en una instancia controlada con permisos de escritura. Mientras tanto cuenta en la *tasa de bloqueo*, calculada sobre los casos planificados, y nunca en la tasa de aprobación.]
+#table(columns: (0.8cm, 3.5cm, 1fr), stroke: 0.4pt + rgb("#BFCAD1"), inset: 4pt, align: left + top,
+  fill: (_, y) => if y == 0 { rgb("#1F4E79") } else if calc.odd(y) { rgb("#F4F7F9") } else { white },
+  table.header(text(size: 8pt, weight: "bold", fill: white)[\#], text(size: 8pt, weight: "bold", fill: white)[Etapa], text(size: 8pt, weight: "bold", fill: white)[Detalle]),
+  text(size: 8pt, weight: "bold", fill: AMBAR)[1], text(size: 8pt, weight: "bold")[Requisito de origen], text(size: 8pt)[*E-RF08* — al marcar un producto como agotado en el panel, el sitio público debe reflejar esa condición.],
+  text(size: 8pt, weight: "bold", fill: AMBAR)[2], text(size: 8pt, weight: "bold")[Riesgo asociado], text(size: 8pt)[*R01 venta sin inventario real* y *R05 inconsistencia sitio–panel*, ambos de nivel *Alto*. Es la queja de negocio que originó el Caso 3.],
+  text(size: 8pt, weight: "bold", fill: AMBAR)[3], text(size: 8pt, weight: "bold")[Condición de prueba], text(size: 8pt)[*CT-ADM-01* — el stock cero guardado y el estado agotado se reflejan en la interfaz pública.],
+  text(size: 8pt, weight: "bold", fill: AMBAR)[4], text(size: 8pt, weight: "bold")[Técnica elegida y por qué], text(size: 8pt)[*Tabla de decisión* — Clase 5, guía G2. El comportamiento depende de tres variables combinadas —cantidad, estado publicado y política de venta sin inventario (#raw("Stock Checkout"))—, y sólo una tabla obliga a enunciar la acción esperada de cada combinación. Se definieron cuatro reglas, R1 a R4.],
+  text(size: 8pt, weight: "bold", fill: AMBAR)[5], text(size: 8pt, weight: "bold")[Diseño del caso], text(size: 8pt)[*CP-ADM-01*, prioridad Alta, responsable Granit. Precondición explícita: sesión autenticada *con permiso de escritura* en Catalog > Products.],
+  text(size: 8pt, weight: "bold", fill: AMBAR)[6], text(size: 8pt, weight: "bold")[Datos y precondiciones], text(size: 8pt)[*HP LP3065* (product_id 47). Estado previo verificado: #raw("Quantity = 1000"), #raw("Out Of Stock Status = Out Of Stock"), #raw("Subtract Stock") activo. Cambio previsto: cantidad a 0.],
+  text(size: 8pt, weight: "bold", fill: AMBAR)[7], text(size: 8pt, weight: "bold")[Ejecución y veredicto], text(size: 8pt)[24/09/2026, 02:45. Al guardar, el panel responde: *«Warning: You do not have permission to modify products!»*. El valor no se persiste. → *Bloqueado*, nunca *Fallido*: el sistema no llegó a comportarse frente al requisito.],
+  text(size: 8pt, weight: "bold", fill: AMBAR)[8], text(size: 8pt, weight: "bold")[Evidencia], text(size: 8pt)[#raw("CP-ADM-01_paso03_warning-permiso-modificar-productos_20260924.png"), con hora y hash SHA-256. El ambiente no fue alterado; no se requirió restaurar datos.],
+  text(size: 8pt, weight: "bold", fill: AMBAR)[9], text(size: 8pt, weight: "bold")[Hallazgo derivado], text(size: 8pt)[*Ninguno.* La restricción es del ambiente público de prueba, no del producto, y convertirla en defecto inflaría el conteo. Se registra en la bitácora de ambiente, no en el reporte de defectos.],
+  text(size: 8pt, weight: "bold", fill: AMBAR)[10], text(size: 8pt, weight: "bold")[Estado actual], text(size: 8pt)[*Bloqueado por impedimento externo.* Se reejecutará en una instancia controlada con permisos de escritura. Mientras tanto cuenta en la *tasa de bloqueo*, calculada sobre los casos planificados, y nunca en la tasa de aprobación.],
+)
 
 #v(9pt)
 #block(width: 100%, inset: 7pt, radius: 3pt, fill: PALE, stroke: (left: 2.5pt + CYAN))[
@@ -350,12 +358,7 @@ Primero los 14 de prioridad Alta.
 ]
 
 #v(7pt)
-#block(width: 100%, inset: 7pt, radius: 3pt, fill: white, stroke: 0.6pt + LINEA)[
-  #text(size: 9pt, weight: "bold", fill: TINTA)[Técnicas aplicadas y su origen en el curso]
-  #v(4pt)
-  #T((4.6cm, 3.2cm, 1fr),
-    ..hd("Técnica", "Material del curso", "Casos donde se aplicó"),
-    [Partición de equivalencia], [Clase 5 · guía G5], [CP-CAT-01/02/03, CP-PRO-01/02, CP-CAR-01/02, CP-CUP-01, CP-CHK-01, CP-RNF-02],
+, [Clase 5 · guía G5], [CP-CAT-01/02/03, CP-PRO-01/02, CP-CAR-01/02, CP-CUP-01, CP-CHK-01, CP-RNF-02],
     [Análisis de valores límite], [Clase 5 · guía G1], [CP-CAR-02 (stock S = 147 y S+1 = 148)],
     [Tabla de decisión y causa-efecto], [Clase 5 · guía G2], [CP-ADM-01, CP-CUP-02, CP-VAL-01],
     [Transición de estados], [Clase 5 · guía G3], [CP-CON-02, CP-CUP-02, CP-RNF-01],
