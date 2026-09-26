@@ -140,6 +140,23 @@ Tipos: funcionales positivos y negativos; rendimiento y compatibilidad planifica
 
 Estado frente a los criterios de salida: cumplidos los de análisis, diseño y registro; **no cumplidos** los de aceptación, por DEF-01 y la ausencia de método de pago. Para evitar **métricas engañosas**, la aprobación se calcula sobre concluyentes: 3 Pasó y 2 Falló de 5, con 9 bloqueados informados aparte.
 
+
+### Origen en el material del curso
+
+| Técnica | Material | Casos |
+|---|---|---|
+| Partición de equivalencia | Clase 5 · guía G5 | CP-CAT-01/02/03, CP-PRO-01/02, CP-CAR-01/02, CP-CUP-01, CP-CHK-01, CP-RNF-02 |
+| Análisis de valores límite | Clase 5 · guía G1 | CP-CAR-02 (S = 147 y S+1 = 148) |
+| Tabla de decisión y causa-efecto | Clase 5 · guía G2 | CP-ADM-01, CP-CUP-02, CP-VAL-01 |
+| Transición de estados | Clase 5 · guía G3 | CP-CON-02, CP-CUP-02, CP-RNF-01 |
+| Prueba basada en casos de uso | Clase 5 · guía G4 | CP-CON-01, CP-PED-01 |
+| Caja blanca | Clase 6 | No aplicada: sin acceso al código del producto |
+
+Marco de referencia: **ISTQB CTFL v4.0.1**. Proceso de pruebas según **Clase 2**; niveles y tipos según **Clase 3**;
+revisión estática de requisitos, casos y evidencias según **Clase 4**; técnicas de caja negra según **Clase 5** y sus
+cinco guías; caja blanca descartada con base en **Clase 6**; métricas, criterios de salida, informes y ciclo de vida
+del defecto según **Clase 7**.
+
 ## 7. Entregables de prueba
 
 Plan de pruebas · registro de riesgos · 26 condiciones · 18 casos · registro de ejecución de los 14 Alta · hallazgos con evidencia · informe de finalización · manifiesto SHA-256.

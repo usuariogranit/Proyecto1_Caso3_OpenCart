@@ -58,7 +58,7 @@
 #etapa(1, p: 6)[Requisito de origen][*E-RF03* — el carrito debe recalcular los importes al cambiar la cantidad. Base de pruebas derivada del enunciado del Caso 3.]
 #etapa(2, p: 4)[Riesgo asociado][*R03 · riesgo monetario.* Probabilidad 3 × Impacto 3 = *9* → prioridad *Alta*. El riesgo fija la profundidad: es el requisito con más casos del proyecto, tres.]
 #etapa(3, p: 6)[Condición de prueba][*CT-CAR-01* — una cantidad válida recalcula línea, subtotal, impuestos y total de forma coherente. Describe *qué* comprobar, no cómo.]
-#etapa(4, p: 15)[Técnica elegida y por qué][*Partición de equivalencia.* El campo cantidad admite infinitos valores; se agrupan en clases que el sistema debe tratar igual y se prueba un representante de la clase válida. No se eligió tabla de decisión porque no hay variables combinadas, ni transición de estados porque no hay cambio de estado del pedido.]
+#etapa(4, p: 15)[Técnica elegida y por qué][*Partición de equivalencia* — Clase 5, guía G5. El campo cantidad admite infinitos valores; se agrupan en clases que el sistema debe tratar igual y se prueba un representante de la clase válida. No se eligió tabla de decisión porque no hay variables combinadas, ni transición de estados porque no hay cambio de estado del pedido.]
 #etapa(5, p: 15)[Diseño del caso][*CP-CAR-01*, prioridad Alta, responsable Franco. Oráculo declarado: el total de línea debe ser igual al precio unitario multiplicado por la cantidad, bajo la misma base fiscal.]
 #etapa(6, p: 15)[Datos y precondiciones][Producto apto sin opciones obligatorias: *iPod Nano* (product_id 36). Carrito limpio. Cantidades *1* y *2*. Precio unitario mostrado 122.00 USD. Importes de referencia registrados antes de actualizar.]
 #etapa(7, p: 29)[Ejecución y veredicto][25/09/2026. Con 1 unidad: precio y línea coinciden en 122.00. Con 2 unidades: unitario 122.00, *línea 242.00*, *total general 244.00*. Desglose: Sub-Total 200.00 + Eco Tax 4.00 + VAT 40.00 = 244.00. → *Falló*.]
@@ -76,7 +76,7 @@
 #etapa(1, color: AMBAR, p: 6)[Requisito de origen][*E-RF08* — al marcar un producto como agotado en el panel, el sitio público debe reflejar esa condición.]
 #etapa(2, color: AMBAR, p: 4)[Riesgo asociado][*R01 venta sin inventario real* y *R05 inconsistencia sitio–panel*, ambos de nivel *Alto*. Es la queja de negocio que originó el Caso 3.]
 #etapa(3, color: AMBAR, p: 7)[Condición de prueba][*CT-ADM-01* — el stock cero guardado y el estado agotado se reflejan en la interfaz pública.]
-#etapa(4, color: AMBAR, p: 22)[Técnica elegida y por qué][*Tabla de decisión.* El comportamiento depende de tres variables combinadas —cantidad, estado publicado y política de venta sin inventario (`Stock Checkout`)—, y solo una tabla obliga a enunciar la acción esperada de cada combinación. Se definieron cuatro reglas, R1 a R4.]
+#etapa(4, color: AMBAR, p: 22)[Técnica elegida y por qué][*Tabla de decisión* — Clase 5, guía G2. El comportamiento depende de tres variables combinadas —cantidad, estado publicado y política de venta sin inventario (`Stock Checkout`)—, y solo una tabla obliga a enunciar la acción esperada de cada combinación. Se definieron cuatro reglas, R1 a R4.]
 #etapa(5, color: AMBAR, p: 22)[Diseño del caso][*CP-ADM-01*, prioridad Alta, responsable Granit. Precondición explícita: sesión autenticada *con permiso de escritura* en Catalog > Products.]
 #etapa(6, color: AMBAR, p: 22)[Datos y precondiciones][*HP LP3065* (product_id 47). Estado previo verificado: `Quantity = 1000`, `Out Of Stock Status = Out Of Stock`, `Subtract Stock` activo. Cambio previsto: cantidad a 0.]
 #etapa(7, color: AMBAR, p: 31)[Ejecución y veredicto][24/09/2026, 02:45. Al guardar, el panel responde: *«Warning: You do not have permission to modify products!»*. El valor no se persiste. → *Bloqueado*, nunca *Fallido*: el sistema no llegó a comportarse frente al requisito.]
@@ -89,4 +89,24 @@
   #text(size: 9.5pt, weight: "bold", fill: TINTA)[Qué demuestra la comparación de ambos recorridos]
   #v(3pt)
   #text(size: 9pt)[Los dos casos nacen de un requisito, reciben una prioridad derivada del riesgo, se les asigna una técnica del curso justificada por la naturaleza del problema, y se ejecutan con datos y precondiciones declarados. La diferencia aparece en la etapa 7: *CP-CAR-01* obtuvo un comportamiento observable contrario al oráculo y por eso *falló* y generó un defecto; *CP-ADM-01* no obtuvo comportamiento alguno y por eso quedó *bloqueado* y no generó ninguno. Distinguirlos es lo que permite saber qué le corresponde corregir al equipo de desarrollo y qué le corresponde habilitar al responsable del ambiente.]
+]
+
+#v(8pt)
+#block(width: 100%, inset: 8pt, radius: 3pt, fill: white, stroke: 0.6pt + rgb("#D6DEE3"))[
+  #text(size: 9.5pt, weight: "bold", fill: TINTA)[Técnicas aplicadas y su origen en el curso]
+  #v(4pt)
+  #table(columns: (4.6cm, 3.4cm, 1fr), stroke: 0.4pt + rgb("#D6DEE3"), inset: 4pt,
+    fill: (_, y) => if y == 0 { PALE },
+    text(size: 8pt, weight: "bold")[Técnica],
+    text(size: 8pt, weight: "bold")[Material del curso],
+    text(size: 8pt, weight: "bold")[Casos donde se aplicó],
+    text(size: 8pt)[Partición de equivalencia], text(size: 8pt)[Clase 5 · guía G5], text(size: 8pt)[CP-CAT-01/02/03, CP-PRO-01/02, CP-CAR-01/02, CP-CUP-01, CP-CHK-01, CP-RNF-02],
+    text(size: 8pt)[Análisis de valores límite], text(size: 8pt)[Clase 5 · guía G1], text(size: 8pt)[CP-CAR-02 (stock S = 147 y S+1 = 148)],
+    text(size: 8pt)[Tabla de decisión y causa-efecto], text(size: 8pt)[Clase 5 · guía G2], text(size: 8pt)[CP-ADM-01, CP-CUP-02, CP-VAL-01],
+    text(size: 8pt)[Transición de estados], text(size: 8pt)[Clase 5 · guía G3], text(size: 8pt)[CP-CON-02, CP-CUP-02, CP-RNF-01],
+    text(size: 8pt)[Prueba basada en casos de uso], text(size: 8pt)[Clase 5 · guía G4], text(size: 8pt)[CP-CON-01, CP-PED-01],
+    text(size: 8pt, fill: GRIS)[Caja blanca], text(size: 8pt, fill: GRIS)[Clase 6], text(size: 8pt, fill: GRIS)[No aplicada: sin acceso al código del producto],
+  )
+  #v(4pt)
+  #text(size: 8pt, fill: GRIS, style: "italic")[Marco de referencia: ISTQB CTFL v4.0.1. Niveles y tipos según Clase 3; proceso de pruebas según Clase 2; revisión estática de requisitos, casos y evidencias según Clase 4; métricas, criterios de salida y ciclo de vida del defecto según Clase 7.]
 ]
