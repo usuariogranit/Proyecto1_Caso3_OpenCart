@@ -113,7 +113,6 @@
 #T((3.2cm, 1fr),
   ..hd("Sección", "Contenido compactado"),
   [1 Identificación], [PP-G5-C3-v1.0 · v1.0 · Franco y Granit · aprobación docente · testware bajo Gestión de la Configuración con SHA-256.],
-  [2 Contexto], [Ronda de pruebas manuales del flujo comercial del demo y su reflejo en el panel. Referencias: enunciado del Caso 3, #raw("Proyecto1_Caso3_Grupo5.pdf"), #raw("EJECUCION_INTEGRADA_20260925.md").],
 )
 
 == 2.3 Ítems de prueba y alcance <sec-alcance>
@@ -244,7 +243,7 @@
 
 // ===================== 3. ANÁLISIS =====================
 = 3. Análisis: priorización de requisitos por riesgo <sec-analisis>
-#nota[Prioridad derivada de la exposición al riesgo, no del esfuerzo de prueba.]
+#nota[Prioridad derivada de la nivel de riesgo, no del esfuerzo de prueba.]
 #v(4pt)
 #T((3.8cm, 2cm, 1fr),
   ..hd("Requisito", "Nivel", "Justificación"),
@@ -261,15 +260,15 @@
   [RNF-02 Compatibilidad <req-RNF-02>], BAJA, [Alcance limitado a tres navegadores de escritorio equivalentes.],
 )
 
-== 3.1 Técnicas de diseño y su origen en el curso <sec-tecnicas>
-#T((4.4cm, 2.6cm, 1fr),
-  ..hd("Técnica", "Material", "Casos y por qué esa y no otra"),
-  [Partición de equivalencia], [Clase 5 · guía G5], [CP-CAT-01/02/03, CP-PRO-01/02, CP-CAR-01/02, CP-CUP-01, CP-CHK-01, CP-RNF-02. Cantidad y código agrupan clases válidas e inválidas; enumerar valores sería redundante.],
-  [Análisis de valores límite], [Clase 5 · guía G1], [CP-CAR-02 (S = 147 y S+1 = 148). La sobreventa ocurre en el borde del stock, no dentro de la clase.],
-  [Tabla de decisión y causa-efecto], [Clase 5 · guía G2], [CP-ADM-01, CP-CUP-02, CP-VAL-01. El descuento y el agotado combinan varias variables: son reglas, no rangos.],
-  [Transición de estados], [Clase 5 · guía G3], [CP-CON-02, CP-CUP-02, CP-RNF-01. Idempotencia y propagación dependen del estado previo.],
-  [Prueba basada en casos de uso], [Clase 5 · guía G4], [CP-CON-01, CP-PED-01, CP-CHK-01. El recorrido invitado sólo falla como secuencia extremo a extremo.],
-  text(size: 8.2pt, fill: GRIS)[Caja blanca], text(size: 8.2pt, fill: GRIS)[Clase 6], text(size: 8.2pt, fill: GRIS)[No aplicada: sin acceso al código del producto.],
+== 3.1 Técnicas de diseño aplicadas <sec-tecnicas>
+#T((4.6cm, 1fr),
+  ..hd("Técnica", "Casos y por qué esa y no otra"),
+  [Partición de equivalencia], [CP-CAT-01/02/03, CP-PRO-01/02, CP-CAR-01/02, CP-CUP-01, CP-CHK-01, CP-RNF-02. Cantidad y código agrupan clases válidas e inválidas; enumerar valores sería redundante.],
+  [Análisis de valores límite], [CP-CAR-02 (S = 147 y S+1 = 148). La sobreventa ocurre en el borde del stock, no dentro de la clase.],
+  [Tabla de decisión y causa-efecto], [CP-ADM-01, CP-CUP-02, CP-VAL-01. El descuento y el agotado combinan varias variables: son reglas, no rangos.],
+  [Transición de estados], [CP-CON-02, CP-CUP-02, CP-RNF-01. Idempotencia y propagación dependen del estado previo.],
+  [Prueba basada en casos de uso], [CP-CON-01, CP-PED-01, CP-CHK-01. El recorrido invitado sólo falla como secuencia extremo a extremo.],
+  text(size: 8.2pt, fill: GRIS)[Caja blanca], text(size: 8.2pt, fill: GRIS)[No aplicada: no tuvimos acceso al código del producto.],
 )
 
 // ===================== 4. DISEÑO =====================
@@ -305,7 +304,7 @@ Primero los 14 de prioridad Alta.
 #etapa(2)[Riesgo asociado][*R03 · riesgo monetario.* Probabilidad 3 × Impacto 3 = *9* → prioridad *Alta*. El riesgo fija la profundidad: es el requisito con más casos del proyecto, tres.]
 #etapa(3)[Condición de prueba][*CT-CAR-01* — una cantidad válida recalcula línea, subtotal, impuestos y total de forma coherente. Describe *qué* comprobar, no cómo.]
 #etapa(4)[Técnica elegida y por qué][*Partición de equivalencia* — Clase 5, guía G5. El campo cantidad admite infinitos valores; se agrupan en clases que el sistema debe tratar igual y se prueba un representante de la clase válida. No se eligió tabla de decisión porque no hay variables combinadas, ni transición de estados porque no hay cambio de estado del pedido.]
-#etapa(5)[Diseño del caso][*CP-CAR-01*, prioridad Alta, responsable Franco. Oráculo declarado: el total de línea debe ser igual al precio unitario multiplicado por la cantidad, bajo la misma base fiscal.]
+#etapa(5)[Diseño del caso][*CP-CAR-01*, prioridad Alta, responsable Franco. Resultado esperado: el total de línea debe ser igual al precio unitario multiplicado por la cantidad, bajo la misma base fiscal.]
 #etapa(6)[Datos y precondiciones][Producto apto sin opciones obligatorias: *iPod Nano* (product_id 36). Carrito limpio. Cantidades *1* y *2*. Precio unitario mostrado 122.00 USD. Importes de referencia registrados antes de actualizar.]
 #etapa(7)[Ejecución y veredicto][25/09/2026. Con 1 unidad: precio y línea coinciden en 122.00. Con 2 unidades: unitario 122.00, *línea 242.00*, *total general 244.00*. Desglose: Sub-Total 200.00 + Eco Tax 4.00 + VAT 40.00 = 244.00. → *Falló*.]
 #etapa(8)[Evidencia][#raw("CP-CAR-01_qty1_20260925.png") y #raw("CP-CAR-01_qty2_20260925.png"). Hora y URL en #raw("registro.json"); integridad por SHA-256 en #raw("manifest_integrado.json").]
@@ -330,7 +329,7 @@ Primero los 14 de prioridad Alta.
 #block(width: 100%, inset: 7pt, radius: 3pt, fill: PALE, stroke: (left: 2.5pt + CYAN))[
   #text(size: 9pt, weight: "bold", fill: TINTA)[Qué demuestra la comparación de ambos recorridos]
   #v(3pt)
-  #text(size: 8.5pt)[Los dos casos nacen de un requisito, reciben una prioridad derivada del riesgo, se les asigna una técnica del curso justificada por la naturaleza del problema, y se ejecutan con datos y precondiciones declarados. La diferencia aparece en la etapa 7: *CP-CAR-01* obtuvo un comportamiento observable contrario al oráculo y por eso *falló* y generó un defecto; *CP-ADM-01* no obtuvo comportamiento alguno y por eso quedó *bloqueado* y no generó ninguno. Distinguirlos es lo que permite saber qué le corresponde corregir al equipo de desarrollo y qué le corresponde habilitar al responsable del ambiente.]
+  #text(size: 8.5pt)[Los dos casos nacen de un requisito, reciben una prioridad derivada del riesgo, se les asigna una técnica del curso justificada por la naturaleza del problema, y se ejecutan con datos y precondiciones declarados. La diferencia aparece en la etapa 7: *CP-CAR-01* obtuvo un comportamiento distinto al esperado y por eso *falló* y generó un defecto; *CP-ADM-01* no obtuvo comportamiento alguno y por eso quedó *bloqueado* y no generó ninguno. Distinguirlos es lo que permite saber qué le corresponde corregir al equipo de desarrollo y qué le corresponde habilitar al responsable del ambiente.]
 ]
 
 #v(7pt)
@@ -344,7 +343,7 @@ Primero los 14 de prioridad Alta.
     [Tabla de decisión y causa-efecto], [Clase 5 · guía G2], [CP-ADM-01, CP-CUP-02, CP-VAL-01],
     [Transición de estados], [Clase 5 · guía G3], [CP-CON-02, CP-CUP-02, CP-RNF-01],
     [Prueba basada en casos de uso], [Clase 5 · guía G4], [CP-CON-01, CP-PED-01],
-    text(size: 8.2pt, fill: GRIS)[Caja blanca], text(size: 8.2pt, fill: GRIS)[Clase 6], text(size: 8.2pt, fill: GRIS)[No aplicada: sin acceso al código del producto],
+    text(size: 8.2pt, fill: GRIS)[Caja blanca], text(size: 8.2pt, fill: GRIS)[No aplicada: no tuvimos acceso al código del producto.],
   )
   #v(4pt)
   #nota[Marco de referencia: ISTQB CTFL v4.0.1. Proceso de pruebas según Clase 2; niveles y tipos según Clase 3; revisión estática de requisitos, casos y evidencias según Clase 4; métricas, criterios de salida y ciclo de vida del defecto según Clase 7.]
