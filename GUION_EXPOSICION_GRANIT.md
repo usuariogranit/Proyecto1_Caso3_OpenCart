@@ -1,3 +1,9 @@
+> ⚠️ **DOCUMENTO SUPERADO — 25/09/2026.** Este guion individual se escribió con las cifras del bloque de Granit
+> ANTES de la ejecución integrada del 25/09. Varias han cambiado: CP-RNF-03 ya no figura como *Pasó* sino como
+> *Bloqueado*, DEF-02 y DEF-03 se reclasificaron como observaciones, y las métricas del equipo son otras.
+> **Usar en su lugar:** `entrega/Proyecto1_Caso3_Grupo5/Guion_Exposicion_COMPLETO_Grupo5.md`.
+> Se conserva solo como referencia de estructura narrativa.
+
 # GUION DE EXPOSICIÓN — Granit (Integrante 2)
 Proyecto 1 · CS5383 · Caso 3 OpenCart · Bloque: checkout, pedidos, administración, no funcionales y cierre
 
