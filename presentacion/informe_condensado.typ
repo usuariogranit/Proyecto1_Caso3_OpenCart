@@ -103,7 +103,7 @@
   [Fecha], [26/09/2026], [Curso], [CS5383 · Verificación y Pruebas de Software],
   [Autores], [Franco Roque Castillo · Granit Espinoza Salazar], [Grupo], [5],
   [Sistema bajo prueba], [OpenCart Demo 4.0.2.3 (inglés, USD)], [Aprobación], [Docente CS5383; sin aprobación de cliente],
-  [Marco de referencia], [ISTQB CTFL v4.0.1; estructura del plan según ISO/IEC/IEEE 29119-3], [Gestión de la Configuración], [ID único, versión y registro de cambios por elemento del testware; evidencias con SHA-256 en #raw("manifest_integrado.json")],
+  [Marco de referencia], [ISTQB CTFL v4.0.1; estructura del plan según ISO/IEC/IEEE 29119-3], [Gestión de la Configuración], [ID único, versión y registro de cambios por elemento del testware; evidencias con SHA-256 en #raw("el inventario de evidencias")],
 )
 #v(5pt)
 #T((1fr, 1fr, 1fr, 1fr, 1fr),
@@ -323,11 +323,11 @@ Primero los 14 de prioridad Alta.
   text(size: 8pt, weight: "bold", fill: CYAN)[1], text(size: 8pt, weight: "bold")[Requisito de origen], text(size: 8pt)[*E-RF03* — el carrito debe recalcular los importes al cambiar la cantidad. Base de pruebas derivada del enunciado del Caso 3.],
   text(size: 8pt, weight: "bold", fill: CYAN)[2], text(size: 8pt, weight: "bold")[Riesgo asociado], text(size: 8pt)[*R03 · riesgo monetario.* Probabilidad 3 × Impacto 3 = *9* → prioridad *Alta*. El riesgo fija la profundidad: es el requisito con más casos del proyecto, tres.],
   text(size: 8pt, weight: "bold", fill: CYAN)[3], text(size: 8pt, weight: "bold")[Condición de prueba], text(size: 8pt)[*CT-CAR-01* — una cantidad válida recalcula línea, subtotal, impuestos y total de forma coherente. Describe *qué* comprobar, no cómo.],
-  text(size: 8pt, weight: "bold", fill: CYAN)[4], text(size: 8pt, weight: "bold")[Técnica elegida y por qué], text(size: 8pt)[*Partición de equivalencia* — Clase 5, guía G5. El campo cantidad admite infinitos valores; se agrupan en clases que el sistema debe tratar igual y se prueba un representante de la clase válida. No se eligió tabla de decisión porque no hay variables combinadas, ni transición de estados porque no hay cambio de estado del pedido.],
+  text(size: 8pt, weight: "bold", fill: CYAN)[4], text(size: 8pt, weight: "bold")[Técnica elegida y por qué], text(size: 8pt)[*Partición de equivalencia*. El campo cantidad admite infinitos valores; se agrupan en clases que el sistema debe tratar igual y se prueba un representante de la clase válida. No se eligió tabla de decisión porque no hay variables combinadas, ni transición de estados porque no hay cambio de estado del pedido.],
   text(size: 8pt, weight: "bold", fill: CYAN)[5], text(size: 8pt, weight: "bold")[Diseño del caso], text(size: 8pt)[*CP-CAR-01*, prioridad Alta, responsable Franco. Resultado esperado: el total de línea debe ser igual al precio unitario multiplicado por la cantidad, bajo la misma base fiscal.],
   text(size: 8pt, weight: "bold", fill: CYAN)[6], text(size: 8pt, weight: "bold")[Datos y precondiciones], text(size: 8pt)[Producto apto sin opciones obligatorias: *iPod Nano* (product_id 36). Carrito limpio. Cantidades *1* y *2*. Precio unitario mostrado 122.00 USD. Importes de referencia registrados antes de actualizar.],
   text(size: 8pt, weight: "bold", fill: CYAN)[7], text(size: 8pt, weight: "bold")[Ejecución y veredicto], text(size: 8pt)[25/09/2026. Con 1 unidad: precio y línea coinciden en 122.00. Con 2 unidades: unitario 122.00, *línea 242.00*, *total general 244.00*. Desglose: Sub-Total 200.00 + Eco Tax 4.00 + VAT 40.00 = 244.00. → *Falló*.],
-  text(size: 8pt, weight: "bold", fill: CYAN)[8], text(size: 8pt, weight: "bold")[Evidencia], text(size: 8pt)[#raw("CP-CAR-01_qty1_20260925.png") y #raw("CP-CAR-01_qty2_20260925.png"). Hora y URL en #raw("registro.json"); integridad por SHA-256 en #raw("manifest_integrado.json").],
+  text(size: 8pt, weight: "bold", fill: CYAN)[8], text(size: 8pt, weight: "bold")[Evidencia], text(size: 8pt)[#raw("CP-CAR-01_qty1_20260925.png") y #raw("CP-CAR-01_qty2_20260925.png"). Hora y URL en #raw("la bitácora de evidencias"); integridad por SHA-256 en #raw("el inventario de evidencias").],
   text(size: 8pt, weight: "bold", fill: CYAN)[9], text(size: 8pt, weight: "bold")[Hallazgo derivado], text(size: 8pt)[*DEF-01* — «\[Carrito\] El total de línea no coincide con el total a pagar al aumentar la cantidad de una a dos unidades». Severidad Alta / Prioridad propuesta Alta. La causa raíz *no* se afirma: el Eco Tax es hipótesis, no se inspeccionó código.],
   text(size: 8pt, weight: "bold", fill: CYAN)[10], text(size: 8pt, weight: "bold")[Estado actual], text(size: 8pt)[*Abierto · reproducido el 25/09/2026.* Al existir corrección pasará a «Listo para reprueba»: se repetirá CP-CAR-01 como *prueba de confirmación* y se aplicarán *pruebas de regresión* sobre carrito y checkout, que comparten precondiciones.],
 )
@@ -341,7 +341,7 @@ Primero los 14 de prioridad Alta.
   text(size: 8pt, weight: "bold", fill: AMBAR)[1], text(size: 8pt, weight: "bold")[Requisito de origen], text(size: 8pt)[*E-RF08* — al marcar un producto como agotado en el panel, el sitio público debe reflejar esa condición.],
   text(size: 8pt, weight: "bold", fill: AMBAR)[2], text(size: 8pt, weight: "bold")[Riesgo asociado], text(size: 8pt)[*R01 venta sin inventario real* y *R05 inconsistencia sitio–panel*, ambos de nivel *Alto*. Es la queja de negocio que originó el Caso 3.],
   text(size: 8pt, weight: "bold", fill: AMBAR)[3], text(size: 8pt, weight: "bold")[Condición de prueba], text(size: 8pt)[*CT-ADM-01* — el stock cero guardado y el estado agotado se reflejan en la interfaz pública.],
-  text(size: 8pt, weight: "bold", fill: AMBAR)[4], text(size: 8pt, weight: "bold")[Técnica elegida y por qué], text(size: 8pt)[*Tabla de decisión* — Clase 5, guía G2. El comportamiento depende de tres variables combinadas —cantidad, estado publicado y política de venta sin inventario (#raw("Stock Checkout"))—, y sólo una tabla obliga a enunciar la acción esperada de cada combinación. Se definieron cuatro reglas, R1 a R4.],
+  text(size: 8pt, weight: "bold", fill: AMBAR)[4], text(size: 8pt, weight: "bold")[Técnica elegida y por qué], text(size: 8pt)[*Tabla de decisión*. El comportamiento depende de tres variables combinadas —cantidad, estado publicado y política de venta sin inventario (#raw("Stock Checkout"))—, y sólo una tabla obliga a enunciar la acción esperada de cada combinación. Se definieron cuatro reglas, R1 a R4.],
   text(size: 8pt, weight: "bold", fill: AMBAR)[5], text(size: 8pt, weight: "bold")[Diseño del caso], text(size: 8pt)[*CP-ADM-01*, prioridad Alta, responsable Granit. Precondición explícita: sesión autenticada *con permiso de escritura* en Catalog > Products.],
   text(size: 8pt, weight: "bold", fill: AMBAR)[6], text(size: 8pt, weight: "bold")[Datos y precondiciones], text(size: 8pt)[*HP LP3065* (product_id 47). Estado previo verificado: #raw("Quantity = 1000"), #raw("Out Of Stock Status = Out Of Stock"), #raw("Subtract Stock") activo. Cambio previsto: cantidad a 0.],
   text(size: 8pt, weight: "bold", fill: AMBAR)[7], text(size: 8pt, weight: "bold")[Ejecución y veredicto], text(size: 8pt)[24/09/2026, 02:45. Al guardar, el panel responde: *«Warning: You do not have permission to modify products!»*. El valor no se persiste. → *Bloqueado*, nunca *Fallido*: el sistema no llegó a comportarse frente al requisito.],
@@ -358,16 +358,6 @@ Primero los 14 de prioridad Alta.
 ]
 
 #v(7pt)
-, [Clase 5 · guía G5], [CP-CAT-01/02/03, CP-PRO-01/02, CP-CAR-01/02, CP-CUP-01, CP-CHK-01, CP-RNF-02],
-    [Análisis de valores límite], [Clase 5 · guía G1], [CP-CAR-02 (stock S = 147 y S+1 = 148)],
-    [Tabla de decisión y causa-efecto], [Clase 5 · guía G2], [CP-ADM-01, CP-CUP-02, CP-VAL-01],
-    [Transición de estados], [Clase 5 · guía G3], [CP-CON-02, CP-CUP-02, CP-RNF-01],
-    [Prueba basada en casos de uso], [Clase 5 · guía G4], [CP-CON-01, CP-PED-01],
-    text(size: 8.2pt, fill: GRIS)[Caja blanca], text(size: 8.2pt, fill: GRIS)[No aplicada: no tuvimos acceso al código del producto.],
-  )
-  #v(4pt)
-  #nota[Marco de referencia: ISTQB CTFL v4.0.1. Proceso de pruebas según Clase 2; niveles y tipos según Clase 3; revisión estática de requisitos, casos y evidencias según Clase 4; métricas, criterios de salida y ciclo de vida del defecto según Clase 7.]
-]
 
 #pagebreak()
 

@@ -139,7 +139,7 @@
 // LÁMINA 1 · Portada
 // =====================================================================
 #frame(1, "Portada · Pruebas de software en OpenCart",
-  "Franco · 0:00–0:25", 1, "Informe integrado · Grupo 5", dark: true)[
+  "Franco · 0:00–0:25", 1, "Informe de pruebas · Grupo 5", dark: true)[
   #at(48pt, 104pt, box(fill: acento, radius: 3pt, inset: (x: 14pt, y: 7pt),
     text(size: 15pt, fill: white, weight: "bold", tracking: 2pt, [GRUPO 5])))
   #at(178pt, 104pt, box(height: 32pt, align(left + horizon,
@@ -894,7 +894,7 @@
 // LÁMINA 17 · Preguntas
 // =====================================================================
 #frame(17, "Preguntas",
-  "Franco y Granit · fuera de los 12 minutos", 1, "Informe integrado · Grupo 5", dark: true)[
+  "Franco y Granit · fuera de los 12 minutos", 1, "Informe de pruebas · Grupo 5", dark: true)[
   #at(48pt, 108pt, box(fill: acento, radius: 3pt, inset: (x: 14pt, y: 7pt),
     text(size: 15pt, fill: white, weight: "bold", tracking: 2pt, [GRUPO 5])))
   #at(48pt, 158pt, box(width: 864pt,
