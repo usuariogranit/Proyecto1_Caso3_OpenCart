@@ -3,25 +3,31 @@ Para tener abierto durante la exposición. **Las páginas son del PDF único**
 `Proyecto1_Caso3_Grupo5_PRESENTACION_E_INFORME.pdf` (68 páginas: láminas 1–17, informe 18–68).
 Entre paréntesis, la página equivalente del informe suelto.
 
-## Respuestas por pregunta
+## CUADRO CONSOLIDADO — dónde está cada cosa
 
-| Si pregunta… | Está en | PDF | Informe |
-|---|---|---|---|
-| ¿Cuáles son los requisitos? | §2 Análisis y trazabilidad — matriz de 26 condiciones | **23–24** | 6–7 |
-| ¿Cómo saben que cubrieron los requisitos? | §2.1 Cobertura de requisitos clave | **24** | 7 |
-| ¿Qué técnicas usaron y por qué? | §3.1 Técnicas y oráculos | **26** | 9 |
-| ¿Dónde están los casos de prueba? | §3.2 Fichas — una página por caso | **28–45** | 11–28 |
-| ¿Dónde y cómo ejecutaron? | §4.1 Ambiente y método de registro | **46** | 29 |
-| ¿Cuáles pasaron y cuáles no? | §4.2 Registro de los 14 casos Alta | **46** | 29 |
-| ¿Qué pasó en cada variante? | §4.3 Detalle de variantes y desviaciones | **47** | 30 |
-| ¿De dónde salen los porcentajes? | §4.4 Métricas y límites | **48** | 31 |
-| ¿Cuáles son los defectos? | §4.5 Hallazgos relevantes | **49–51** | 32–34 |
-| ¿Cuál es la conclusión? | §5.1 Conclusión de pruebas | **52** | 35 |
-| ¿Qué automatizarían? | §5.2 Recomendaciones de automatización | **52** | 35 |
-| ¿Qué quedó fuera del alcance? | §1.2 Alcance incluido y excluido | **19** | 2 |
-| ¿Qué nivel de prueba fue? | §1.3 Estrategia y niveles | **19–20** | 2–3 |
-| ¿Cuáles son los criterios de salida? | §1.4 Criterios de entrada, salida, suspensión y reanudación | **20** | 3 |
-| ¿Cómo priorizaron? | §1.6 Registro de riesgos de producto | **21** | 4 |
+| Tema | Si pregunta… | Sección | PDF | Informe |
+|---|---|---|---|---|
+| **Presentación** | — | Láminas 1–17 | **1–17** | — |
+| **Plan de pruebas** | ¿Hay plan de pruebas? | §1 completa | **19–22** | 2–5 |
+| Objetivos | ¿Qué se propusieron? | §1.1 | **19** | 2 |
+| Alcance | ¿Qué entró y qué quedó fuera? | §1.2 | **19** | 2 |
+| **Estrategia y niveles** | ¿Qué estrategia usaron? ¿Qué nivel? | §1.3 | **19–20** | 2–3 |
+| **Criterios de salida** | ¿Contra qué miden? ¿Y si falta una precondición? | §1.4 | **20** | 3 |
+| Recursos y esfuerzo | ¿Cuánto estimaron? ¿Quién hizo qué? | §1.5 | **20** | 3 |
+| **Riesgos** | ¿Cómo priorizaron? | §1.6 | **21–22** | 4–5 |
+| **Requisitos y trazabilidad** | ¿Cuáles son los requisitos? | §2 · matriz de 26 condiciones | **23–24** | 6–7 |
+| Cobertura | ¿Cuántos casos por requisito? | §2.1 | **24** | 7 |
+| **Técnicas** | ¿Qué técnica y por qué? | §3.1 Técnicas y oráculos | **26** | 9 |
+| **Casos de prueba** | ¿Dónde están los casos? | §3.2 · una página por caso | **28–45** | 11–28 |
+| **Ambiente y método** | ¿Dónde y cómo ejecutaron? | §4.1 | **46** | 29 |
+| **Resultados** | ¿Cuáles pasaron y cuáles no? | §4.2 Registro de los 14 Alta | **46** | 29 |
+| Variantes | ¿Qué pasó en cada variante? | §4.3 | **47** | 30 |
+| **Métricas** | ¿De dónde salen los porcentajes? | §4.4 Métricas y límites | **48** | 31 |
+| **Defectos** | ¿Cuáles son los defectos? | §4.5 Hallazgos | **49–51** | 32–34 |
+| **Conclusión** | ¿Es apto para producción? | §5.1 | **52** | 35 |
+| **Automatización** | ¿Qué automatizarían? | §5.2 | **52** | 35 |
+
+Atajo: en las láminas, cada identificador azul subrayado salta solo a su página. Clic en `CP-CAR-01` → p. 32.
 
 ## Ficha de cada caso
 
