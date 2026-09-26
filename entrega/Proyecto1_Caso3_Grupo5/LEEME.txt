@@ -15,3 +15,17 @@ Guion: Guion_Exposicion_12_minutos.md
 Duración: 12 minutos. Franco presenta diapositivas 1–7 (6 minutos).
 Granit presenta diapositivas 8–14 (6 minutos). Preguntas después.
 Las notas de cada diapositiva contienen el guion, el tiempo y las fuentes.
+
+ENLACES DE LA PRESENTACIÓN (agregado 25-09-2026)
+Proyecto1_Caso3_Grupo5_Exposicion_FINAL.pptx tiene 36 enlaces al informe:
+ - Pie de cada lámina: lleva a la sección correspondiente del informe.
+ - Cada identificador de caso (CP-XXX-NN) lleva a su ficha de diseño.
+ - Cada identificador de defecto u observación (DEF/OBS/CONF) lleva a §4.5 Hallazgos.
+
+IMPORTANTE: el PPTX y Proyecto1_Caso3_Grupo5.pdf deben permanecer EN LA MISMA CARPETA.
+Los enlaces son relativos a propósito, para que funcionen en cualquier equipo.
+
+El salto a la página exacta (#page=N) lo respetan Adobe Acrobat, Chrome y Edge.
+La Vista Previa de macOS abre el PDF en la página 1: en ese caso, el número de página
+está escrito en el texto del propio enlace.
+En PowerPoint, los enlaces se pulsan directo en modo presentación; en modo edición, Ctrl+clic.
