@@ -1,5 +1,18 @@
 #import "_tablas.typ": *
 #import "_anexo.typ": *
+
+// --- enlaces automáticos: todo identificador lleva a su tabla, si existe
+#let _lk(destino, txt) = context {
+  if query(destino).len() > 0 {
+    link(destino)[#underline(offset: 1.6pt, text(fill: rgb("#0A5C8A"), txt))]
+  } else { txt }
+}
+#show regex("\\bCP-[A-Z]{3}-\\d{2}\\b"): it => _lk(label("caso-" + it.text), it.text)
+#show regex("\\b(?:E-RF|RNF-)\\d{2}\\b"): it => _lk(label("req-" + it.text), it.text)
+#show regex("\\bE-RNF\\d{2}\\b"): it => _lk(label("req-RNF-" + it.text.slice(5)), it.text)
+#show regex("\\b(?:DEF|OBS|CONF)-F?\\d{2}\\b"): it => _lk(label("hall-" + it.text), it.text)
+#show regex("\\bE-\\d{2}\\b"): it => _lk(label("ev-" + it.text.slice(2)), it.text)
+
 // Informe de pruebas — Grupo 5 — CS5383
 #set page(
   paper: "a4", margin: 2cm,
@@ -284,6 +297,10 @@ Primero los 14 de prioridad Alta.
   #TBL_DISENO_MEDIA
 ]
 
+== 4.2 Resumen de trazabilidad: caso, requisito, técnica y resultado
+
+#TBL_TRAZA
+
 = 5. Ruta del caso: dos recorridos de extremo a extremo <sec-ruta>
 #nota[Dos casos: uno que falló y derivó en defecto, y uno bloqueado.]
 #v(5pt)
@@ -432,4 +449,9 @@ Orden: Crítica, Alta, Media, Informativa. #page(flipped: true)[
 
 Capturas citadas en las tablas de ejecución y hallazgos.
 
+== Índice de evidencias
+
+#TBL_INDICE_EV
+
+#pagebreak()
 #ANEXO_EVIDENCIAS
