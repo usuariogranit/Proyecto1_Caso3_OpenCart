@@ -1,12 +1,13 @@
 #import "_tablas.typ": *
-// Informe condensado — Grupo 5 — CS5383
+#import "_anexo.typ": *
+// Informe de pruebas — Grupo 5 — CS5383
 #set page(
   paper: "a4", margin: 2cm,
   header: context {
     if counter(page).get().first() > 1 {
       set text(size: 8pt, fill: rgb("#5A6B76"))
       grid(columns: (1fr, auto),
-        [Grupo 5 · Informe condensado · OpenCart Demo 4.0.2.3],
+        [Grupo 5 · Informe de pruebas · OpenCart Demo 4.0.2.3],
         [PP-G5-C3-v1.0])
       v(-6pt); line(length: 100%, stroke: 0.4pt + rgb("#D6DEE3"))
     }
@@ -19,7 +20,7 @@
       [#counter(page).display("1 / 1", both: true)])
   },
 )
-#set text(font: ("Helvetica", "Arial"), size: 9pt, lang: "es", hyphenate: false)
+#set text(font: ("Times New Roman", "Times"), size: 9pt, lang: "es", hyphenate: false)
 #set par(justify: false, leading: 0.55em)
 
 #let TINTA = rgb("#142D3D")
@@ -74,11 +75,10 @@
 // ===================== 1. PORTADA =====================
 #image("banner_utec.png", width: 100%, height: 2.4cm, fit: "cover")
 #v(8pt)
-#text(size: 20pt, weight: "bold", fill: black)[Informe condensado de pruebas]
+#text(size: 20pt, weight: "bold", fill: black)[Informe de pruebas] <sec-portada>
 #v(1pt)
 #text(size: 12pt, fill: GRIS)[Caso 3 — OpenCart Demo 4.0.2.3 · Grupo 5]
 #v(4pt)
-#nota[Versión tabular del informe: el contenido se ordena por prioridad y severidad, de modo que lo accionable aparezca primero. No se añade información nueva respecto del plan, la matriz, el registro de ejecución y los hallazgos.]
 #v(6pt)
 #line(length: 100%, stroke: 0.6pt + LINEA)
 #v(8pt)
@@ -102,7 +102,7 @@
   text(size: 12pt, weight: "bold", fill: AMBAR)[9 / 14 = 64.3 %],
 )
 #v(4pt)
-#nota[Los denominadores se escriben siempre: la aprobación se calcula sobre casos concluyentes, nunca sobre los planificados, para no producir métricas engañosas.]
+#nota[Aprobación sobre casos concluyentes; bloqueo sobre planificados.]
 
 #pagebreak()
 
@@ -244,21 +244,21 @@
 
 // ===================== 3. ANÁLISIS =====================
 = 3. Análisis: priorización de requisitos por riesgo <sec-analisis>
-#nota[Orden del listado: prioridad Alta primero, luego Media y Baja. La prioridad procede de la exposición al riesgo (guía 2.2), no del esfuerzo de prueba.]
+#nota[Prioridad derivada de la exposición al riesgo, no del esfuerzo de prueba.]
 #v(4pt)
 #T((3.8cm, 2cm, 1fr),
   ..hd("Requisito", "Nivel", "Justificación"),
-  [E-RF03 Carrito y recálculo], ALTA, [Un error aritmético cobra importes incorrectos al cliente.],
-  [E-RF04 Cupones], ALTA, [Un descuento indebido reduce el ingreso sin autorización.],
-  [E-RF05 Checkout invitado], ALTA, [Si el recorrido no se completa, simplemente no hay venta.],
-  [E-RF06 Confirmación], ALTA, [Sin ID no hay seguimiento; un duplicado cobra dos veces.],
-  [E-RF08 Stock administrativo], ALTA, [Sobreventa: es la queja de negocio que originó el Caso 3.],
-  [E-RF02 Opciones de producto], ALTA, [La variante seleccionada define qué producto se entrega.],
-  [E-RF07 Pedidos en panel], ALTA, [Una orden invisible impide su atención operativa.],
-  [RNF-01 Propagación público → panel], ALTA, [La demora provoca reintentos y pedidos duplicados.],
-  [E-RF01 Catálogo], MEDIA, [Afecta la navegación y la comparación, no el importe cobrado.],
-  [RNF-03 Respuesta de catálogo], MEDIA, [Degrada la experiencia sin impedir completar la compra.],
-  [RNF-02 Compatibilidad], BAJA, [Alcance limitado a tres navegadores de escritorio equivalentes.],
+  [E-RF03 Carrito y recálculo <req-E-RF03>], ALTA, [Un error aritmético cobra importes incorrectos al cliente.],
+  [E-RF04 Cupones <req-E-RF04>], ALTA, [Un descuento indebido reduce el ingreso sin autorización.],
+  [E-RF05 Checkout invitado <req-E-RF05>], ALTA, [Si el recorrido no se completa, simplemente no hay venta.],
+  [E-RF06 Confirmación <req-E-RF06>], ALTA, [Sin ID no hay seguimiento; un duplicado cobra dos veces.],
+  [E-RF08 Stock administrativo <req-E-RF08>], ALTA, [Sobreventa: es la queja de negocio que originó el Caso 3.],
+  [E-RF02 Opciones de producto <req-E-RF02>], ALTA, [La variante seleccionada define qué producto se entrega.],
+  [E-RF07 Pedidos en panel <req-E-RF07>], ALTA, [Una orden invisible impide su atención operativa.],
+  [RNF-01 Propagación público → panel <req-RNF-01>], ALTA, [La demora provoca reintentos y pedidos duplicados.],
+  [E-RF01 Catálogo <req-E-RF01>], MEDIA, [Afecta la navegación y la comparación, no el importe cobrado.],
+  [RNF-03 Respuesta de catálogo <req-RNF-03>], MEDIA, [Degrada la experiencia sin impedir completar la compra.],
+  [RNF-02 Compatibilidad <req-RNF-02>], BAJA, [Alcance limitado a tres navegadores de escritorio equivalentes.],
 )
 
 == 3.1 Técnicas de diseño y su origen en el curso <sec-tecnicas>
@@ -275,7 +275,7 @@
 // ===================== 4. DISEÑO =====================
 = 4. Diseño: matriz de los 18 casos <sec-diseno>
 
-Columnas según la plantilla del curso. Primero los 14 casos de prioridad Alta.
+Primero los 14 de prioridad Alta.
 
 #page(flipped: true)[
   #TBL_DISENO_ALTA
@@ -286,7 +286,7 @@ Columnas según la plantilla del curso. Primero los 14 casos de prioridad Alta.
 ]
 
 = 5. Ruta del caso: dos recorridos de extremo a extremo <sec-ruta>
-#nota[Trazabilidad de dos casos representativos: cómo se planteó cada caso, qué técnica del curso se le aplicó y por qué, y por qué etapas atravesó hasta su estado actual.]
+#nota[Dos casos: uno que falló y derivó en defecto, y uno bloqueado.]
 #v(5pt)
 #grid(columns: (1fr, 1fr), column-gutter: 10pt,
   box(inset: 6pt, radius: 3pt, fill: PALE)[
@@ -314,7 +314,6 @@ Columnas según la plantilla del curso. Primero los 14 casos de prioridad Alta.
 
 #v(9pt)
 == Caso B · CP-ADM-01 — de un requisito a un bloqueo justificado
-#nota[Se incluye este segundo recorrido porque un caso bloqueado también atraviesa todas las etapas: lo que cambia es dónde se detiene y por qué. Un bloqueo no es un fallo ni una omisión.]
 #v(5pt)
 #etapa(1, color: AMBAR)[Requisito de origen][*E-RF08* — al marcar un producto como agotado en el panel, el sitio público debe reflejar esa condición.]
 #etapa(2, color: AMBAR)[Riesgo asociado][*R01 venta sin inventario real* y *R05 inconsistencia sitio–panel*, ambos de nivel *Alto*. Es la queja de negocio que originó el Caso 3.]
@@ -356,20 +355,18 @@ Columnas según la plantilla del curso. Primero los 14 casos de prioridad Alta.
 // ===================== 6. EJECUCIÓN =====================
 = 6. Ejecución de los 14 casos de prioridad Alta <sec-ejecucion>
 
-Ordenados por veredicto: primero los que fallaron, luego los que pasaron y al final los bloqueados.
+Orden: fallaron, pasaron, bloqueados.
 
 #TBL_EJECUCION
 
 = 7. Hallazgos <sec-hallazgos>
 
-Ordenados por severidad: Crítica, Alta, Media e Informativa. Columnas según la plantilla del curso.
-
-#page(flipped: true)[
+Orden: Crítica, Alta, Media, Informativa. #page(flipped: true)[
   #TBL_HALLAZGOS
 ]
 
 = 8. Criterios de salida y métricas <sec-metricas>
-#nota[Los criterios se declaran antes que las cifras, para que las cifras se lean contra un umbral fijado de antemano y no al revés.]
+#nota[Criterios declarados antes que las cifras.]
 
 == 8.1 Criterios de entrada y salida por fase (declarados antes de la ejecución) <sec-criterios>
 #T((3.1cm, 1fr, 1fr),
@@ -402,8 +399,6 @@ Ordenados por severidad: Crítica, Alta, Media e Informativa. Columnas según la
   [Complementarios], [4 casos Media], [CP-CAT-01, CP-CAT-03, CP-RNF-02 y CP-VAL-01 sólo diseñados.],
 )
 #v(3pt)
-#nota[No se reporta densidad de defectos ni ningún indicador que dependa de un tamaño de producto desconocido. La cobertura declarada es de requisitos en diseño, no de código.]
-
 #pagebreak()
 
 // ===================== 9. CIERRE =====================
@@ -432,3 +427,10 @@ Ordenados por severidad: Crítica, Alta, Media e Informativa. Columnas según la
 )
 #v(3pt)
 #nota[Se mantiene manual la exploración de opciones mal configuradas y la revisión de claridad de los mensajes, porque requieren interpretar intención y configuración. El diseño de automatización no se entrega como si ya estuviera implementado. Los casos de prioridad Media no se justifican como candidatos a partir de ejecuciones inexistentes. Todo el testware queda archivado bajo Gestión de la Configuración con su manifiesto SHA-256.]
+
+#pagebreak()
+= Anexo · Evidencias <sec-anexo>
+
+Capturas citadas en las tablas de ejecución y hallazgos.
+
+#ANEXO_EVIDENCIAS
