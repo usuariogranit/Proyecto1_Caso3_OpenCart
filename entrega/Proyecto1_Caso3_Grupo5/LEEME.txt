@@ -29,3 +29,13 @@ El salto a la página exacta (#page=N) lo respetan Adobe Acrobat, Chrome y Edge.
 La Vista Previa de macOS abre el PDF en la página 1: en ese caso, el número de página
 está escrito en el texto del propio enlace.
 En PowerPoint, los enlaces se pulsan directo en modo presentación; en modo edición, Ctrl+clic.
+
+DOCUMENTO ÚNICO (agregado 25-09-2026)
+Proyecto1_Caso3_Grupo5_PRESENTACION_E_INFORME.pdf — 68 páginas.
+ - Páginas 1 a 17: la presentación, en horizontal 16:9.
+ - Páginas 18 a 68: el informe integrado completo.
+ - 50 enlaces internos: el pie de cada lámina y cada identificador (CP-XXX-NN, DEF, OBS, CONF)
+   saltan a la página del informe que los sustenta, dentro del mismo archivo.
+ - Marcadores de navegación por lámina y por sección del informe.
+No requiere archivos externos ni un lector concreto: los saltos son internos y funcionan
+en Vista Previa de macOS, Acrobat, Chrome y Edge.
